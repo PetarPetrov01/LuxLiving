@@ -1,10 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { Header } from './components/Header/Header';
-import { GlobalStyle } from './components/GlobalStyles';
 import { Login } from './components/Login/Login';
 import { Catalog } from './components/Catalog/Catalog';
 import { Register } from './components/Register/Register';
+import { Home } from './components/Home/Home';
+import { GlobalStyle } from './styles/GlobalStyles';
 
 function App() {
   return (
