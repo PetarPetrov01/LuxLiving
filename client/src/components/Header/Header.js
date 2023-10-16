@@ -1,10 +1,10 @@
-import { Nav, StyledHeader, StyledLink } from "./Header.styled";
+import { Nav, StyledHeader, StyledLink } from "../../styles/Header/Header.styled";
 
 export const Header = () => {
 
     return (
         <StyledHeader>
-            <StyledLink>LOGO</StyledLink>
+            <StyledLink to={'/'} >LOGO</StyledLink>
             <Nav>
                 <div>
                     <StyledLink to={'/catalog'}>Catalog</StyledLink>

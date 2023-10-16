@@ -1,4 +1,4 @@
-import { StyledCard } from "./Catalog.styled";
+import { StyledCard } from "../../styles/Catalog/Catalog.styled";
 
 export const CatalogCard = ({
     flexdir
