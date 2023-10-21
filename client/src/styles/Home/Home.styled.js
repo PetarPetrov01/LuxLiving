@@ -10,7 +10,7 @@ export const HomeWrapper = styled.div`
     width: 60%;
     min-height: 70vh;
     border-radius: 15px;
-    background: rgba(210,230,250,0.9);
+    background: rgba(40, 60, 99,0.8); 
     box-shadow: 0px 0px 16px rgb(206, 226, 248);
 
     & > h1 {
