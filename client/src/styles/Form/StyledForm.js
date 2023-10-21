@@ -6,15 +6,15 @@ export const StyledForm = styled.form`
     flex-direction: column;
     padding: 40px 20px;
     margin: 20px auto;
-    gap: 10px;
     width: 60%;
     min-height: 60vh;
     border-radius: 15px;
-    background: rgba(210,230,250,0.9);
-    box-shadow: 0px 0px 16px rgb(206, 226, 248);
+    background: rgba(55, 82, 135,0.8);
+    box-shadow: 0px 0px 16px rgb(55, 82, 135);
 
     & > button{
         color: white;
+        cursor: pointer;
         background-color: rgba(107, 204, 238, 0.8);
         margin-top: 40px;
         font-size: 1.3em;
@@ -30,11 +30,27 @@ export const StyledForm = styled.form`
     }
 `;
 
-export const StyledInput = styled.input`
+export const InputWrapper = styled.div`
     margin-top: 30px;
-    font-size: 1.3em;
     width: 60%;
+
+    & > p{
+        position: absolute;
+        font-weight: bold;
+        color: #f66;
+        margin: 0;
+    }
+`;
+
+export const StyledInput = styled.input`
+    width: 100%;
+    font-size: 1.3em;
     height: 40px;
     background-color: rgb(220,230,250);
     border-radius: 10px;
+    padding-left: 4px;
+
+    &::placeholder{
+        color: #999;
+    }
 `;
