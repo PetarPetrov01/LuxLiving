@@ -1,14 +1,38 @@
 import { Link } from "react-router-dom";
-import { StyledInput, StyledForm } from "../../styles/Form/StyledForm";
+
+import { StyledInput, StyledForm, InputWrapper } from "../../styles/Form/StyledForm";
+import { useForm } from "../../hooks/useForm";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const Login = (props) => {
-    // let { formValues, onChangeHandler, onLoginSubmit } = {};
+    const { onLoginSubmit } = useUserContext();
+    let { formValues, onChangeHandler } = useForm({
+        email: '',
+        password: ''
+    });
+
+    console.log(formValues);
 
     return (
-        <StyledForm>
+        <StyledForm onSubmit={(e) => onLoginSubmit(e, formValues)}>
             <h1>Sign in</h1>
-            <StyledInput />
-            <StyledInput />
+
+            <InputWrapper>
+                <StyledInput
+                    placeholder="Email"
+                    name="email"
+                    onChange={onChangeHandler}
+                    value={formValues.email} />
+            </InputWrapper>
+
+            <InputWrapper>
+                <StyledInput
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={onChangeHandler}
+                    value={formValues.password} />
+            </InputWrapper>
             <button>Login</button>
             <p>
                 Not registerd? <Link to={'/register'}>Sign up</Link>

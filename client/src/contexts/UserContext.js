@@ -10,6 +10,19 @@ export const UserProvider = ({children}) => {
 
     const [user, setUser] = useLocalStorage('user', {});
     const navigate = useNavigate();
+
+    const onLoginSubmit = async (e, data) => {
+        e.preventDefault();
+
+        try {
+            const user = await userService.login(data);
+            setUser(user);
+            navigate('/');
+        } catch (error) {
+            alert(error);
+        }
+    };
+
     const onRegisterSubmit = async (e, data) => {
         e.preventDefault();
 
@@ -29,9 +42,16 @@ export const UserProvider = ({children}) => {
         }
     };
 
+    const onLogoutHandler = () => {
+        userService.logout();
+        setUser({});
+    };
+
     const context = {
         user,
+        onLoginSubmit,
         onRegisterSubmit,
+        onLogoutHandler
     };
 
     return (
