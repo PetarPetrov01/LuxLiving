@@ -6,7 +6,7 @@ import { userService } from "../services/userService";
 
 export const UserContext = createContext();
 
-export const UserProvider = ({children}) => {
+export const UserProvider = ({ children }) => {
 
     const [user, setUser] = useLocalStorage('user', {});
     const navigate = useNavigate();

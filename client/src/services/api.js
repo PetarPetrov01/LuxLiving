@@ -22,9 +22,12 @@ const request = async (method, url, data) => {
         if (response.ok !== true) {
             if (response.status === 403) {
                 userStorage.deleteUser();
+                alert('Expired session, login again');
+                window.location.reload();
             }
-            const error = await response.json();
-            throw error;
+            
+            const err = response.json();
+            throw err;
         }
 
         if (response.status === 204) {

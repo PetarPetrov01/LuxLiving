@@ -4,14 +4,8 @@ import { userStorage } from './userStorage';
 const baseUrl = 'http://localhost:3030/users';
 
 const login = async (data) => {
-
-    try {
         const result = await api.post(`${baseUrl}/login`, data);
         return result;
-
-    } catch (error) {
-        alert(error);
-    }
 };
 
 const register = async (data) => {

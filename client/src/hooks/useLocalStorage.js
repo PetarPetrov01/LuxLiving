@@ -15,7 +15,10 @@ export const useLocalStorage = (key, initialValue) => {
 
     const setLocalStorage = (data) => {
         setState(data);
-        userStorage.setUserStorage(key, data);
+
+        Object.keys(data).length !== 0
+            ? userStorage.setUserStorage(key, data)
+            : userStorage.deleteUser();
     };
 
     return [

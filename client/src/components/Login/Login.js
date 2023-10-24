@@ -11,8 +11,6 @@ export const Login = (props) => {
         password: ''
     });
 
-    console.log(formValues);
-
     return (
         <StyledForm onSubmit={(e) => onLoginSubmit(e, formValues)}>
             <h1>Sign in</h1>

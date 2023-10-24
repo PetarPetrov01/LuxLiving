@@ -14,6 +14,7 @@ const getUser = () => {
 
 const deleteUser = () => {
     localStorage.clear();
+
 };
 
 export const userStorage = { setUserStorage, getUser, deleteUser };
