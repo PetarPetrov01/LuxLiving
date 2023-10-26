@@ -1,3 +1,56 @@
+import styled from "styled-components";
+
+export const StyledDetails = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px auto;
+    width: 70%;
+    background: rgba(55, 82, 135,0.8);
+    border-radius: 20px;
+
+    @media  (max-width: 780px){
+        width: 80%;
+    }
+`;
+
+export const DetailsCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    gap: 10px;
+    width: 85%;
+    max-width: 800px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.7);
+    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+
+    @media (max-width: 780px) {
+        max-height: none;
+        height: auto;
+        flex-direction: column;
+    }
+`;
+
+export const DetailsImageWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 60%;
+    width: 100%;
+    flex: 1;
+
+    img{
+        padding: none;
+        object-fit: cover;
+        border-radius: 15px 15px 0px 0px;
+        width: 100%;
+        height: 28vw;
+        transition: all 0.3s;
+    }
+`;
+
 export const DetailsInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
