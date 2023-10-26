@@ -8,6 +8,8 @@ import { Home } from './components/Home/Home';
 import { GlobalStyle } from './styles/GlobalStyles';
 import { Create } from './components/Create/Create';
 import { UserProvider } from './contexts/UserContext';
+import { Details } from './components/Details/Details';
+import { PropertyProvider } from './contexts/PropertyContext';
 
 function App() {
   return (
@@ -17,25 +19,14 @@ function App() {
           <GlobalStyle />
           <Header />
 
-        <GlobalStyle />
-        <Header />
-
-        <main>
-          <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/catalog' element={<Catalog />}></Route>
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/create' element={<Create />} />
-            <Route></Route>
-          </Routes>
-        </main>
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/catalog' element={<Catalog />} />
+              <Route path='/catalog/:id/details' element={<Details />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/create' element={<Create />} />
               <Route></Route>
             </Routes>
           </main>
