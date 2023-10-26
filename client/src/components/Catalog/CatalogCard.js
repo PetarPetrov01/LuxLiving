@@ -1,23 +1,40 @@
 import { Link } from "react-router-dom";
-import { StyledCard, ImageWrapper, InfoContainer } from "../../styles/Catalog/Catalog.styled";
+import { StyledCard, ImageWrapper, InfoContainer, CardHeaders, TextContainer } from "../../styles/Catalog/Catalog.styled";
+import { formatDate } from "../../utils/dateFormatter";
 
 export const CatalogCard = ({
+    name,
+    location,
+    area,
+    price,
+    imageUrl,
+    _id,
+    _createdOn,
     flexdir
 }) => {
+
+    const created = formatDate(_createdOn,'catalog');
+
     return (
         <StyledCard flexdir={flexdir}>
             <ImageWrapper>
-                <Link>
+                <Link to={`${_id}/details`}>
                     <img
-                        src="https://www.bhg.com/thmb/H9VV9JNnKl-H1faFXnPlQfNprYw=/1799x0/filters:no_upscale():strip_icc()/white-modern-house-curved-patio-archway-c0a4a3b3-aa51b24d14d0464ea15d36e05aa85ac9.jpg"
-                        alt="White house" />
+                        src={imageUrl}
+                        alt={name} />
                 </Link>
             </ImageWrapper>
             <InfoContainer>
-                <h3> White House</h3>
-                <p> Nice house situated somewhere</p>
-                <span>Price:</span> 200
+                <CardHeaders>
+                    <h1>{name}</h1>
+                    <h2>Location: {location}</h2>
+                </CardHeaders>
+                <TextContainer>
+                    <span>Price: ${price}</span>
+                    <span>Total area: {area} m<sup>2</sup></span>
+                </TextContainer>
             </InfoContainer>
         </StyledCard>
+
     );
 };
