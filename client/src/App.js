@@ -13,6 +13,9 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
+        <PropertyProvider>
+          <GlobalStyle />
+          <Header />
 
         <GlobalStyle />
         <Header />
@@ -27,6 +30,16 @@ function App() {
             <Route></Route>
           </Routes>
         </main>
+          <main>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/catalog' element={<Catalog />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route></Route>
+            </Routes>
+          </main>
+        </PropertyProvider>
       </UserProvider>
     </div>
   );

@@ -87,15 +87,38 @@ export const InfoContainer = styled.div`
 }
 `;
 
+export const CardHeaders = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    h3{
-        font-size: 2vw;
-        height: 30%;
+    h1{
+        margin: 10px 0 5px 0;
+    }
+
+    h2{
+        font-size: max(0.8vw,22px);
+        margin: 5px 0 10px 0;
+    }
+
+`;
+
+export const TextContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+    margin-top:0.5vw;
+    height: 40%;
+    min-height: 25%;
+    font-size: 1.3em;
+
+    span{
+        margin: 0;
     }
 
     @media (max-width: 780px){
-        flex: 1;
-        height: 80%;
+        margin-top: 10px;
     }
 `;
 
