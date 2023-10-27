@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
-import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, DetailsInfoWrapper, StyledButton, StyledControlls, StyledDetails } from "../../styles/Details/Details.styled";
+import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, DetailsInfoWrapper, StyledAnchor, StyledControlls, StyledDetails } from "../../styles/Details/Details.styled";
 import { useEffect, useState } from "react";
 import { propertyService } from "../../services/propertiesService";
 import { useUserContext } from "../../contexts/UserContext";
 import { formatDate } from "../../utils/dateFormatter";
+import { usePropertyContext } from "../../contexts/PropertyContext";
 
 export const Details = () => {
 
+    const { onDeleteHandler } = usePropertyContext();
     const { id } = useParams();
     const [property, setProperty] = useState({});
     const { user } = useUserContext();
@@ -43,10 +45,10 @@ export const Details = () => {
                         <StyledControlls>
                             {isOwner ?
                                 <>
-                                    <StyledButton> Edit</StyledButton>
-                                    <StyledButton>Delete</StyledButton>
+                                    <StyledAnchor to={`/catalog/${property._id}/edit`}> Edit</StyledAnchor>
+                                    <StyledAnchor onClick={(e) => onDeleteHandler(e, id)}>Delete</StyledAnchor>
                                 </>
-                                : <StyledButton>Rent</StyledButton>
+                                : <StyledAnchor>Rent</StyledAnchor>
                             }
                         </StyledControlls>
                         : null}

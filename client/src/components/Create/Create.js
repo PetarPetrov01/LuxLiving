@@ -1,13 +1,12 @@
-import { useState } from "react";
-
 import { InputWrapper, StyledForm, StyledInput, StyledTextArea } from "../../styles/Form/StyledForm";
 import { useForm } from "../../hooks/useForm";
 import { usePropertyContext } from "../../contexts/PropertyContext";
+import { usePropertyValidator } from "../../hooks/usePropertyValidator";
 
 export const Create = () => {
     const { onCreateHandler } = usePropertyContext();
 
-    const [errors, setErrors] = useState({});
+    const { errors, validateForm } = usePropertyValidator({});
     const { formValues, onChangeHandler } = useForm({
         name: '',
         location: '',
@@ -16,21 +15,6 @@ export const Create = () => {
         area: '',
         description: '',
     });
-
-    const validateForm = (e) => {
-        const value = e.target.value;
-
-        const errMap = {
-            name: () => value.length < 4 && 'Name must be atleast 4 characters long!',
-            location: () => value.length < 4 && 'location must be atleast 4 characters long!',
-            imageUrl: () => !/^https?:\/\/.+/.test(value) && 'Invalid Image URL',
-            price: () => Number(value) < 0.01 && 'price must be a positive number!',
-            area: () => Number(value) < 0.01 && 'Area must be a positive number',
-            description: () => (value.length < 10 || value.length > 200) && 'Description must be between 10 and 200 characters long!',
-        };
-
-        setErrors(prevErrors => ({ ...prevErrors, [e.target.name]: errMap[e.target.name]() }));
-    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
