@@ -10,6 +10,7 @@ import { Create } from './components/Create/Create';
 import { UserProvider } from './contexts/UserContext';
 import { Details } from './components/Details/Details';
 import { PropertyProvider } from './contexts/PropertyContext';
+import { Edit } from './components/Edit/Edit';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path='/' element={<Home />} />
               <Route path='/catalog' element={<Catalog />} />
               <Route path='/catalog/:id/details' element={<Details />} />
+              <Route path='/catalog/:id/edit' element={<Edit />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               <Route path='/create' element={<Create />} />
