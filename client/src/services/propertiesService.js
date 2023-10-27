@@ -14,9 +14,17 @@ const create = async (data) => {
     return await api.post(`${baseUrl}`, data);
 };
 
+const edit = async (id, data) => {
+    return await api.put(`${baseUrl}/${id}`, data);
+};
+
+const deleteById = async (id) => {
+    await api.del(`${baseUrl}/${id}`);
+};
 
 export const propertyService = {
     getAll,
     getById,
     create
+    edit,
 };
