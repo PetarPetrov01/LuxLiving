@@ -4,6 +4,18 @@ const baseUrl = 'http://localhost:3030/data/properties';
 
 const getAll = async () => {
     return await api.get(baseUrl);
+const getAll = async (search, sort = {}) => {
+
+    const queryArr = [];
+
+    if (search) {
+        const searchQuery = `name LIKE "${search}" OR location LIKE "${search}"`;
+        const encodedQuery = encodeURIComponent(searchQuery);
+        queryArr.push(`where=${encodedQuery}`);
+    }
+    return queryArr.length > 0
+        ? await api.get(`${baseUrl}?${queryArr.join('&')}`)
+        : await api.get(baseUrl);
 };
 
 const getById = async (id) => {
