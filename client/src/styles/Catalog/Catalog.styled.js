@@ -122,3 +122,55 @@ export const TextContainer = styled.div`
     }
 `;
 
+export const ControlsWrapper = styled.div`
+    display:flex;
+    width: 80%;
+    justify-content: center;
+    margin: 20px 0;
+
+    @media (max-width: 780px){
+        width: 90%;
+    }
+
+`;
+
+export const SearchForm = styled.form`
+    display: flex;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+    margin:0;
+
+    input[name="search"]{
+        width: 90%;
+        height: 35px;
+        border-radius: 18px;
+        padding-left: 10px;
+        font-size: 1.2em;
+
+
+        &::placeholder{
+            margin-left: 5px;
+        }
+
+    }
+
+    input[type="image"]{
+        width: 35px;
+        position: relative;
+        height: 40px;
+        right: 10%;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        @media (max-width: 780px){
+            right: 15%;
+        }
+  }
+
+  label{
+    text-align: center;
+    line-height: 50%;
+  }
+`;
+

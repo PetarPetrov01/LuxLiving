@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledDetails = styled.div`
@@ -113,7 +114,7 @@ export const StyledControlls = styled.div`
     margin: 10px 0 20px 0;
 `;
 
-export const StyledButton = styled.button`
+export const StyledAnchor = styled(Link)`
     color: white;
     cursor: pointer;
     //background-color: rgba(107, 204, 238, 0.8);
@@ -122,6 +123,9 @@ export const StyledButton = styled.button`
     border: none;
     border-radius: 20px;
     font-size: 1.3em;
+    text-align: center;
+    line-height: 40px;
+    text-decoration:none;
     background: rgba(55, 82, 135,0.7);
     transition: all 0.2s;
     

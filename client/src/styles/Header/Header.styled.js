@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: linear-gradient(90deg, rgba(40, 60, 99,0.9) 0%, rgba(55, 82, 135,0.9)50%);
-    padding: 0.2em 2.2em;
-    width: 95vw;
+    padding: 0;
+    width: 100%;
     box-shadow: 0px 0px 10px rgb(138, 191, 234);
 
     @media (max-width: 780px){
@@ -37,7 +37,7 @@ export const StyledLink = styled(Link)`
     font-size: 1.7rem;
     font-weight: bold;
     color: rgb(255,255,255);
-    font-weight: 400;
+    font-weight: 450;
     transition: transform 0.5s;
     padding: 0 10px;
     margin: 8px;

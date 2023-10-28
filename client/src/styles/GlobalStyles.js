@@ -21,8 +21,18 @@ export const GlobalStyle = createGlobalStyle`
         margin: auto;
         height: 100vh;
         width: 100%;
+        max-width: 1920px;
         top: 0;
         left: 0;
         background: transparent;
+    }
+
+    ::-webkit-scrollbar{
+        width: 10px;
+        background-color: black;
+    }
+
+    * {
+        scrollbar-color: rgba(235,235,255,0.8) rgba(40, 60, 99,0.9);
     }
 `;
