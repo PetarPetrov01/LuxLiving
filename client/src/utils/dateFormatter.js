@@ -3,7 +3,7 @@ export const formatDate = (data, type) => {
     const options = {};
     if (type === 'catalog') {
         options.year = 'numeric';
-        options.month = 'short';
+        options.month = 'numeric';
         options.day = '2-digit';
     } else if (type === 'details') {
         options.year = 'numeric';

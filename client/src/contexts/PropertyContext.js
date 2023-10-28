@@ -28,6 +28,10 @@ export const PropertyProvider = ({ children }) => {
         setSearch(searchValue);
     };
 
+    const onSort = (sortValue) => {
+        setSort(sortValue);
+    };
+
     const onCreateHandler = async (data) => {
         try {
             const property = await propertyService.create(data);
@@ -64,6 +68,9 @@ export const PropertyProvider = ({ children }) => {
         onCreateHandler
         onCreateHandler,
         onEditHandler,
+        onDeleteHandler,
+        onSearch,
+        onSort
     };
 
     return (

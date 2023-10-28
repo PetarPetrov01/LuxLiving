@@ -13,6 +13,8 @@ export const Home = () => {
             <div>
             <StyledLink>Check the catalog</StyledLink>
             <StyledLink>Register</StyledLink>
+            <StyledLink to='/catalog'>Check the catalog</StyledLink>
+            <StyledLink to='/register'>Register</StyledLink>
             </div>
         </HomeWrapper>
     );

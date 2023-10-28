@@ -18,7 +18,7 @@ export const StyledCatalog = styled.div`
 export const StyledCard = styled.div`
     display: flex;
     align-items: center;
-    flex-direction: ${({ flexdir }) => flexdir || 'row'};
+    flex-direction: ${({ flexdir }) => flexdir};
     padding: 20px;
     margin: 20px;
     gap: 10px;
@@ -98,7 +98,7 @@ export const CardHeaders = styled.div`
 
     h2{
         font-size: max(0.8vw,22px);
-        margin: 5px 0 10px 0;
+        margin: 5px 0 5px 0;
     }
 
 `;
@@ -107,7 +107,7 @@ export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 90%;
+    width: 70%;
     margin-top:0.5vw;
     height: 40%;
     min-height: 25%;
@@ -172,5 +172,20 @@ export const SearchForm = styled.form`
     text-align: center;
     line-height: 50%;
   }
+`;
+
+export const SortWrapper = styled.div`
+    label{
+        font-size: 1.2em;
+    }
+`;
+
+export const StyledSelect = styled.select`
+    height: 40px;
+    border-radius: 18px;
+    margin: 0 5px; 
+    padding-left: 10px;   
+    font-size: 1.1em;
+
 `;
 

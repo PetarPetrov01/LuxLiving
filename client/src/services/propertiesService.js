@@ -13,6 +13,13 @@ const getAll = async (search, sort = {}) => {
         const encodedQuery = encodeURIComponent(searchQuery);
         queryArr.push(`where=${encodedQuery}`);
     }
+
+    if (Object.keys(sort).length !== 0) {
+        const sortQuery = `${sort.type} ${sort.order === 'desc' ? 'desc' : ''}`;
+        const encodedSort = encodeURIComponent(sortQuery);
+        queryArr.push(`sortBy=${encodedSort}`);
+    }
+
     return queryArr.length > 0
         ? await api.get(`${baseUrl}?${queryArr.join('&')}`)
         : await api.get(baseUrl);
@@ -38,6 +45,7 @@ export const propertyService = {
     getAll,
     getById,
     create
+    create,
     edit,
     delete: deleteById
 };

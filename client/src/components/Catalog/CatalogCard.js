@@ -14,6 +14,7 @@ export const CatalogCard = ({
 }) => {
 
     const created = formatDate(_createdOn,'catalog');
+    const posted = formatDate(_createdOn, 'catalog');
 
     return (
         <StyledCard flexdir={flexdir}>
@@ -28,6 +29,7 @@ export const CatalogCard = ({
                 <CardHeaders>
                     <h1>{name}</h1>
                     <h2>Location: {location}</h2>
+                    <span style={{fontSize: '0.75em'}}>Posted on: {posted}</span>
                 </CardHeaders>
                 <TextContainer>
                     <span>Price: ${price}</span>
