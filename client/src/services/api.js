@@ -20,19 +20,21 @@ const request = async (method, url, data) => {
         const response = await fetch(url, options);
 
         if (response.ok !== true) {
-            if (response.status === 403) {
+            const err = await response.json();
+
+            if (response.status === 403 && err.message === 'Invalid access token') {
                 userStorage.deleteUser();
                 alert('Expired session, login again');
                 window.location.reload();
             }
             
-            const err = response.json();
             throw err;
         }
 
         if (response.status === 204) {
             return response;
         }
+        
         return await response.json();
 
     } catch (error) {

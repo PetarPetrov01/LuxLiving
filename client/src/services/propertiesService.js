@@ -25,6 +25,10 @@ const getAll = async (search, sort = {}) => {
         : await api.get(baseUrl);
 };
 
+const getLatest = async () =>{
+    return await api.get(`${baseUrl}?sortBy=_createdOn%20desc%2C&pageSize=3`);
+};
+
 const getById = async (id) => {
     return await api.get(`${baseUrl}/${id}`);
 };
@@ -43,6 +47,7 @@ const deleteById = async (id) => {
 
 export const propertyService = {
     getAll,
+    getLatest,
     getById,
     create
     create,

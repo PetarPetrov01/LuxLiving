@@ -13,7 +13,6 @@ export const CatalogCard = ({
     flexdir
 }) => {
 
-    const created = formatDate(_createdOn,'catalog');
     const posted = formatDate(_createdOn, 'catalog');
 
     return (
@@ -32,7 +31,6 @@ export const CatalogCard = ({
                     <span style={{fontSize: '0.75em'}}>Posted on: {posted}</span>
                 </CardHeaders>
                 <TextContainer>
-                    <span>Price: ${price}</span>
                     <span>Price: ${Number(price).toLocaleString()}</span>
                     <span>Total area: {area} m<sup>2</sup></span>
                 </TextContainer>

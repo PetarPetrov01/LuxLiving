@@ -6,22 +6,19 @@ export const PropertyContext = createContext();
 
 export const PropertyProvider = ({ children }) => {
 
-    const [sort, setSort] = useState({ type: 'name', order: 'asc' });
+    const [sort, setSort] = useState({ type: '_createdOn', order: 'desc' });
     const [search, setSearch] = useState('');
     const [properties, setProperties] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        propertyService.getAll()
         propertyService.getAll(search, sort)
             .then(result => {
                 setProperties(result);
-            }).catch(err => {
             })
             .catch(err => {
                 alert(err);
             });
-    }, []);
     }, [search, sort]);
 
     const onSearch = (searchValue) => {
@@ -35,7 +32,7 @@ export const PropertyProvider = ({ children }) => {
     const onCreateHandler = async (data) => {
         try {
             const property = await propertyService.create(data);
-            setProperties(state => ([...state, property]));
+            setProperties(state => ([property, ...state]));
             navigate('/catalog');
         } catch (error) {
             alert(error);
@@ -65,7 +62,6 @@ export const PropertyProvider = ({ children }) => {
 
     const context = {
         properties,
-        onCreateHandler
         onCreateHandler,
         onEditHandler,
         onDeleteHandler,

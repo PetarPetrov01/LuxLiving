@@ -33,7 +33,7 @@ export const Login = (props) => {
             </InputWrapper>
             <button>Login</button>
             <p>
-                Not registerd? <Link to={'/register'}>Sign up</Link>
+                Not registerd? <Link to={'/register'} style={{textDecoration: 'none'}}>Sign up</Link>
             </p>
         </StyledForm>
     );

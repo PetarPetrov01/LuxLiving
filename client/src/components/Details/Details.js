@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, DetailsInfoWrapper, StyledAnchor, StyledControlls, StyledDetails } from "../../styles/Details/Details.styled";
 import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, 
     DetailsInfoWrapper, StyledAnchor, StyledControlls, StyledDetails } from "../../styles/Details/Details.styled";
 import { useEffect, useState } from "react";
@@ -40,7 +39,6 @@ export const Details = () => {
                     </DetailsCardHeaders>
                     <DetailsInfo>
                         <h4>Total area: {property.area} m<sup>2</sup></h4>
-                        <h4>Price: ${property.price}</h4>
                         <h4>Price: ${Number(property.price).toLocaleString()}</h4>
                         <p>{property.description}</p>
                     </DetailsInfo>
