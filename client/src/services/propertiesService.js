@@ -2,8 +2,6 @@ import * as api from './api';
 
 const baseUrl = 'http://localhost:3030/data/properties';
 
-const getAll = async () => {
-    return await api.get(baseUrl);
 const getAll = async (search, sort = {}) => {
 
     const queryArr = [];
@@ -29,6 +27,10 @@ const getLatest = async () =>{
     return await api.get(`${baseUrl}?sortBy=_createdOn%20desc%2C&pageSize=3`);
 };
 
+const getOwn = async (userId)=>{
+    return await api.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`);
+};
+
 const getById = async (id) => {
     return await api.get(`${baseUrl}/${id}`);
 };
@@ -48,8 +50,8 @@ const deleteById = async (id) => {
 export const propertyService = {
     getAll,
     getLatest,
+    getOwn,
     getById,
-    create
     create,
     edit,
     delete: deleteById
