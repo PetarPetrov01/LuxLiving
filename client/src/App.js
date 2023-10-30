@@ -11,6 +11,7 @@ import { UserProvider } from './contexts/UserContext';
 import { Details } from './components/Details/Details';
 import { PropertyProvider } from './contexts/PropertyContext';
 import { Edit } from './components/Edit/Edit';
+import { Profile } from './components/Profile/Profile';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path='/catalog/:id/details' element={<Details />} />
               <Route path='/catalog/:id/edit' element={<Edit />} />
               <Route path='/login' element={<Login />} />
+              <Route path='/profile' element={<Profile />} />
               <Route path='/register' element={<Register />} />
               <Route path='/create' element={<Create />} />
               <Route></Route>

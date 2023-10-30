@@ -6,6 +6,12 @@ export const Home = () => {
         <HomeWrapper>
             <h1>Welcome to LuxeLiving!</h1>
             <p>At LuxeLiving, we don’t just sell properties; we craft experiences.
+            <HeaderWrapper>
+                <h1>Welcome {user._id ? user.email: 'to LuxLiving!'}</h1>
+            </HeaderWrapper>
+            <LatestWrapper>
+            </LatestWrapper>
+            <p>
                 Join us in the pursuit of unparalleled luxury, where every day feels like an extraordinary indulgence.
                 Your journey to finding the perfect luxury property starts here.
                 Welcome to a world where your desires are our top priority.
