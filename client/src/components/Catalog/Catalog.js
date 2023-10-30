@@ -1,4 +1,3 @@
-import { StyledCatalog } from "../../styles/Catalog/Catalog.styled";
 import { ControlsWrapper, SearchForm, StyledCatalog, StyledSelect, SortWrapper } from "../../styles/Catalog/Catalog.styled";
 import { CatalogCard } from "./CatalogCard";
 import { usePropertyContext } from "../../contexts/PropertyContext";
@@ -6,8 +5,7 @@ import { useEffect, useState } from "react";
 
 export const Catalog = () => {
 
-    const { properties } = usePropertyContext();
-    const [sort, setSort] = useState({ type: 'Name', order: 'asc' });
+    const [sort, setSort] = useState({ type: '_createdOn', order: 'desc' });
     const [search, setSearch] = useState('');
     const [hasSearched, setHasSearched] = useState(false);
 
@@ -38,9 +36,6 @@ export const Catalog = () => {
 
     return (
         <StyledCatalog >
-                ? properties.map((p, index) => <CatalogCard key={p._id} {...p} flexdir={index % 2 !== 0 ? 'row-reverse' : 'row'} />)
-                : <h1>No Content yet</h1>}
-        </StyledCatalog>
             <ControlsWrapper>
                 <SearchForm>
                     <input name="search" placeholder="Search"
@@ -56,9 +51,9 @@ export const Catalog = () => {
                         value={sort.value}
                         name="sortOrder"
                     >
-                        <option value={'name'}>Name</option>
                         <option value={'_createdOn desc'}>Newest</option>
                         <option value={'_createdOn asc'}>Oldest</option>
+                        <option value={'name'}>Name</option>
                         <option value={'price asc'}>Price asc.</option>
                         <option value={'price desc'}>Price desc.</option>
                         <option value={'area asc'}>Area asc.</option>

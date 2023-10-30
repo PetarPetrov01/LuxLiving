@@ -1,4 +1,4 @@
-import { Logo, Nav, StyledHeader, StyledLink, LogoLink } from "../../styles/Header/Header.styled";
+import { Logo, Nav, StyledHeader, LogoLink, StyledNavLink } from "../../styles/Header/Header.styled";
 
 import { useUserContext } from "../../contexts/UserContext";
 
@@ -12,17 +12,17 @@ export const Header = () => {
             </LogoLink>
             <Nav>
                 <div>
-                    <StyledLink to={'/catalog'}>Catalog</StyledLink>
-                    <StyledLink >Search</StyledLink>
+                    <StyledNavLink to={'/catalog'}>Catalog</StyledNavLink>
                 </div>
                 {user?._id
                     ? <div>
-                        <StyledLink to={'/create'}>Create</StyledLink>
-                        <StyledLink onClick={onLogoutHandler}>Logout</StyledLink>
+                        <StyledNavLink to={'/profile'}>Profile</StyledNavLink>
+                        <StyledNavLink to={'/create'}>Create</StyledNavLink>
+                        <StyledNavLink onClick={onLogoutHandler} to={'/logout'}>Logout</StyledNavLink>
                     </div>
                     : <div>
-                        <StyledLink to={'/login'} >Login</StyledLink>
-                        <StyledLink to={'/register'} >Register</StyledLink>
+                        <StyledNavLink to={'/login'} >Login</StyledNavLink>
+                        <StyledNavLink to={'/register'} >Register</StyledNavLink>
                     </div>
                 }
             </Nav>
