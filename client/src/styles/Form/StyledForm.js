@@ -29,7 +29,7 @@ export const StyledForm = styled.form`
         }
     }
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         width: 80%;
     }
 `;
@@ -45,7 +45,7 @@ export const InputWrapper = styled.div`
         margin: 0;
     }
 
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
             width: 70%;
     }
 `;

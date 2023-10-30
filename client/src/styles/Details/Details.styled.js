@@ -10,7 +10,7 @@ export const StyledDetails = styled.div`
     background: rgba(55, 82, 135,0.8);
     border-radius: 20px;
 
-    @media  (max-width: 780px){
+    @media  (max-width: 768px){
         width: 80%;
     }
 `;
@@ -27,7 +27,7 @@ export const DetailsCard = styled.div`
     background: rgba(255,255,255,0.7);
     box-shadow: 0 0 10px rgba(255,255,255,0.7);
 
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
         max-height: none;
         height: auto;
         flex-direction: column;
@@ -62,7 +62,7 @@ export const DetailsInfoWrapper = styled.div`
     flex: 1;
     font-size: 1.1em;
     
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         width: 90%;
         height: 80%;
     }
@@ -100,7 +100,7 @@ export const DetailsInfo = styled.div`
         text-align: justify;
     }
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         h3{
             font-size: 0.9em;
         }
@@ -134,7 +134,7 @@ export const StyledAnchor = styled(Link)`
         background-color: rgba(53, 125, 200, 0.8);
     }
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         width: 40%;
     }
 `;
