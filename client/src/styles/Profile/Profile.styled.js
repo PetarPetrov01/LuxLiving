@@ -54,3 +54,71 @@ export const ProfileStyledCard = styled.div`
     }
 `;
 
+export const ProfileInfoWrapper = styled.div`
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: -100%;
+    width: 100%;
+    height:100%;
+    opacity: 0;
+    border-radius:10px;
+    color: rgb(40, 60, 99);
+
+    //background-color: rgba(203, 179, 106,0.7);
+    background-color: rgba(190,210,250,0.9); 
+    transition: opacity 0.3s;
+
+    &:hover{
+        opacity: 1;  
+    }
+
+    h1{
+        font-size: max(30px, 2.2vw);
+        margin-bottom: 0;
+    }
+
+    h2{
+        font-size: max(20px, 1.8vw);
+        margin-top: 0;
+    }
+
+    h3{
+        font-size: max(18px, 1.6vw);
+
+    }
+`;
+
+export const ProfileImageWrapper = styled.div`
+    width: 100%;
+    height:100%;
+
+    img {
+        padding: none;
+        border: 2px solid #bbb;
+        object-fit: cover;
+        border-radius: 10px;
+        width: calc(100% - 4px);
+        height: calc(100% - 4px);
+        transition: all 0.3s;
+    }
+`;
+
+export const ProfileDetails = styled(DetailsInfo)`
+
+
+    h1{
+        margin: 0;
+    }
+    h3{
+        margin: 5px 0 5px 0;
+    }
+
+    span{
+        font-weight: bold;
+    }
+   
+`;
+
