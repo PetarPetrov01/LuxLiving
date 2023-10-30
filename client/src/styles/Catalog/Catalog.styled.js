@@ -10,10 +10,10 @@ export const StyledCatalog = styled.div`
     background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%);
     border-radius: 20px;
 
-    @media (max-width:780px){
+    @media (max-width:768px){
         width: 90%;
     }
-   `;
+`;
 
 export const StyledCard = styled.div`
     display: flex;
@@ -29,7 +29,7 @@ export const StyledCard = styled.div`
     background: rgba(255,255,255,0.7);
     box-shadow: 0px 0px 4px rgb(255,255,255);
 
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
         max-height: none;
         height: auto;
         flex-direction: column;
@@ -45,9 +45,9 @@ export const ImageWrapper = styled.div`
 
     img{
         padding: none;
-        border: 4px solid #777;
+        border: 4px solid rgba(55, 82, 135,0.8);
         object-fit: cover;
-        box-shadow: 0 0 20px #888;
+        box-shadow: 0 0 5px rgb(40, 60, 99);
         border-radius: 4px;
         width: calc(100% - 8px);
         height: calc(100% - 8px);
@@ -65,7 +65,7 @@ export const ImageWrapper = styled.div`
         box-shadow: 0 0 20px rgba(203, 179, 106,0.8);
     }
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         justify-content: center;
         width:100%;
     }
@@ -81,7 +81,7 @@ export const InfoContainer = styled.div`
     flex: 1;
     font-size: 1.1em;
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         width: 100%;
         height: 100%;
 }
@@ -117,7 +117,7 @@ export const TextContainer = styled.div`
         margin: 0;
     }
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         margin-top: 10px;
     }
 `;
@@ -128,7 +128,7 @@ export const ControlsWrapper = styled.div`
     justify-content: center;
     margin: 20px 0;
 
-    @media (max-width: 780px){
+    @media (max-width: 768px){
         width: 90%;
     }
 
@@ -163,7 +163,7 @@ export const SearchForm = styled.form`
         cursor: pointer;
         transition: all 0.3s;
 
-        @media (max-width: 780px){
+        @media (max-width: 768px){
             right: 15%;
         }
   }
