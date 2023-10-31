@@ -8,7 +8,7 @@ export const HomeWrapper = styled.div`
     padding: 20px 10px;
     margin: 40px auto;
     gap: 10px;
-    width: 60%;
+    width: 70%;
     min-height: 70vh;
     border-radius: 15px;
     background: rgba(40, 60, 99,0.8); 
@@ -20,7 +20,7 @@ export const HomeWrapper = styled.div`
         font-size: 1.5em;
     }
 
-    @media(max-width: 768px){
+    @media(max-width: 920px){
         width: 80%;
     }
 `;
@@ -42,11 +42,11 @@ export const LatestWrapper = styled.div`
     width: 100%;
     height: 15vw;
 
-    @media(max-width: 768px){
+    @media(max-width: 920px){
         flex-direction: column;
         align-items: center;
         height: min(90vh,900px);
-        width: 80%;
+        width: 85%;
     }
 `;
 
@@ -61,15 +61,15 @@ export const StyledHomeCard = styled.div.attrs((props) => ({
         width: ${({ width }) => `${width + 5}%`}; 
     }
 
-    @media(max-width: 768px){
-        width: 80%;
-        height: ${({ height }) => `${height}%`}; 
+    @media(max-width: 920px){
+        width: 90%;
+        height: ${({ height }) => `${height}%`};
 
         &:hover{
-            width: 80%;
+            width: 90%;
             height:${({ height }) => `${height + 5}%`};
-        }
-    }
+        };
+    };
 `;
 
 export const InfoWrapper = styled.div`
@@ -159,7 +159,7 @@ export const StyledLink = styled(Link)`
         transform: scale(1.1);
     }
 
-    @media (max-width: 768px){
+    @media (max-width: 920px){
         margin-bottom: 10px;
     }
 `;

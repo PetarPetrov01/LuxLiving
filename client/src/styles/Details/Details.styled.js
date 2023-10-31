@@ -138,3 +138,26 @@ export const StyledAnchor = styled(Link)`
         width: 40%;
     }
 `;
+
+export const StyledBidForm = styled.form`
+    display: flex;
+    width:60%;
+    border: 1px solid rgba(55, 125, 200, 0.8);
+    border-radius: 20px;
+`;
+
+export const BidInput = styled.input`
+    flex: 2;
+    width: 60%;
+    height: 100%; 
+    font-size: 1.1em;
+    background-color: rgb(220,230,250);
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    border: none;
+    padding: 0 0 0 10px;
+
+    &::placeholder{
+        color: #999;
+    }  
+`;
