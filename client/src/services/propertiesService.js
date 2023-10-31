@@ -24,10 +24,12 @@ const getAll = async (search, sort = {}) => {
 };
 
 const getLatest = async () =>{
+const getLatest = async () => {
     return await api.get(`${baseUrl}?sortBy=_createdOn%20desc%2C&pageSize=3`);
 };
 
 const getOwn = async (userId)=>{
+const getOwn = async (userId) => {
     return await api.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`);
 };
 
@@ -45,6 +47,9 @@ const edit = async (id, data) => {
 
 const deleteById = async (id) => {
     await api.del(`${baseUrl}/${id}`);
+};
+
+const bid = async (propId, newPrice) => {
 };
 
 export const propertyService = {

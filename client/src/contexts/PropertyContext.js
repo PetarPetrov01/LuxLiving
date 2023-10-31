@@ -60,11 +60,15 @@ export const PropertyProvider = ({ children }) => {
         }
     };
 
+    const onBidHandler = async (id, price) => {
+    };
+
     const context = {
         properties,
         onCreateHandler,
         onEditHandler,
         onDeleteHandler,
+        onBidHandler,
         onSearch,
         onSort
     };
