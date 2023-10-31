@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DetailsInfo } from "../Details/Details.styled";
+import { DetailsInfo, StyledAnchor, StyledControlls } from "../Details/Details.styled";
 
 export const ProfileContainer = styled.div`
     display:flex;
@@ -40,15 +40,15 @@ export const PropertiesWrapper = styled.div`
 
 export const ProfileStyledCard = styled.div`
     width: max(80%,500px);
-    height: max(30vw,290px);
+    height: max(30vw,300px);
     transition: all 0.3s;
 
     @media(max-width: 768px){
-        height: 40vw;
+        height: max(40vw,300px);
         width: 90%;
         
         &:hover{
-            height: 45vw;
+            height: max(43vw,330px);
             width: 90%;
         };
     }
@@ -69,25 +69,25 @@ export const ProfileInfoWrapper = styled.div`
 
     //background-color: rgba(203, 179, 106,0.7);
     background-color: rgba(190,210,250,0.9); 
-    transition: opacity 0.3s;
+    transition: opacity 0.5s;
 
     &:hover{
         opacity: 1;  
     }
-
     h1{
         font-size: max(30px, 2.2vw);
         margin-bottom: 0;
     }
-
     h2{
         font-size: max(20px, 1.8vw);
         margin-top: 0;
     }
-
     h3{
         font-size: max(18px, 1.6vw);
-
+    }
+    p{
+        font-size: max(17px,1.6vw);
+        margin-top: 5px;
     }
 `;
 
@@ -107,8 +107,6 @@ export const ProfileImageWrapper = styled.div`
 `;
 
 export const ProfileDetails = styled(DetailsInfo)`
-
-
     h1{
         margin: 0;
     }
@@ -119,6 +117,14 @@ export const ProfileDetails = styled(DetailsInfo)`
     span{
         font-weight: bold;
     }
-   
+`;
+
+export const ProfileControlls = styled(StyledControlls)`
+    margin-bottom: 5px;
+`;
+
+export const ProfileLink = styled(StyledAnchor)`
+    font-size: max(18px,1.6vw);
+    padding: max(0,0.1vw) max(10px,1.4vw);
 `;
 
