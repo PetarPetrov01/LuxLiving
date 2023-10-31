@@ -109,7 +109,7 @@ export const DetailsInfo = styled.div`
 export const StyledControlls = styled.div`
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 60%;
     gap: 20px;
     margin: 10px 0 20px 0;
 `;
@@ -117,7 +117,6 @@ export const StyledControlls = styled.div`
 export const StyledAnchor = styled(Link)`
     color: white;
     cursor: pointer;
-    //background-color: rgba(107, 204, 238, 0.8);
     width: 30%;
     height: 40px;
     border: none;
@@ -159,5 +158,32 @@ export const BidInput = styled.input`
 
     &::placeholder{
         color: #999;
+    }  
+`;
+
+export const BidButton = styled.button`
+    flex: 1;
+    color: white;
+    cursor: pointer;
+     height: 100%;
+    width: 38%; 
+    
+    
+    border: none;
+    padding: 0;
+    border-radius: 0 20px 20px 0;
+    font-size: 1.2em;
+    line-height: 40px;
+    text-decoration:none;
+    background: rgba(55, 82, 135,0.7);
+    transition: all 0.2s;
+    
+    &:hover{
+        box-shadow: 0px 0px 3px rgba(55, 125, 200, 0.8);
+        background-color: rgba(53, 125, 200, 0.8);
+    }
+
+    @media (max-width: 768px){
+        width: 40%;
     }  
 `;

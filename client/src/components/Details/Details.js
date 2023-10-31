@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
-import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, 
-    DetailsInfoWrapper, StyledAnchor, StyledControlls, StyledDetails } from "../../styles/Details/Details.styled";
+import {
+    DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo,
+    DetailsInfoWrapper, StyledAnchor, StyledControlls, StyledDetails
+} from "../../styles/Details/Details.styled";
 import { useEffect, useState } from "react";
 import { propertyService } from "../../services/propertiesService";
 import { useUserContext } from "../../contexts/UserContext";
 import { formatDate } from "../../utils/dateFormatter";
 import { usePropertyContext } from "../../contexts/PropertyContext";
+import { BidForm } from "./BidForm";
 
 export const Details = () => {
 
@@ -39,7 +42,7 @@ export const Details = () => {
                     </DetailsCardHeaders>
                     <DetailsInfo>
                         <h4>Total area: {property.area} m<sup>2</sup></h4>
-                        <h4>Price: ${Number(property.price).toLocaleString()}</h4>
+                        <h4>Current price: ${Number(property.price).toLocaleString()}</h4>
                         <p>{property.description}</p>
                     </DetailsInfo>
                     {user._id ?
@@ -49,7 +52,12 @@ export const Details = () => {
                                     <StyledAnchor to={`/catalog/${property._id}/edit`}> Edit</StyledAnchor>
                                     <StyledAnchor onClick={(e) => onDeleteHandler(e, id)}>Delete</StyledAnchor>
                                 </>
-                                : <StyledAnchor>Rent</StyledAnchor>
+                                : <>
+                                    {property.currentBidder
+                                        ? <h4>Current bidder : {property.currentBidder}</h4>
+                                        : null}
+                                    <BidForm previousPrice={property.price} _id={property._id} />
+                                </>
                             }
                         </StyledControlls>
                         : null}
