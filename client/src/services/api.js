@@ -27,14 +27,14 @@ const request = async (method, url, data) => {
                 alert('Expired session, login again');
                 window.location.reload();
             }
-            
+
             throw err;
         }
 
         if (response.status === 204) {
             return response;
         }
-        
+
         return await response.json();
 
     } catch (error) {
@@ -44,6 +44,7 @@ const request = async (method, url, data) => {
 const get = request.bind(null, 'GET');
 const post = request.bind(null, 'POST');
 const put = request.bind(null, 'PUT');
+const patch = request.bind(null, 'PATCH');
 const del = request.bind(null, 'DELETE');
 
-export { get, post, put, del };
+export { get, post, put, patch, del };
