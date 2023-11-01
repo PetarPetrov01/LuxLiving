@@ -1,17 +1,18 @@
 import styled from "styled-components";
-import { DetailsInfo, StyledAnchor, StyledControlls } from "../Details/Details.styled";
+
+import { StyledAnchor, StyledControlls } from "../Details/Controlls.styled";
+import { DetailsInfo } from "../Details/Details.styled";
 
 export const ProfileContainer = styled.div`
     display:flex;
     align-items: center;
     flex-direction: column;
-    padding: 20px 10px;
     margin: 40px auto;
+    padding: 20px 10px;
     width: max(70%,650px);
-    min-height: 70vh;
+    min-height: 200px;
     border-radius: 15px;
-    background: rgba(40, 60, 99,0.7); 
-    box-shadow: 0px 0px 16px rgb(206, 226, 248);
+    background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%); 
 
     @media(max-width: 768px){
         
@@ -120,6 +121,7 @@ export const ProfileDetails = styled(DetailsInfo)`
 `;
 
 export const ProfileControlls = styled(StyledControlls)`
+flex-direction: row;    
     margin-bottom: 5px;
 `;
 

@@ -4,11 +4,11 @@ export const StyledCatalog = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 20px auto;
+    margin: 20px auto 80px auto;
     width: 75%;
     min-height: 200px;
-    background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%);
     border-radius: 20px;
+    background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%);
 
     @media (max-width:768px){
         width: 90%;

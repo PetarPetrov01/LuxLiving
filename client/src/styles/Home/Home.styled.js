@@ -6,7 +6,7 @@ export const HomeWrapper = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 20px 10px;
-    margin: 40px auto;
+    margin: 40px auto 80px auto;
     gap: 10px;
     width: 70%;
     min-height: 70vh;
