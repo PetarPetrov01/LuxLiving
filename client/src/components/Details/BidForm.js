@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { StyledBidForm, BidInput, BidButton } from "../../styles/Details/Details.styled";
+import { StyledBidForm, BidInput, BidButton } from "../../styles/Details/Controlls.styled";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 
 export const BidForm = ({
@@ -24,7 +24,6 @@ export const BidForm = ({
             alert('You can\'t bid less than the current amount!');
             setAmount(previousPrice);
         } else {
-            console.log('Submiting');
             onBidHandler(_id, amount);
         }
 
