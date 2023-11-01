@@ -1,18 +1,16 @@
 import { useParams } from "react-router-dom";
 import {
     DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo,
-    DetailsInfoWrapper, StyledAnchor, StyledControlls, StyledDetails
+    DetailsInfoWrapper, StyledDetails
 } from "../../styles/Details/Details.styled";
 import { useEffect, useState } from "react";
 import { propertyService } from "../../services/propertiesService";
 import { useUserContext } from "../../contexts/UserContext";
 import { formatDate } from "../../utils/dateFormatter";
-import { usePropertyContext } from "../../contexts/PropertyContext";
-import { BidForm } from "./BidForm";
+import { Controlls } from "./Controlls";
 
 export const Details = () => {
 
-    const { onDeleteHandler } = usePropertyContext();
     const { id } = useParams();
     const [property, setProperty] = useState({});
     const { user } = useUserContext();
@@ -27,7 +25,7 @@ export const Details = () => {
     }, [id]);
 
     const isOwner = user._id === property._ownerId;
-    const created = formatDate(property._createdOn, 'details');
+    const created = formatDate(property.createdAt, 'details');
 
     return (
         <StyledDetails>
@@ -46,20 +44,11 @@ export const Details = () => {
                         <p>{property.description}</p>
                     </DetailsInfo>
                     {user._id ?
-                        <StyledControlls>
-                            {isOwner ?
-                                <>
-                                    <StyledAnchor to={`/catalog/${property._id}/edit`}> Edit</StyledAnchor>
-                                    <StyledAnchor onClick={(e) => onDeleteHandler(e, id)}>Delete</StyledAnchor>
-                                </>
-                                : <>
-                                    {property.currentBidder
-                                        ? <h4>Current bidder : {property.currentBidder}</h4>
-                                        : null}
-                                    <BidForm previousPrice={property.price} _id={property._id} />
-                                </>
-                            }
-                        </StyledControlls>
+                        <Controlls
+                            isOwner={isOwner}
+                            currentBidder={property.currentBidder}
+                            price={property.price}
+                            propId={property._id} />
                         : null}
                     <span>Posted on: {created}</span>
                 </DetailsInfoWrapper>

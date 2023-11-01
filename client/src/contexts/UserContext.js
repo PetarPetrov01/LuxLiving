@@ -45,6 +45,7 @@ export const UserProvider = ({ children }) => {
     const onLogoutHandler = () => {
         userService.logout();
         setUser({});
+        navigate('/');
     };
 
     const context = {

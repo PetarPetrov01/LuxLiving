@@ -61,6 +61,22 @@ export const PropertyProvider = ({ children }) => {
     };
 
     const onBidHandler = async (id, price) => {
+        try {
+            const newProperty = await propertyService.bid(id, price);
+
+            setProperties(prevProps => prevProps.map(prop => {
+                return prop._id === id
+                    ? {
+                        ...prop,
+                        currentBidder: newProperty._ownerId,
+                        price: Number(newProperty.price)
+                    } : prop;
+            }));
+
+            navigate(`/catalog/${id}/details`);
+        } catch (error) {
+            alert(error);
+        }
     };
 
     const context = {
