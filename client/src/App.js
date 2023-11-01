@@ -12,6 +12,7 @@ import { Details } from './components/Details/Details';
 import { PropertyProvider } from './contexts/PropertyContext';
 import { Edit } from './components/Edit/Edit';
 import { Profile } from './components/Profile/Profile';
+import { Footer } from './components/Footer/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <main>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/logout' element={<Home />} />
               <Route path='/catalog' element={<Catalog />} />
               <Route path='/catalog/:id/details' element={<Details />} />
               <Route path='/catalog/:id/edit' element={<Edit />} />
@@ -31,9 +33,10 @@ function App() {
               <Route path='/profile' element={<Profile />} />
               <Route path='/register' element={<Register />} />
               <Route path='/create' element={<Create />} />
-              <Route></Route>
             </Routes>
           </main>
+
+          <Footer />
         </PropertyProvider>
       </UserProvider>
     </div>
