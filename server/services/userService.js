@@ -19,6 +19,27 @@ async function register(email, password) {
 
     return createToken(user);
 }
+function verifyToken(token) {
+    if (tokenBlacklist.has(token)) {
+        throw new Error('This token is blacklisted');
+    }
+
+    return jwt.verify(token, secret);
+}
+
+function createToken(user) {
+    const payload = {
+        _id: user._id,
+        email: user.email,
+    };
+
+    return {
+        _id: user._id,
+        email: user.email,
+        accessToken: jwt.sign(payload, secret)
+    };
+}
+
 module.exports = {
     register,
 };
