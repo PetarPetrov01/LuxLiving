@@ -20,14 +20,34 @@ async function getAll(query) {
     return Property.find(search)
         .limit(query.limit);
 }
+
 async function getById(id) {
+    const prop = await Property.findById(id).populate('currentBidder');
+    return prop;
 }
+
 async function getByUserId(userId) {
 }
+
 async function createProperty(data) {
     return await Property.create(data);
 }
+
 async function updateProperty(id, data) {
+    const property = await Property.findById(id);
+
+    if (property.currentBidder && property.price > data.price) {
+        throw new Error('You can\'t lower the price after someone has bid');
+    }
+
+    property.name = data.name;
+    property.location = data.location;
+    property.area = Number(data.area);
+    property.imageUrl = data.imageUrl;
+    property.description = data.description;
+    property.price = Number(data.price);
+
+    return await property.save();
 }
 async function bid(id, userId, newPrice) {
 }

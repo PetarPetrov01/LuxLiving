@@ -31,4 +31,20 @@ propertyController.post('/', isUser(), async (req, res) => {
     }
 });
 
+propertyController.put('/:id', isUser(), async (req, res) => {
+    const item = await propertyService.getById(req.params.id);
+
+    if (req.user._id != item._ownerId) {
+        return res.status(403).json({ message: 'You can\'t edit this record' });
+    }
+
+    try {
+        const result = await propertyService.updateProperty(req.params.id, req.body);
+        res.json(result);
+    } catch (error) {
+        const message = errorParser(error);
+        res.status(400).json({ message });
+    }
+});
+
 module.exports = propertyController;
