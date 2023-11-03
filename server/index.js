@@ -26,6 +26,7 @@ async function start() {
 
     app.use('/users', userController);
     app.use('/data/catalog', propertyController);
+
     app.listen(3030, () => console.log('Server started on 3030'));
 }
 

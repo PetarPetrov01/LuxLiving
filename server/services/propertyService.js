@@ -1,5 +1,24 @@
 const Property = require('../models/Property');
+
 async function getAll(query) {
+    let search = {};
+    if (query.search) {
+        search = {
+            $or: [
+                { name: { $regex: new RegExp(query.search, 'i') } },
+                { location: { $regex: new RegExp(query.search, 'i') } }
+            ]
+        };
+    }
+
+    if (query.sort) {
+        return Property.find(search)
+            .sort(query.sort)
+            .limit(query.limit);
+    }
+
+    return Property.find(search)
+        .limit(query.limit);
 }
 async function getById(id) {
 }
