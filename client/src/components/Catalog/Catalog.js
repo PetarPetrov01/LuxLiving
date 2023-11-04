@@ -51,8 +51,8 @@ export const Catalog = () => {
                         value={sort.value}
                         name="sortOrder"
                     >
-                        <option value={'_createdOn desc'}>Newest</option>
-                        <option value={'_createdOn asc'}>Oldest</option>
+                        <option value={'createdAt desc'}>Newest</option>
+                        <option value={'createdAt asc'}>Oldest</option>
                         <option value={'name'}>Name</option>
                         <option value={'price asc'}>Price asc.</option>
                         <option value={'price desc'}>Price desc.</option>
@@ -68,7 +68,6 @@ export const Catalog = () => {
                     : hasSearched
                         ? <h1>No matches</h1>
                         : <h1>No Content yet</h1>
-
             }
         </StyledCatalog >
     );

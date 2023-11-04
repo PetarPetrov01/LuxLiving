@@ -23,6 +23,7 @@ export const Edit = () => {
     useEffect(() => {
         propertyService.getById(id)
             .then(res => {
+                delete res.currentBidder;
                 setFormValues(res);
             })
             .catch(err => {

@@ -22,7 +22,7 @@ const request = async (method, url, data) => {
         if (response.ok !== true) {
             const err = await response.json();
 
-            if (response.status === 403 && err.message === 'Invalid access token') {
+            if (response.status === 401 && err.message === 'Invalid access token') {
                 userStorage.deleteUser();
                 alert('Expired session, login again');
                 window.location.reload();
@@ -44,7 +44,6 @@ const request = async (method, url, data) => {
 const get = request.bind(null, 'GET');
 const post = request.bind(null, 'POST');
 const put = request.bind(null, 'PUT');
-const patch = request.bind(null, 'PATCH');
 const del = request.bind(null, 'DELETE');
 
-export { get, post, put, patch, del };
+export { get, post, put, del };

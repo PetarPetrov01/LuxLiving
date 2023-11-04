@@ -5,7 +5,7 @@ export const StyledForm = styled.form`
     align-items: center;
     flex-direction: column;
     padding: 40px 20px;
-    margin: 20px auto;
+    margin: 20px auto 80px auto;
     width: 60%;
     min-height: 55vh;
     border-radius: 15px;

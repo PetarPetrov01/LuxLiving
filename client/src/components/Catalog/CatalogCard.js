@@ -9,11 +9,11 @@ export const CatalogCard = ({
     price,
     imageUrl,
     _id,
-    _createdOn,
+    createdAt,
     flexdir
 }) => {
 
-    const posted = formatDate(_createdOn, 'catalog');
+    const posted = formatDate(createdAt, 'catalog');
 
     return (
         <StyledCard flexdir={flexdir}>
@@ -31,11 +31,10 @@ export const CatalogCard = ({
                     <span style={{fontSize: '0.75em'}}>Posted on: {posted}</span>
                 </CardHeaders>
                 <TextContainer>
-                    <span>Price: ${Number(price).toLocaleString()}</span>
+                    <span>Starting price: ${Number(price).toLocaleString()}</span>
                     <span>Total area: {area} m<sup>2</sup></span>
                 </TextContainer>
             </InfoContainer>
         </StyledCard>
-
     );
 };

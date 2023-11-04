@@ -1,6 +1,6 @@
 import * as api from './api';
 
-const baseUrl = 'http://localhost:3030/data/properties';
+const baseUrl = 'http://localhost:3030/data/catalog';
 
 const getAll = async (search, sort = {}) => {
 
@@ -21,14 +21,16 @@ const getAll = async (search, sort = {}) => {
     return queryArr.length > 0
         ? await api.get(`${baseUrl}?${queryArr.join('&')}`)
         : await api.get(baseUrl);
+    //return await api.get(baseUrl);
+
 };
 
 const getLatest = async () => {
-    return await api.get(`${baseUrl}?sortBy=_createdOn%20desc%2C&pageSize=3`);
+    return await api.get(`${baseUrl}?sort=createdAt%20desc&pageSize=3`);
 };
 
 const getOwn = async (userId) => {
-    return await api.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`);
+    return await api.get(`${baseUrl}?search=_ownerId%3D%22${userId}%22`);
 };
 
 const getById = async (id) => {
@@ -38,15 +40,12 @@ const getById = async (id) => {
         api.get(`http://localhost:3030/data/bids?where=propertyId%3D%22${id}%22&sortBy=price%20desc&load=_ownerId%3D_ownerId%3Ausers`)
     ]);
 
-    console.log(bids);
     if (bids.length > 0) {
         //If the current property has bids, the price of the proprty should become the highest bid
         property.price = bids[0].price;
         property.currentBidder = bids[0]._ownerId.email;
     }
-    console.log('FROM API');
-    console.log(property);
-    return property;
+   // return await api.get(`${baseUrl}/${id}`);
 };
 
 const create = async (data) => {
