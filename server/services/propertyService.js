@@ -69,8 +69,13 @@ async function bid(id, userId, newPrice) {
 }
 
 async function deleteProperty(id) {
+    return Property.findByIdAndDelete(id);
+}
 
 async function getOwn(userId) {
+    const ownPosts = await Property.find({ _ownerId: userId });
+    const ownBids = await Property.find({ currentBidder: userId });
+    return { ownPosts, ownBids };
 }
 
 module.exports = { getAll, getById, getByUserId, createProperty, updateProperty, bid, deleteProperty, getOwn };

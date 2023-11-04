@@ -63,4 +63,14 @@ propertyController.delete('/:id', isUser(), async (req, res) => {
     }
 });
 
+propertyController.post('/:id/bid', isUser(), async (req, res) => {
+    try {
+        await propertyService.bid(req.params.id, req.body.userId, req.body.price);
+        res.status(204).end();
+    } catch (error) {
+        const message = errorParser(error);
+        res.json({ message });
+    }
+});
+
 module.exports = propertyController;
