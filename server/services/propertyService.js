@@ -27,6 +27,7 @@ async function getById(id) {
 }
 
 async function getByUserId(userId) {
+    return Property.find({ _ownerId: userId });
 }
 
 async function createProperty(data) {
@@ -49,8 +50,24 @@ async function updateProperty(id, data) {
 
     return await property.save();
 }
+
 async function bid(id, userId, newPrice) {
+    const property = await Property.findById(id);
+
+    if (property.price != newPrice) {
+        throw new Error('You can\'t edit the price, once a bid is placed!');
+    }
+
+    if (property._ownerId == userId) {
+        throw new Error('You can\'t bid on your own post!');
+    }
+
+    property.price = newPrice;
+    property.currentBidder = userId;
+
+    await property.save();
 }
+
 async function deleteProperty(id) {
 
 async function getOwn(userId) {

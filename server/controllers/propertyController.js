@@ -47,4 +47,20 @@ propertyController.put('/:id', isUser(), async (req, res) => {
     }
 });
 
+propertyController.delete('/:id', isUser(), async (req, res) => {
+    const item = await propertyService.getById(req.params.id);
+
+    if (req.user._id != item._ownerId) {
+        res.status(403).json({ message: 'You can\'t delete this record' });
+    }
+
+    try {
+        await propertyService.deleteProperty(req.params.id);
+        res.status(204).end();
+    } catch (error) {
+        const message = errorParser(error);
+        res.json({ message });
+    }
+});
+
 module.exports = propertyController;

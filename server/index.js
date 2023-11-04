@@ -8,6 +8,7 @@ const queryParams = require('./middlewares/queryParams');
 
 const userController = require('./controllers/userController');
 const propertyController = require('./controllers/propertyController');
+const profileController = require('./controllers/profileController');
 
 const connectionString = 'mongodb://localhost:27017/luxliving';
 start();
