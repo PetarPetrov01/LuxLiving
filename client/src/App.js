@@ -13,6 +13,7 @@ import { PropertyProvider } from './contexts/PropertyContext';
 import { Edit } from './components/Edit/Edit';
 import { Profile } from './components/Profile/Profile';
 import { Footer } from './components/Footer/Footer';
+import { UserGuard } from './components/RouteGuards/UserGuard';
 
 function App() {
   return (
@@ -21,6 +22,17 @@ function App() {
         <PropertyProvider>
           <GlobalStyle />
           <Header />
+    return (
+        <div className="App">
+            <UserProvider>
+                <PropertyProvider>
+                    <GlobalStyle />
+                    <Header />
+                    <main>
+                        <Routes>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/catalog' element={<Catalog />} />
+                            <Route path='/catalog/:id/details' element={<Details />} />
 
           <main>
             <Routes>
@@ -35,12 +47,29 @@ function App() {
               <Route path='/create' element={<Create />} />
             </Routes>
           </main>
+                            <Route element={<UserGuard />}>
+                                <Route path='/create' element={<Create />} />
+                                <Route path='/profile' element={<Profile />} />
+                                <Route path='/logout' element={<Home />} />
+                                
+                                    <Route path='/catalog/:id/edit' element={<Edit />} />
+                            </Route>
 
           <Footer />
         </PropertyProvider>
       </UserProvider>
     </div>
   );
+                            <Route path='/login' element={<Login />} />
+                            <Route path='/register' element={<Register />} />
+                        </Routes>
+                    </main>
+
+                    <Footer />
+                </PropertyProvider>
+            </UserProvider>
+        </div >
+    );
 }
 
 export default App;
