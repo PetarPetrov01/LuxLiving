@@ -8,12 +8,15 @@ export const Controlls = ({
     price,
     propId
 }) => {
+
+    const bidder = currentBidder ? currentBidder.email : null;
+
     const { onDeleteHandler } = usePropertyContext();
 
     return (
         <StyledControlls>
-            {currentBidder
-                ? <h4>Current bidder : {currentBidder}</h4>
+            {bidder
+                ? <h4>Current bidder : {bidder}</h4>
                 : null}
 
             {isOwner

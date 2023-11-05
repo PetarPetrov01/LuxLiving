@@ -27,6 +27,8 @@ export const PropertyProvider = ({ children }) => {
 
     const onSort = (sortValue) => {
         setSort(sortValue);
+    const getPropertyById = (id) => {
+        return properties.find(prop => prop._id === id);
     };
 
     const onCreateHandler = async (data) => {
@@ -81,6 +83,7 @@ export const PropertyProvider = ({ children }) => {
 
     const context = {
         properties,
+        getPropertyById,
         onCreateHandler,
         onEditHandler,
         onDeleteHandler,
