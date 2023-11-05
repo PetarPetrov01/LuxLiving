@@ -10,7 +10,8 @@ export const Edit = () => {
 
     const { id } = useParams();
     const { errors, validateForm } = usePropertyValidator({});
-    
+
+    const [hasBidder, setHasBidder] = useState(false);
     const [formValues, setFormValues] = useState({
         name: '',
         location: '',
@@ -23,7 +24,9 @@ export const Edit = () => {
     useEffect(() => {
         propertyService.getById(id)
             .then(res => {
-                delete res.currentBidder;
+                if (res.currentBidder) {
+                    setHasBidder(true);
+                }
                 setFormValues(res);
             })
             .catch(err => {
@@ -98,7 +101,9 @@ export const Edit = () => {
                     placeholder="Price"
                     onChange={onChangeHandler}
                     value={formValues.price}
-                    onBlur={validateForm} />
+                    onBlur={validateForm}
+                    disabled={hasBidder}
+                />
 
                 {errors.price &&
                     <p>{errors.price}</p>
