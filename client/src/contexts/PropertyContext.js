@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { propertyService } from "../services/propertiesService";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +9,7 @@ export const PropertyProvider = ({ children }) => {
 
     const [sort, setSort] = useState({ type: '_createdOn', order: 'desc' });
     const [search, setSearch] = useState('');
+    const [query, setQuery] = useState({});
     const [properties, setProperties] = useState([]);
     const navigate = useNavigate();
 
@@ -20,10 +22,14 @@ export const PropertyProvider = ({ children }) => {
                 alert(err);
             });
     }, [search, sort]);
+    }, [query]);
 
     const onSearch = (searchValue) => {
         setSearch(searchValue);
     };
+    const onParamsChange = useCallback((search, sort) => {
+        setQuery({ search, sort });
+    }, []);
 
     const onSort = (sortValue) => {
         setSort(sortValue);
@@ -62,9 +68,10 @@ export const PropertyProvider = ({ children }) => {
         }
     };
 
-    const onBidHandler = async (id, price) => {
+    const onBidHandler = async (id, userId, price) => {
         try {
             const newProperty = await propertyService.bid(id, price);
+            const newProperty = await propertyService.bid(id, userId, price);
 
             setProperties(prevProps => prevProps.map(prop => {
                 return prop._id === id
@@ -76,6 +83,7 @@ export const PropertyProvider = ({ children }) => {
             }));
 
             navigate(`/catalog/${id}/details`);
+            redirect(`/catalog/${id}/details`);
         } catch (error) {
             alert(error);
         }
@@ -90,6 +98,7 @@ export const PropertyProvider = ({ children }) => {
         onBidHandler,
         onSearch,
         onSort
+        onParamsChange,
     };
 
     return (

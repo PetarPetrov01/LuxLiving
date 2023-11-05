@@ -13,7 +13,7 @@ const request = async (method, url, data) => {
 
     const user = userStorage.getUser();
     if (user?.accessToken) {
-        options.headers['X-Authorization'] = user.accessToken;
+        options.headers['Authorization'] = user.accessToken;
     }
 
     try {
