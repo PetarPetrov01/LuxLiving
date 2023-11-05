@@ -2,26 +2,24 @@ import * as api from './api';
 
 const baseUrl = 'http://localhost:3030/data/catalog';
 
-const getAll = async (search, sort = {}) => {
+const getAll = async ({search, sort = ''}) => {
 
     const queryArr = [];
 
     if (search) {
-        const searchQuery = `name LIKE "${search}" OR location LIKE "${search}"`;
-        const encodedQuery = encodeURIComponent(searchQuery);
-        queryArr.push(`where=${encodedQuery}`);
+        const encodedSearch = encodeURIComponent(search);
+        queryArr.push(`search=${encodedSearch}`);
     }
 
-    if (Object.keys(sort).length !== 0) {
-        const sortQuery = `${sort.type} ${sort.order === 'desc' ? 'desc' : ''}`;
-        const encodedSort = encodeURIComponent(sortQuery);
-        queryArr.push(`sortBy=${encodedSort}`);
+    if (sort) {
+        console.log('From service');
+        console.log(sort);
+        queryArr.push(`sort=${sort}`);
     }
 
     return queryArr.length > 0
         ? await api.get(`${baseUrl}?${queryArr.join('&')}`)
         : await api.get(baseUrl);
-    //return await api.get(baseUrl);
 
 };
 
@@ -30,22 +28,12 @@ const getLatest = async () => {
 };
 
 const getOwn = async (userId) => {
-    return await api.get(`${baseUrl}?search=_ownerId%3D%22${userId}%22`);
+    return await api.get(`http://localhost:3030/profile/${userId}`);
 };
 
 const getById = async (id) => {
-
-    const [property, bids] = await Promise.all([
-        api.get(`${baseUrl}/${id}`),
-        api.get(`http://localhost:3030/data/bids?where=propertyId%3D%22${id}%22&sortBy=price%20desc&load=_ownerId%3D_ownerId%3Ausers`)
-    ]);
-
-    if (bids.length > 0) {
-        //If the current property has bids, the price of the proprty should become the highest bid
-        property.price = bids[0].price;
-        property.currentBidder = bids[0]._ownerId.email;
-    }
-   // return await api.get(`${baseUrl}/${id}`);
+    const prop = await api.get(`${baseUrl}/${id}`);
+    return prop;
 };
 
 const create = async (data) => {
@@ -60,13 +48,13 @@ const deleteById = async (id) => {
     await api.del(`${baseUrl}/${id}`);
 };
 
-const bid = async (propId, newPrice) => {
+const bid = async (propId, userId, newPrice) => {
     const data = {
-        propertyId: propId,
+        userId: userId,
         price: newPrice
     };
 
-    return await api.post(`http://localhost:3030/data/bids`, data);
+    return await api.post(`http://localhost:3030/data/catalog/${propId}/bid`, data);
 };
 
 export const propertyService = {
