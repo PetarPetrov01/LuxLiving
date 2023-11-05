@@ -14,14 +14,9 @@ import { Edit } from './components/Edit/Edit';
 import { Profile } from './components/Profile/Profile';
 import { Footer } from './components/Footer/Footer';
 import { UserGuard } from './components/RouteGuards/UserGuard';
+import { OwnerGuard } from './components/RouteGuards/OwnerGuard';
 
 function App() {
-  return (
-    <div className="App">
-      <UserProvider>
-        <PropertyProvider>
-          <GlobalStyle />
-          <Header />
     return (
         <div className="App">
             <UserProvider>
@@ -34,32 +29,16 @@ function App() {
                             <Route path='/catalog' element={<Catalog />} />
                             <Route path='/catalog/:id/details' element={<Details />} />
 
-          <main>
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/logout' element={<Home />} />
-              <Route path='/catalog' element={<Catalog />} />
-              <Route path='/catalog/:id/details' element={<Details />} />
-              <Route path='/catalog/:id/edit' element={<Edit />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/create' element={<Create />} />
-            </Routes>
-          </main>
                             <Route element={<UserGuard />}>
                                 <Route path='/create' element={<Create />} />
                                 <Route path='/profile' element={<Profile />} />
                                 <Route path='/logout' element={<Home />} />
                                 
+                                <Route element={<OwnerGuard />}>
                                     <Route path='/catalog/:id/edit' element={<Edit />} />
+                                </Route>
                             </Route>
 
-          <Footer />
-        </PropertyProvider>
-      </UserProvider>
-    </div>
-  );
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
                         </Routes>
