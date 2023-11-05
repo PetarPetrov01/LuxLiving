@@ -9,7 +9,7 @@ export const HomeWrapper = styled.div`
     margin: 40px auto 80px auto;
     gap: 10px;
     width: 70%;
-    min-height: 70vh;
+    min-height: 400px;
     border-radius: 15px;
     background: rgba(40, 60, 99,0.8); 
     box-shadow: 0px 0px 16px rgb(206, 226, 248);
@@ -33,6 +33,7 @@ export const HeaderWrapper = styled.div`
 
     & > h1 {
         font-size: 2em;
+        text-align: center;
     }
 `;
 
@@ -40,7 +41,7 @@ export const LatestWrapper = styled.div`
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-    height: 15vw;
+    height: min(15vw,400px);
 
     @media(max-width: 920px){
         flex-direction: column;

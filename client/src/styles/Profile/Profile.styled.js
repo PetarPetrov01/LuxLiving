@@ -9,7 +9,7 @@ export const ProfileContainer = styled.div`
     flex-direction: column;
     margin: 40px auto;
     padding: 20px 10px;
-    width: max(70%,650px);
+    width: max(65%,650px);
     min-height: 200px;
     border-radius: 15px;
     background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%); 
@@ -59,7 +59,7 @@ export const ProfileInfoWrapper = styled.div`
     position: relative;
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     top: -100%;
     width: 100%;
@@ -108,6 +108,7 @@ export const ProfileImageWrapper = styled.div`
 `;
 
 export const ProfileDetails = styled(DetailsInfo)`
+    justify-content: space-evenly;
     h1{
         margin: 0;
     }
@@ -121,7 +122,7 @@ export const ProfileDetails = styled(DetailsInfo)`
 `;
 
 export const ProfileControlls = styled(StyledControlls)`
-flex-direction: row;    
+    flex-direction: row;    
     margin-bottom: 5px;
 `;
 

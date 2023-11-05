@@ -3,9 +3,11 @@ import styled from "styled-components";
 export const StyledDetails = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    margin: 20px auto;
+    margin: 20px auto 60px auto;
     width: 70%;
+    min-height: 200px;
     background: rgba(55, 82, 135,0.8);
     border-radius: 20px;
 
