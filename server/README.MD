@@ -1,12 +1,13 @@
 # Property Service REST API Documentation
 |Contents
 | ---
-| [Authentication](#authentication)
+| [Authentication](#authorized-request)
 | - [Register](#register)
 | - [Login](#login)
 | - [Logout](#logout)
-| [Properties](#property-service)
-|
+| [Properties CRUD opeartions](#property-service)
+| - [Get all](#get-all-properties)
+
 
 This document provides details about the REST API endpoints exposed by the Property Service. The service allows users to create their own profile,manage properties, place bids, and retrieve property information.
 
@@ -21,7 +22,7 @@ Example error response:
   "message": "Invalid request, missing required parameter."
 }
 ```
-## Authentication
+## Authorized request 
 
 To access some of the endpoints (e.g. creating and managing posts, placing a bid), authentication is required. Users need to include a valid JWT token in the authorization header of their HTTP requests.
 
@@ -78,3 +79,57 @@ To logout the current user, send an authorized `GET` request to `/users/logout`.
 
 ### Property service
 The base url for accessing the properties is `/data/catalog`
+### Get all Properties
+To retrieve a list of all properties send `GET` request to `/data/catalog` with the following optional queries:
+
+* search : Filters properties by name or location (case-insensitive).
+* sort : Sorts the properties based on a specified property and order ("asc" for ascending and "desc" for ascending).
+* limit : Limits the number of properties returned (default is all). 
+
+#### Example properties request
+
+To get all properties send a `GET` request to `/data/catalog`.
+The server responds with an array of objects representing different real estate properties. Beside the regular properties (as in object keys), the objects include automatically generated properties, which are as follows:
+
+##### Automatically generated properties:
+    * _id - Unique ID in the form of string.
+    * createdAt - Time stamp of the creation.
+    * updatedAt - The time of the last update.
+
+The whole object with all its properties looks like this:
+```json
+{
+  "_id": "{generatedId}",
+  "name": "Example house",
+  "location": "Some town, Some country",
+  "area": 200,
+  "imageUrl": "{image URL}",
+  "description": "Some property description",
+  "price": 400900,
+  "_ownerId": "{generatedIdOfOwner}",
+  "createdAt": "{generatedDate}",
+  "updatedAt":  "{generatedDate}",
+  "currentBidder":"{generatedIdOfBidder}"
+}
+```
+
+#### Search
+Append `search={match}` to the query paramaters, where {match} is a string. The server filters the properties by name or location with the matching string (case insensitive). For example to get all properties which are located in USA send the following request:
+```
+GET /data/catalog?search=usa
+```
+#### Sorting
+To sort the real estate properties by some of their properties append `sort={propertyToSort} {order}` as encoded URI string. Where order could be `asc` for ascending and `desc` for descending order. 
+To get all properties, sorted by time of creation send the following request:
+```
+GET /data/catalog?sort=createdAt%20desc
+```
+#### Limit 
+To get a particular count of properties, append `limit={count}` to the query parameters. The server provides the precise count of records in the database, only if there are that many records available. Note that if sort query is not passed, the default properties are sorted by time of creation and ascending order (Oldest first). The sort is always done before the limit, so the order of the query parameters does not matter.
+
+#### Example including all queries
+To retrieve the three most recently created properties which include "house" in their names, use the following request:
+
+```
+GET /data/catalog?search=house&sort=createdAt%20desc&limit=3
+```
