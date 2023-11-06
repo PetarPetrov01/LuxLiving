@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { StyledInput, StyledForm, InputWrapper } from "../../styles/Form/StyledForm";
+import { StyledInput, StyledForm, InputWrapper, FormAnchor } from "../../styles/Form/StyledForm";
 import { useForm } from "../../hooks/useForm";
 import { useUserContext } from "../../contexts/UserContext";
 
@@ -43,7 +42,7 @@ export const Register = () => {
             </InputWrapper>
             <button>Register</button>
             <p>
-                Not registerd? <Link to={'/login'}>Sign in</Link>
+                Already registerd? <FormAnchor to={'/login'}>Sign in</FormAnchor>
             </p>
         </StyledForm>
     );

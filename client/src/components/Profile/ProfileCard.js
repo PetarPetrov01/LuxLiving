@@ -3,12 +3,14 @@ import { ProfileImageWrapper, ProfileInfoWrapper, ProfileStyledCard, ProfileDeta
 
 export const ProfileCard = ({
     _id,
+    _ownerId,
     name,
     imageUrl,
     location,
     area,
     price,
     description,
+    userId
 }) => {
 
     const { onDeleteHandler } = usePropertyContext();
@@ -27,10 +29,13 @@ export const ProfileCard = ({
                     <p><span>Property description:</span> {description}</p>
                 </ProfileDetails>
 
-                <ProfileControlls>
-                    <ProfileLink to={`/catalog/${_id}/edit`}> Edit</ProfileLink>
-                    <ProfileLink onClick={(e) => onDeleteHandler(e, _id)}>Delete</ProfileLink>
-                </ProfileControlls>
+                {_ownerId === userId
+                    ? <ProfileControlls>
+                        <ProfileLink to={`/catalog/${_id}/edit`}> Edit</ProfileLink>
+                        <ProfileLink onClick={(e) => onDeleteHandler(e, _id)}>Delete</ProfileLink>
+                    </ProfileControlls>
+                    : null}
+
 
             </ProfileInfoWrapper>
         </ProfileStyledCard>

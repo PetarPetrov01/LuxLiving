@@ -7,24 +7,34 @@ import { ProfileCard } from "./ProfileCard";
 export const Profile = () => {
 
     const { user } = useUserContext();
-    const [properties, setProperties] = useState([]);
+    const [ownBids, setOwnBids] = useState([]);
+    const [ownProperties, setOwnProperties] = useState([]);
+
+    const userId = user._id;
 
     useEffect(() => {
-        propertyService.getOwn(user._id)
+        propertyService.getOwn(userId)
             .then(res => {
-                setProperties(res);
+                setOwnProperties(res.ownPosts);
+                setOwnBids(res.ownBids);
             }).catch(err =>
                 alert(err));
-    }, [user]);
+    }, [userId]);
 
     return (
         <ProfileContainer>
             <h1>{user.email}</h1>
             <h1>Your posts:</h1>
             <PropertiesWrapper>
-                {properties.length > 0
-                    ? properties.map(prop => <ProfileCard key={prop._id} {...prop} />)
+                {ownProperties.length > 0
+                    ? ownProperties.map(prop => <ProfileCard key={prop._id} {...prop} userId={userId} />)
                     : <h2>No content yet!</h2>}
+            </PropertiesWrapper>
+            <h1>Your bids:</h1>
+            <PropertiesWrapper>
+                {ownBids.length > 0
+                    ? ownBids.map(prop => <ProfileCard key={prop._id} {...prop} userId={userId} />)
+                    : <h2>No Bids yet!</h2>}
             </PropertiesWrapper>
         </ProfileContainer>
     );
