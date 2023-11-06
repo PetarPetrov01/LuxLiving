@@ -1,38 +1,37 @@
-import { createContext, useContext, useEffect, useState } from "react";
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { propertyService } from "../services/propertiesService";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 export const PropertyContext = createContext();
 
 export const PropertyProvider = ({ children }) => {
 
-    const [sort, setSort] = useState({ type: '_createdOn', order: 'desc' });
-    const [search, setSearch] = useState('');
     const [query, setQuery] = useState({});
     const [properties, setProperties] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
-        propertyService.getAll(search, sort)
+        setIsLoading(true);
+        propertyService.getAll(query)
             .then(result => {
-                setProperties(result);
+                //MOCK delay
+                console.log('Throttling!!!');
+                setTimeout(()=>{
+                    setProperties(result);
+                    setIsLoading(false);
+                },2000);
             })
             .catch(err => {
                 alert(err);
+                setIsLoading(false);
             });
-    }, [search, sort]);
     }, [query]);
 
-    const onSearch = (searchValue) => {
-        setSearch(searchValue);
-    };
     const onParamsChange = useCallback((search, sort) => {
         setQuery({ search, sort });
     }, []);
 
-    const onSort = (sortValue) => {
-        setSort(sortValue);
     const getPropertyById = (id) => {
         return properties.find(prop => prop._id === id);
     };
@@ -70,7 +69,6 @@ export const PropertyProvider = ({ children }) => {
 
     const onBidHandler = async (id, userId, price) => {
         try {
-            const newProperty = await propertyService.bid(id, price);
             const newProperty = await propertyService.bid(id, userId, price);
 
             setProperties(prevProps => prevProps.map(prop => {
@@ -82,7 +80,6 @@ export const PropertyProvider = ({ children }) => {
                     } : prop;
             }));
 
-            navigate(`/catalog/${id}/details`);
             redirect(`/catalog/${id}/details`);
         } catch (error) {
             alert(error);
@@ -96,9 +93,8 @@ export const PropertyProvider = ({ children }) => {
         onEditHandler,
         onDeleteHandler,
         onBidHandler,
-        onSearch,
-        onSort
         onParamsChange,
+        isLoading
     };
 
     return (
