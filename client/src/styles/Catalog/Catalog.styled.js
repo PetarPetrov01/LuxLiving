@@ -5,7 +5,7 @@ export const StyledCatalog = styled.div`
     align-items: center;
     flex-direction: column;
     margin: 20px auto 80px auto;
-    width: 75%;
+    width: max(75%,700px);
     min-height: 200px;
     border-radius: 20px;
     background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%);
@@ -22,8 +22,8 @@ export const StyledCard = styled.div`
     padding: 20px;
     margin: 20px;
     gap: 10px;
-    width: 80%;
-    height: 18vw;
+    width: max(80%,600px);
+    height: max(18vw,200px);
     max-height: 270px;
     border-radius: 15px;
     background: rgba(255,255,255,0.7);
@@ -31,6 +31,7 @@ export const StyledCard = styled.div`
 
     @media (max-width: 768px) {
         max-height: none;
+        width: 80%;
         height: auto;
         flex-direction: column;
     }
@@ -90,15 +91,22 @@ export const InfoContainer = styled.div`
 export const CardHeaders = styled.div`
     display: flex;
     flex-direction: column;
+    width: 80%;
     align-items: center;
-
+    
     h1{
+        font-size: max(2.1vw,24px);
         margin: 10px 0 5px 0;
     }
-
+    
     h2{
-        font-size: max(0.8vw,22px);
+        font-size: max(1.7vw,20px);
         margin: 5px 0 5px 0;
+    }
+
+    @media (max-width: 768px){
+        
+        border-bottom: 2px solid rgb(55, 82, 135);
     }
 
 `;
@@ -114,6 +122,7 @@ export const TextContainer = styled.div`
     font-size: 1.3em;
 
     span{
+        font-size: max(1vw, 20px);
         margin: 0;
     }
 
@@ -123,69 +132,71 @@ export const TextContainer = styled.div`
 `;
 
 export const ControlsWrapper = styled.div`
+    height: 37px;
     display:flex;
+    justify-content: space-evenly;
+    align-items: center;
     width: 80%;
-    justify-content: center;
     margin: 20px 0;
 
     @media (max-width: 768px){
+        flex-direction: column;
         width: 90%;
+        height: 70px;
+        gap: 5px;
+        margin-bottom: 10px;
     }
 
 `;
 
 export const SearchForm = styled.form`
     display: flex;
+    height: 100%;
     width: 60%;
-    justify-content: space-around;
     align-items: center;
-    margin:0;
-
+    margin: 0;
+    font-size: 1.2em;
+    
     input[name="search"]{
-        width: 90%;
-        height: 35px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
         border-radius: 18px;
         padding-left: 10px;
-        font-size: 1.2em;
-
+        font-size: inherit;
 
         &::placeholder{
             margin-left: 5px;
         }
-
     }
 
-    input[type="image"]{
-        width: 35px;
-        position: relative;
-        height: 40px;
-        right: 10%;
-        cursor: pointer;
-        transition: all 0.3s;
-
-        @media (max-width: 768px){
-            right: 15%;
-        }
-  }
-
-  label{
-    text-align: center;
-    line-height: 50%;
-  }
+    @media (max-width: 768px){
+        font-size: 1.1em;
+        height: 50%;
+        width: 50%;
+    }
 `;
 
 export const SortWrapper = styled.div`
-    label{
-        font-size: 1.2em;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.2em;
+
+    @media (max-width: 768px){
+        height: 50%;
+
+        font-size: 1.1em;
     }
 `;
 
 export const StyledSelect = styled.select`
-    height: 40px;
+    height: 100%;
     border-radius: 18px;
-    margin: 0 5px; 
+    margin: 0; 
+    margin-left: 4px;
     padding-left: 10px;   
-    font-size: 1.1em;
-
+    font-size: inherit;
 `;
 

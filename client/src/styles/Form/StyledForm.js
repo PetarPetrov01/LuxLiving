@@ -1,28 +1,30 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
     display:flex;
     align-items: center;
     flex-direction: column;
-    padding: 40px 20px;
-    margin: 20px auto 80px auto;
     width: 60%;
     min-height: 55vh;
+    padding: 40px 20px;
+    margin: 20px auto 80px auto;
     border-radius: 15px;
     background: rgba(55, 82, 135,0.8);
     box-shadow: 0px 0px 16px rgb(55, 82, 135);
 
     & > button{
-        color: white;
-        cursor: pointer;
-        background-color: rgba(107, 204, 238, 0.8);
-        margin-top: 40px;
-        font-size: 1.3em;
         width: 40%;
         height: 40px;
+        margin-top: 40px;
+        background-color: rgba(107, 204, 238, 0.8);
+        box-shadow: 0px 0px 8px rgba(147, 244, 278, 0.8);
+        cursor: pointer;
         border:none;
         border-radius: 20px;
-        box-shadow: 0px 0px 10px rgba(147, 244, 278, 0.8);
+        color: white;
+        font-size: 1.3em;
+        transition: all 0.2s;
 
         &:hover{
             background-color: rgba(53, 165, 255, 0.8);
@@ -61,6 +63,10 @@ export const StyledInput = styled.input`
     &::placeholder{
         color: #999;
     }
+
+    &:disabled{
+        color: #999;
+    }
    
 `;
 
@@ -75,4 +81,13 @@ export const StyledTextArea = styled.textarea`
     &::placeholder{
         color: #999;
     }
-    `;
+`;
+
+export const FormAnchor = styled(Link)`
+    text-decoration: none;
+    color: rgb(127, 234, 258);
+
+    &:hover{
+        text-decoration: underline;
+    }
+`;
