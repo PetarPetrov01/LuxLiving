@@ -66,6 +66,7 @@ export const Catalog = () => {
                 </SortWrapper>
             </ControlsWrapper>
 
+            {isLoading ? <Spinner></Spinner> :
                 properties.length > 0
                     ? properties.map((p, index) => <CatalogCard key={p._id} {...p} flexdir={index % 2 !== 0 ? 'row-reverse' : 'row'} />)
                     : search !== ''
