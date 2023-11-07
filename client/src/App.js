@@ -15,6 +15,7 @@ import { Profile } from './components/Profile/Profile';
 import { Footer } from './components/Footer/Footer';
 import { UserGuard } from './components/RouteGuards/UserGuard';
 import { OwnerGuard } from './components/RouteGuards/OwnerGuard';
+import { NotFound } from './components/NotFound/NotFound';
 
 function App() {
     return (
@@ -33,7 +34,7 @@ function App() {
                                 <Route path='/create' element={<Create />} />
                                 <Route path='/profile' element={<Profile />} />
                                 <Route path='/logout' element={<Home />} />
-                                
+
                                 <Route element={<OwnerGuard />}>
                                     <Route path='/catalog/:id/edit' element={<Edit />} />
                                 </Route>
@@ -41,6 +42,7 @@ function App() {
 
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
+                            <Route path='/*' element={<NotFound />} />
                         </Routes>
                     </main>
 
