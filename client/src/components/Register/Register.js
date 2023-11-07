@@ -10,6 +10,21 @@ export const Register = () => {
         password: '',
         repass: ''
     });
+    }, setErrors);
+
+    const handleRegister = (e) => {
+        e.preventDefault();
+
+        if (Object.values(formValues).some(v => v === '')) {
+            return;
+        }
+
+        if (formValues.password !== formValues.repass) {
+            return;
+        };
+
+        onRegisterSubmit(formValues);
+    };
 
     return (
         <StyledForm onSubmit={(e) => onRegisterSubmit(e, formValues)}>
