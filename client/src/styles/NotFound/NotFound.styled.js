@@ -29,3 +29,32 @@ export const NotFoundCard = styled.div`
     background: rgba(173, 69, 49,0.8);
 `;
 
+export const ImageWrapper404 = styled.div`
+    width: 100%;
+    border-radius:20px;
+    /* box-shadow: 0 0 30px rgba(255,255,255,0.7); */
+    
+    img{
+        border-radius:20px;
+        object-fit: cover;
+        width: 100%;
+    }
+`;
+
+export const TextWrapper = styled.div`
+    font-size: max(2.4vw,20px);
+    text-align: center;
+    width: 80%;
+
+    p{
+        margin: 10px;
+        }
+`;
+
+export const Link404 = styled(StyledLink)`
+    font-size: max(2vw,18px); 
+
+    &:hover{
+        color: rgb(80, 250, 59);
+    }
+`;
