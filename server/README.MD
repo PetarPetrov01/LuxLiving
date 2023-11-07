@@ -7,7 +7,10 @@
 | - [Logout](#logout)
 | [Properties CRUD opeartions](#property-service)
 | - [Get all](#get-all-properties)
-
+| - [Get by ID](#get-single-property)
+| - [Create](#create-property)
+| - [Edit](#edit-property)
+| - [Delete](#delete-property)
 
 This document provides details about the REST API endpoints exposed by the Property Service. The service allows users to create their own profile,manage properties, place bids, and retrieve property information.
 
@@ -133,3 +136,39 @@ To retrieve the three most recently created properties which include "house" in 
 ```
 GET /data/catalog?search=house&sort=createdAt%20desc&limit=3
 ```
+### Get single property
+To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the objects returned from the [Get all](#get-all-properties) request.
+
+### Create property
+Creation of new property is done by sending an [authorized](#authorized-request) `POST` request to `/data/catalog`. Beside the authorization, the following header must be provided:
+```json
+"Content-Type":"application/json"
+```
+The request body must consist of an object containing the following properties:
+| Property    | Data type                                   |
+| ----------- | --------------------------------------------|
+| name        | String with at least 4 characters           |
+| location    | String with at least 4 characters           |
+| area        | Number bigger than 50                       |
+| imageUrl    | String starting with "http://" or "https://"|
+| description | String between 10 and 200 characters long   |
+| price       | A positive Number                           |
+
+On succesfull creation, the server returns the object created with its [automatically generated](#automatically-generated-properties) proeprties.
+
+### Edit property
+This action can be done only by the creator of the property post. To edit the property send an authorized `PUT` request to `/data/catalog/${id}`, where _id_ is the server generated ID of the property. The content type header should be included and the requst body should be the same as the body passed at property creation. The server overwrites the property values and returns the same object as in [create](#create-property)
+
+### Delete property
+The owner of the property can delete the post, by sending an authorized `DELETE` request to `/data/catalog/${id}`, where _id_ is the server generated ID of the property.
+
+***Note!*** - The server returns a 204 - No Content status code. If you attempt to parse the result as JSON, you might encounter an error.
+
+### Place a bid
+Every logged in user can place a bid on properties (except on his own). To place a bid, send an authorized `POST` request to `/data/catalog/{id}/bid`, where _id_ is the server generated ID of the property. The request body should be an object with the following properties:
+```
+id - The ID of the property
+userId - The ID of the User
+price - The price of the placed bid
+```
+Note that if the passed price is less than the current property price, the server will return an error. Otherwise, if everything is correct, the server returns a status code 204 - No Content.
