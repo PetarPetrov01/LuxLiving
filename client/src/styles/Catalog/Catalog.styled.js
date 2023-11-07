@@ -105,10 +105,18 @@ export const CardHeaders = styled.div`
     }
 
     @media (max-width: 768px){
-        
         border-bottom: 2px solid rgb(55, 82, 135);
     }
 
+    @media (min-width: 1800px){
+        h1{
+            font-size: 38px;
+        }
+
+        h2{
+            font-size: 32px;
+        }
+    }
 `;
 
 export const TextContainer = styled.div`
@@ -128,6 +136,12 @@ export const TextContainer = styled.div`
 
     @media (max-width: 768px){
         margin-top: 10px;
+    }
+
+    @media (min-width: 1800px){
+        span{
+            font-size: 25px;
+        }
     }
 `;
 
