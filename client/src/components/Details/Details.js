@@ -8,6 +8,7 @@ import { propertyService } from "../../services/propertiesService";
 import { useUserContext } from "../../contexts/UserContext";
 import { formatDate } from "../../utils/dateFormatter";
 import { Controlls } from "./Controlls";
+import { mockDelay } from "../../utils/mockDelay";
 
 export const Details = () => {
 
@@ -19,6 +20,11 @@ export const Details = () => {
         propertyService.getById(id)
             .then(res => {
                 setProperty(res);
+                //Mock delay
+                mockDelay(2000,
+                    () => setProperty(res),
+                    () => setIsLoading(false)
+                );
             }).catch(err => {
                 alert(err);
             });

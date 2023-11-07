@@ -3,6 +3,7 @@ import { HeaderWrapper, HomeWrapper, LatestWrapper, LinkWrapper, StyledLink } fr
 import { propertyService } from "../../services/propertiesService";
 import { HomeCard } from "./HomeCard";
 import { useUserContext } from "../../contexts/UserContext";
+import { mockDelay } from "../../utils/mockDelay";
 
 export const Home = () => {
     const { user } = useUserContext();
@@ -12,6 +13,11 @@ export const Home = () => {
         propertyService.getLatest()
             .then(result => {
                 setLatestProperties(result);
+                //Mock delay
+                mockDelay(1000,
+                    () => setLatestProperties(result),
+                    () => setIsLoading(false)
+                );
             }).catch(err => {
                 alert(err);
             });
