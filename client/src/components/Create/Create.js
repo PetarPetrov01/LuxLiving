@@ -31,6 +31,7 @@ export const Create = () => {
     return (
         <StyledForm onSubmit={handleSubmit}>
             <h1>Lend property</h1>
+
             <InputWrapper>
                 <StyledInput
                     name="name"

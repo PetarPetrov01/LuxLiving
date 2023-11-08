@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
@@ -8,25 +8,27 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
+    const [errors, setErrors] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useLocalStorage('user', {});
     const navigate = useNavigate();
 
-    const onLoginSubmit = async (e, data) => {
-        e.preventDefault();
-
+    const onLoginSubmit = async (data) => {
         try {
+            setIsLoading(true);
             const user = await userService.login(data);
             setUser(user);
+            setIsLoading(false);
             navigate('/');
         } catch (error) {
-            alert(error);
+            setErrors(error);
+            setIsLoading(false);
         }
     };
 
-    const onRegisterSubmit = async (e, data) => {
-        e.preventDefault();
-
+    const onRegisterSubmit = async (data) => {
         try {
+            setIsLoading(true);
             const result = await userService.register(data);
 
             const user = {
@@ -36,9 +38,11 @@ export const UserProvider = ({ children }) => {
             };
 
             setUser(user);
+            setIsLoading(false);
             navigate('/');
         } catch (error) {
-            alert(error);
+            setErrors(error);
+            setIsLoading(false);
         }
     };
 
@@ -52,8 +56,13 @@ export const UserProvider = ({ children }) => {
         user,
         onLoginSubmit,
         onRegisterSubmit,
-        onLogoutHandler
+        onLogoutHandler,
+        isLoading,
+        errors,
+        setErrors
     };
+
+    console.log(errors);
 
     return (
         <UserContext.Provider value={context}>
