@@ -21,22 +21,20 @@ const request = async (method, url, data) => {
 
         if (response.ok !== true) {
             const err = await response.json();
-
             if (response.status === 401 && err.message === 'Invalid access token') {
                 userStorage.deleteUser();
                 alert('Expired session, login again');
                 window.location.reload();
             }
-
-            throw err;
+            throw new Error(err.message);
         }
-
+        
         if (response.status === 204) {
             return response;
         }
-
+        
         return await response.json();
-
+        
     } catch (error) {
         throw error.message;
     }

@@ -22,5 +22,4 @@ export const usePropertyValidator = (initial) => {
         errors,
         validateForm
     };
-
 };
