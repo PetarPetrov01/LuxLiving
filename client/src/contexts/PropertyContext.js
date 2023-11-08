@@ -1,6 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { propertyService } from "../services/propertiesService";
 import { redirect, useNavigate } from "react-router-dom";
+
+import { propertyService } from "../services/propertiesService";
+import { mockDelay } from "../utils/mockDelay";
 
 export const PropertyContext = createContext();
 
@@ -16,11 +18,10 @@ export const PropertyProvider = ({ children }) => {
         propertyService.getAll(query)
             .then(result => {
                 //MOCK delay
-                console.log('Throttling!!!');
-                setTimeout(()=>{
-                    setProperties(result);
-                    setIsLoading(false);
-                },2000);
+                mockDelay(1000,
+                    () => setProperties(result),
+                    () => setIsLoading(false)
+                );
             })
             .catch(err => {
                 alert(err);
@@ -96,8 +97,8 @@ export const PropertyProvider = ({ children }) => {
         onParamsChange,
         isLoading
     };
-
     return (
+
         <PropertyContext.Provider value={context}>
             {children}
         </PropertyContext.Provider>
