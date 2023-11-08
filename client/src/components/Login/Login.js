@@ -1,20 +1,28 @@
-import { Link } from "react-router-dom";
-
-import { StyledInput, StyledForm, InputWrapper } from "../../styles/Form/StyledForm";
+import { StyledInput, StyledForm, InputWrapper, FormAnchor } from "../../styles/Form/StyledForm";
 import { useForm } from "../../hooks/useForm";
 import { useUserContext } from "../../contexts/UserContext";
+import { Spinner } from "../Spinner/Spinner";
+import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Login = (props) => {
-    const { onLoginSubmit } = useUserContext();
+    const { onLoginSubmit, isLoading, errors, setErrors } = useUserContext();
     let { formValues, onChangeHandler } = useForm({
         email: '',
         password: ''
-    });
+    }, setErrors);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (Object.values(formValues).some(v => v === '')) {
+            return setErrors('Please fill the inputs');
+        }
+        onLoginSubmit(formValues);
+    };
 
     return (
-        <StyledForm onSubmit={(e) => onLoginSubmit(e, formValues)}>
+        <StyledForm onSubmit={handleSubmit}>
             <h1>Sign in</h1>
-
+            {errors ? <ErrorBox errors={errors} /> : null}
             <InputWrapper>
                 <StyledInput
                     placeholder="Email"
@@ -31,39 +39,17 @@ export const Login = (props) => {
                     onChange={onChangeHandler}
                     value={formValues.password} />
             </InputWrapper>
-            <button>Login</button>
-            <p>
-                Not registerd? <Link to={'/register'} style={{textDecoration: 'none'}}>Sign up</Link>
-            </p>
+            {isLoading
+                ? <Spinner />
+                : <>
+                    <button>Login</button>
+                    <p>
+                        Not registerd? <FormAnchor to={'/register'} onClick={()=>setErrors(null)}>Sign up</FormAnchor>
+                    </p>
+                </>
+            }
         </StyledForm>
     );
 };
 
-/*
-<section id="login">
-            <div className="form">
-                <h2>Login</h2>
-                <form className="login-form" onSubmit={(e) => onLoginSubmit(e, formValues)}>
-                    <input
-                        type="text"
-                        name="email"
-                        id="email"
-                        placeholder="email"
-                        onChange={onChangeHandler}
-                        value={formValues.email} />
-                    <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="password"
-                        onChange={onChangeHandler}
-                        value={formValues.password}
-                    />
-                    <button type="submit">login</button>
-                    <p className="message">
-                        Not registered? <Link to="/register">Create an account</Link>
-                    </p>
-                </form>
-            </div>
-        </section>
-*/
+
