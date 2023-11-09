@@ -18,5 +18,17 @@ function isGuest() {
     };
 }
 
+function isOwner() {
+    return (req, res, next) => {
+        const userId = req.user?._id;
 
-module.exports = { isUser, isGuest };
+        if (res.locals.property._ownerId == userId) {
+            next();
+        } else {
+            res.status(401).json({message: 'You are not the owner of this post'});
+        }
+    };
+}
+
+
+module.exports = { isUser, isGuest, isOwner };
