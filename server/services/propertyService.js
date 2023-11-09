@@ -2,6 +2,7 @@ const Property = require('../models/Property');
 
 async function getAll(query) {
     let search = {};
+
     if (query.search) {
         search = {
             $or: [
@@ -11,14 +12,35 @@ async function getAll(query) {
         };
     }
 
+    let properties = Property.find(search);
+
     if (query.sort) {
-        return Property.find(search)
-            .sort(query.sort)
-            .limit(query.limit);
+        properties = properties.sort(query.sort);
     }
 
-    return Property.find(search)
-        .limit(query.limit);
+    const page = parseInt(query.page) || 1;
+    const limit = parseInt(query.limit) || 5;
+    const propertiesCount = await Property.countDocuments(search);
+    const pageCount = Math.ceil(propertiesCount / limit);
+
+    if (page > pageCount || page < 1) {
+        throw new Error('This page does not exist!');
+    }
+
+    properties = properties
+        .skip((page - 1) * limit)
+        .limit(limit);
+
+    const pages = {
+        pageCount,
+        previous: page > 1 && pageCount > 1,
+        next: page < pageCount
+    };
+
+    return {
+        pages,
+        data: await properties
+    };
 }
 
 async function getById(id) {
