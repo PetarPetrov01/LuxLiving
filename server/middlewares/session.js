@@ -1,7 +1,7 @@
 const { verifyToken } = require('../services/userService');
 
 module.exports = () => (req, res, next) => {
-    const token = req.headers['x-authorization'];
+    const token = req.headers['authorization'];
     if (token) {
         try {
             const payload = verifyToken(token);
