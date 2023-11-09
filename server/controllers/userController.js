@@ -6,12 +6,11 @@ const { isGuest, isUser } = require('../middlewares/guards');
 const userController = require('express').Router();
 
 userController.post('/register', isGuest(),
-    body('email').isEmail().withMessage('Incorrect email'),
-    body('password').isLength({ min: 3 }).withMessage('Password must be atleast 3 characters long'),
+    body('email').isEmail().withMessage('Invalid email'),
+    body('password').isLength({ min: 4 }).withMessage('Password must be atleast 4 characters long'),
     async (req, res) => {
         try {
             const errors = validationResult(req).errors;
-
             if (errors.length > 0) {
                 throw errors;
             }
@@ -20,7 +19,7 @@ userController.post('/register', isGuest(),
             res.json(user);
         } catch (error) {
             const message = errorParser(error);
-            res.status(400).json({ message });
+            res.status(400).json({message});
         }
     });
 
@@ -30,7 +29,7 @@ userController.post('/login', isGuest(), async (req, res) => {
         res.json(user);
     } catch (error) {
         const message = errorParser(error);
-        res.status(400).json(message);
+        res.status(400).json({message});
     }
 });
 

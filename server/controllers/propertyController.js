@@ -1,14 +1,18 @@
-const { isUser } = require('../middlewares/guards');
+const { isUser, isOwner } = require('../middlewares/guards');
+const preload = require('../middlewares/preload');
 const propertyService = require('../services/propertyService');
 const { errorParser } = require('../util/parseError');
 
 const propertyController = require('express').Router();
 
 propertyController.get('/', async (req, res) => {
-
-    const properties = await propertyService.getAll(req.queryParams);
-
-    res.json(properties);
+    try {
+        const properties = await propertyService.getAll(req.query);
+        res.json(properties);
+    } catch (error) {
+        const message = errorParser(error);
+        res.status(400).json({ message });
+    }
 });
 
 
@@ -31,7 +35,7 @@ propertyController.post('/', isUser(), async (req, res) => {
     }
 });
 
-propertyController.put('/:id', isUser(), async (req, res) => {
+propertyController.put('/:id', preload(), isOwner(), async (req, res) => {
     const item = await propertyService.getById(req.params.id);
 
     if (req.user._id != item._ownerId) {
