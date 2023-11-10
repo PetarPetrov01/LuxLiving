@@ -17,7 +17,7 @@ export const Home = () => {
             .then(result => {
                 //Mock delay
                 mockDelay(1000,
-                    () => setLatestProperties(result),
+                    () => setLatestProperties(result.data),
                     () => setIsLoading(false)
                 );
             }).catch(err => {

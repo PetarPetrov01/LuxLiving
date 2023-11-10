@@ -22,6 +22,9 @@ export const PropertyProvider = ({ children }) => {
                     () => setProperties(result),
                     () => setIsLoading(false)
                 );
+                setProperties(result.data);
+                setPages(result.pages);
+                setIsLoading(false);
             })
             .catch(err => {
                 alert(err);
