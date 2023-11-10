@@ -17,6 +17,10 @@ export const GlobalStyle = createGlobalStyle`
         font-family: Garamond, serif;
     }
 
+    input, button, select{
+        font-family: Garamond, serif;
+    }
+
     #root {
         margin: auto;
         height: 100vh;

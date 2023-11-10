@@ -5,6 +5,7 @@ export const StyledCatalog = styled.div`
     align-items: center;
     flex-direction: column;
     margin: 20px auto 80px auto;
+    padding-bottom: 20px;
     width: max(75%,700px);
     min-height: 200px;
     border-radius: 20px;
@@ -169,7 +170,7 @@ export const SearchForm = styled.form`
     width: 60%;
     align-items: center;
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.3em;
     
     input[name="search"]{
         box-sizing: border-box;
@@ -196,11 +197,10 @@ export const SortWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    font-size: 1.2em;
+    font-size: 1.3em;
 
     @media (max-width: 768px){
         height: 50%;
-
         font-size: 1.1em;
     }
 `;
@@ -211,6 +211,6 @@ export const StyledSelect = styled.select`
     margin: 0; 
     margin-left: 4px;
     padding-left: 10px;   
-    font-size: inherit;
+    font-size: 1em;
 `;
 

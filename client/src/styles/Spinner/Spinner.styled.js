@@ -4,6 +4,7 @@ export const StyledSpinnerWrapper = styled.div`
     box-sizing: border-box;
     width: 68px;
     height: 68px;
+    margin-top: 20px;
 `;
 
 export const SpinnerLogo = styled.img`
@@ -30,7 +31,6 @@ export const SpinnerLogo = styled.img`
 `;
 
 export const StyledSpinner = styled.span`
-    
     position: relative;
     top: -100%;
     width: 68px;
@@ -45,11 +45,11 @@ export const StyledSpinner = styled.span`
     animation: rotation 1s linear infinite;
     
     @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
     } 
 `;
