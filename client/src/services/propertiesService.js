@@ -1,30 +1,21 @@
 import * as api from './api';
 
 const baseUrl = 'http://localhost:3030/data/catalog';
-
-const getAll = async ({search, sort = ''}) => {
-
+const getAll = async (queries) => {
     const queryArr = [];
 
-    if (search) {
-        const encodedSearch = encodeURIComponent(search);
-        queryArr.push(`search=${encodedSearch}`);
-    }
-
-    if (sort) {
-        console.log('From service');
-        console.log(sort);
-        queryArr.push(`sort=${sort}`);
-    }
+    Object.entries(queries).forEach(([k, v]) => {
+        const encodedQuery = encodeURIComponent(v);
+        queryArr.push(`${k}=${encodedQuery}`);
+    });
 
     return queryArr.length > 0
         ? await api.get(`${baseUrl}?${queryArr.join('&')}`)
         : await api.get(baseUrl);
-
 };
 
 const getLatest = async () => {
-    return await api.get(`${baseUrl}?sort=createdAt%20desc&pageSize=3`);
+    return await api.get(`${baseUrl}?sort=createdAt%20desc&limit=3`);
 };
 
 const getOwn = async (userId) => {
