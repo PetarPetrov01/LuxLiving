@@ -107,6 +107,15 @@ export const Catalog = () => {
                         ? <h1>No matches</h1>
                         : <h1>No Content yet</h1>
             }
+
+            {properties.length > 2 && pages.pageCount > 1
+                ? <Pagination
+                    pages={pages}
+                    page={page}
+                    limitChange={limitChange}
+                    limit={limit}
+                    pageChange={pageChange} />
+                : null}
         </StyledCatalog >
     );
 };
