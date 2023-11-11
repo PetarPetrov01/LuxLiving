@@ -6,27 +6,33 @@ import { usePropertyContext } from "../../contexts/PropertyContext";
 import { useDelayedSearch } from "../../hooks/useDelayedSearch";
 import { CatalogCard } from "./CatalogCard";
 import { Spinner } from "../Spinner/Spinner";
+import { Pagination } from "./Pagination";
 
 export const Catalog = () => {
 
-    const { properties, onParamsChange, isLoading } = usePropertyContext();
+    const { properties, pages, onParamsChange, isLoading } = usePropertyContext();
 
     const [queryParams, setQueryParams] = useSearchParams({
+        page: '1',
+        limit: '3',
         search: '',
-        sort: 'createdAt desc'
+        sort: 'createdAt desc',
     }, { replace: true });
 
+    const page = parseInt(queryParams.get('page'));
+    const limit = queryParams.get('limit');
     const search = queryParams.get('search');
     const sort = queryParams.get('sort');
-    const delaydSearch = useDelayedSearch(search);
+    const delayedSearch = useDelayedSearch(search);
 
     useEffect(() => {
-        onParamsChange(delaydSearch, sort);
-    }, [delaydSearch, sort, onParamsChange]);
+        onParamsChange({ search: delayedSearch, sort, page, limit });
+    }, [delayedSearch, sort, onParamsChange, page, limit]);
 
     const onChangeHandler = (e) => {
         setQueryParams(prevQ => {
             prevQ.set('search', e.target.value);
+            prevQ.set('page', 1);
             return prevQ;
         });
     };
@@ -38,15 +44,36 @@ export const Catalog = () => {
         });
     };
 
+    const limitChange = (e) => {
+        setQueryParams(prevQ => {
+            prevQ.set('limit', e.target.value);
+            prevQ.set('page', 1);
+            return prevQ;
+        });
+    };
+
+    const pageChange = (direction) => {
+        if (direction === 'nextBtn') {
+            setQueryParams(prevQ => {
+                prevQ.set('page', page + 1);
+                return prevQ;
+            });
+        } else {
+            setQueryParams(prevQ => {
+                prevQ.set('page', page - 1);
+                return prevQ;
+            });
+        }
+    };
+
     return (
         <StyledCatalog >
             <ControlsWrapper>
-                <SearchForm>
+                <SearchForm onSubmit={(e) => e.preventDefault()}>
                     <input name="search" placeholder="Name or location"
                         onChange={onChangeHandler}
                         value={search} />
                 </SearchForm>
-
 
                 <SortWrapper>
                     <label htmlFor="sortOrder">Sort by:</label>
@@ -65,6 +92,13 @@ export const Catalog = () => {
                     </StyledSelect>
                 </SortWrapper>
             </ControlsWrapper>
+
+            <Pagination
+                pages={pages}
+                page={page}
+                limitChange={limitChange}
+                limit={limit}
+                pageChange={pageChange} />
 
             {isLoading ? <Spinner></Spinner> :
                 properties.length > 0

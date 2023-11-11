@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 import { redirect, useNavigate } from "react-router-dom";
 
 import { propertyService } from "../services/propertiesService";
-import { mockDelay } from "../utils/mockDelay";
+// import { mockDelay } from "../utils/mockDelay";
 
 export const PropertyContext = createContext();
 
@@ -10,6 +10,7 @@ export const PropertyProvider = ({ children }) => {
 
     const [query, setQuery] = useState({});
     const [properties, setProperties] = useState([]);
+    const [pages, setPages] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
@@ -18,10 +19,6 @@ export const PropertyProvider = ({ children }) => {
         propertyService.getAll(query)
             .then(result => {
                 //MOCK delay
-                mockDelay(1000,
-                    () => setProperties(result),
-                    () => setIsLoading(false)
-                );
                 setProperties(result.data);
                 setPages(result.pages);
                 setIsLoading(false);
@@ -29,11 +26,12 @@ export const PropertyProvider = ({ children }) => {
             .catch(err => {
                 alert(err);
                 setIsLoading(false);
+                navigate(-1);
             });
-    }, [query]);
+    }, [query, navigate]);
 
-    const onParamsChange = useCallback((search, sort) => {
-        setQuery({ search, sort });
+    const onParamsChange = useCallback((newQuery) => {
+        setQuery(newQuery);
     }, []);
 
     const getPropertyById = (id) => {
@@ -92,6 +90,7 @@ export const PropertyProvider = ({ children }) => {
 
     const context = {
         properties,
+        pages,
         getPropertyById,
         onCreateHandler,
         onEditHandler,
