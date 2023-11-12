@@ -53,3 +53,40 @@ export const ReviewForm = styled.form`
     }
     `;
 
+export const RatingContainer = styled.div`
+
+span{
+    margin-right: 10px;
+    color: rgb(40, 60, 99);
+}
+`;
+
+export const StyledTextArea = styled.textarea`
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 80px;
+    max-height: 250px;
+    width: 100%;
+    border: 1px solid rgb(40, 60, 99);
+    border-radius: 10px;
+    outline: none;
+    padding: 4px;
+    `;
+
+export const SubmitReviewBtn = styled.button`
+    width: 30%; 
+    height: 30px;
+    padding: 0;
+    background: rgba(55, 82, 135,0.7);
+    border: none;
+    border-radius:20px;
+    text-decoration:none;
+    font-size: 1.2em;
+    transition: all 0.2s;
+    color: white;
+    cursor: pointer;
+    
+    &:hover{
+        background-color: rgba(53, 125, 200, 0.8);
+    }
+`;
