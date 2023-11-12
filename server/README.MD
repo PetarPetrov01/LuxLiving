@@ -87,32 +87,59 @@ To retrieve a list of all properties send `GET` request to `/data/catalog` with 
 
 * search : Filters properties by name or location (case-insensitive).
 * sort : Sorts the properties based on a specified property and order ("asc" for ascending and "desc" for ascending).
-* limit : Limits the number of properties returned (default is all). 
+* page : Specifies the page number to retrieve.
+* limit : Limits the number of properties returned for the required page (default is 5). 
 
 #### Example properties request
 
 To get all properties send a `GET` request to `/data/catalog`.
 The server responds with an array of objects representing different real estate properties. Beside the regular properties (as in object keys), the objects include automatically generated properties, which are as follows:
 
+The server responds with an object with two properties - pages and data, where
+pages - an object with pagination related properties.
+data - an array with real estate property objects.
+
+
+```json
+{
+  "pages" : {
+    "pageCount" : "Number - Total number of pages (taking into account the filtering and limit)",
+    "next" : "Boolean - Indicates whether the next page exists.",
+    "previous" : "Boolean - Indicates whether the previous page exists."
+  },
+  "data" : "an array of objects representing different real estate properties"
+}
+```
+Beside the regular properties (as in object keys), the objects include automatically generated properties, which are as follows:
+
 ##### Automatically generated properties:
     * _id - Unique ID in the form of string.
     * createdAt - Time stamp of the creation.
     * updatedAt - The time of the last update.
 
-The whole object with all its properties looks like this:
+The whole server response would like this:
 ```json
 {
-  "_id": "{generatedId}",
-  "name": "Example house",
-  "location": "Some town, Some country",
-  "area": 200,
-  "imageUrl": "{image URL}",
-  "description": "Some property description",
-  "price": 400900,
-  "_ownerId": "{generatedIdOfOwner}",
-  "createdAt": "{generatedDate}",
-  "updatedAt":  "{generatedDate}",
-  "currentBidder":"{generatedIdOfBidder}"
+  "pages":{
+    "pageCount" : 3,
+    "next" : true,
+    "previous" : true
+  },
+  "data":[
+    {
+      "_id": "{generatedId}",
+      "name": "Example house",
+      "location": "Some town, Some country",
+      "area": 200,
+      "imageUrl": "{image URL}",
+      "description": "Some property description",
+      "price": 400900,
+      "_ownerId": "{generatedIdOfOwner}",
+      "createdAt": "{generatedDate}",
+      "updatedAt":  "{generatedDate}",
+      "currentBidder":"{generatedIdOfBidder}"
+    },
+  ]
 }
 ```
 
