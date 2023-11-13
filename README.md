@@ -1,2 +1,2 @@
-# LuxLiving
-A full-stack web application for real estate properties, featuring a dynamic React frontend and a Express backend.
+# Lux Living
+An application made for lux seekers. Find the most luxurious houses around the world, place your bid.
