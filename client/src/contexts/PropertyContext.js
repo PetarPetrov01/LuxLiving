@@ -12,6 +12,7 @@ export const PropertyProvider = ({ children }) => {
     const [properties, setProperties] = useState([]);
     const [pages, setPages] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [errors, setErrors] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export const PropertyProvider = ({ children }) => {
                 setIsLoading(false);
             })
             .catch(err => {
-                alert(err);
+                setErrors(err);
                 setIsLoading(false);
                 navigate(-1);
             });
@@ -44,7 +45,6 @@ export const PropertyProvider = ({ children }) => {
             setProperties(state => ([property, ...state]));
             navigate('/catalog');
         } catch (error) {
-            alert(error);
         }
     };
 
@@ -54,7 +54,7 @@ export const PropertyProvider = ({ children }) => {
             setProperties(state => state.map(property => property._id === id ? newProperty : property));
             navigate(`/catalog/${id}/details`);
         } catch (error) {
-            alert(error);
+            setErrors(error);
         }
     };
 
@@ -65,7 +65,7 @@ export const PropertyProvider = ({ children }) => {
             setProperties(state => state.filter(property => property._id !== id));
             navigate('/catalog');
         } catch (error) {
-            alert(error);
+            setErrors(error);
         }
     };
 

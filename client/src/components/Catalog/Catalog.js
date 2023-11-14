@@ -7,10 +7,12 @@ import { useDelayedSearch } from "../../hooks/useDelayedSearch";
 import { CatalogCard } from "./CatalogCard";
 import { Spinner } from "../Spinner/Spinner";
 import { Pagination } from "./Pagination";
+import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Catalog = () => {
 
     const { properties, pages, onParamsChange, isLoading } = usePropertyContext();
+    const { properties, pages, onParamsChange, isLoading, errors } = usePropertyContext();
 
     const [queryParams, setQueryParams] = useSearchParams({
         page: '1',
@@ -68,6 +70,7 @@ export const Catalog = () => {
 
     return (
         <StyledCatalog >
+            {errors ? <ErrorBox errors={errors} /> : null}
             <ControlsWrapper>
                 <SearchForm onSubmit={(e) => e.preventDefault()}>
                     <input name="search" placeholder="Name or location"
