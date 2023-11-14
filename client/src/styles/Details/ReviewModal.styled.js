@@ -30,18 +30,23 @@ export const CloseModalButton = styled.button`
     `;
 
 export const ReviewWrapper = styled.div`
-    width: 70%;
-    height: 80%;
+    width: 60%;
+    height: 70%;
     border-radius: 20px;
     padding: 10px;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.8);
+
+    @media (max-width: 768px){
+        width: 90%;
+        height: 80%;
+    }
     `;
 
 export const ReviewForm = styled.form`
     margin: 10px auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: flex-start;
     width: 95%;
     gap: 20px;
@@ -51,21 +56,48 @@ export const ReviewForm = styled.form`
     h1{
         margin-top: 0;
     }
+
+    h3{
+        margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 768px){
+        justify-content: center;
+        align-items: center;
+    }
     `;
 
 export const RatingContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-span{
-    margin-right: 10px;
-    color: rgb(40, 60, 99);
-}
+    span{
+        margin-right: 10px;
+        color: rgb(40, 60, 99);
+    }
+
+    select{
+        height: 30%;
+    }
+
+    @media (max-width: 768px){
+        flex-direction: column;
+    }
+`;
+
+export const ReviewContainer = styled.div`
+    display:flex;
+    flex-direction: column;
+    width: 100%;
 `;
 
 export const StyledTextArea = styled.textarea`
     box-sizing: border-box;
     resize: vertical;
     min-height: 80px;
-    max-height: 250px;
+    max-height: 200px;
     width: 100%;
     border: 1px solid rgb(40, 60, 99);
     border-radius: 10px;
@@ -74,9 +106,8 @@ export const StyledTextArea = styled.textarea`
     `;
 
 export const SubmitReviewBtn = styled.button`
-    width: 30%; 
     height: 30px;
-    padding: 0;
+    padding: 0 10px;
     background: rgba(55, 82, 135,0.7);
     border: none;
     border-radius:20px;
