@@ -138,7 +138,7 @@ The whole server response would like this:
       "createdAt": "{generatedDate}",
       "updatedAt":  "{generatedDate}",
       "currentBidder":"{generatedIdOfBidder}",
-      "rating": {average rating},
+      "rating": "{average rating}",
       "reviews": [
         "{reviewId}",
         "{reviewId}"
@@ -170,14 +170,14 @@ GET /data/catalog?search=house&sort=createdAt%20desc&limit=3
 ```
 ### Get single property
 To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the objects returned from the [Get all](#get-all-properties) request. The difference is that the "reviews" property is populated and sorted by date of creation (The newest reviews come first). Each review object has the following structure:
-```
+```json
 {
-  "_id": {generatedId},
+  "_id": "{generatedId}",
   "rating": 3,
   "content": "Seems like a good house, the location suits me right.",
-  "_ownerId": {id reffering to the user},
-  "createdAt": {time of creation},
-  "updatedAt": {time of last update},
+  "_ownerId": "{id reffering to the user}",
+  "createdAt": "{time of creation}",
+  "updatedAt": "{time of last update}",
 }
 ```
 The "_ownerId" inside the review object is also populated (deep population). 
