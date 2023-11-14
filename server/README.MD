@@ -137,7 +137,12 @@ The whole server response would like this:
       "_ownerId": "{generatedIdOfOwner}",
       "createdAt": "{generatedDate}",
       "updatedAt":  "{generatedDate}",
-      "currentBidder":"{generatedIdOfBidder}"
+      "currentBidder":"{generatedIdOfBidder}",
+      "rating": {average rating},
+      "reviews": [
+        "{reviewId}",
+        "{reviewId}"
+        ]
     },
   ]
 }
@@ -164,7 +169,18 @@ To retrieve the three most recently created properties which include "house" in 
 GET /data/catalog?search=house&sort=createdAt%20desc&limit=3
 ```
 ### Get single property
-To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the objects returned from the [Get all](#get-all-properties) request.
+To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the objects returned from the [Get all](#get-all-properties) request. The difference is that the "reviews" property is populated and sorted by date of creation (The newest reviews come first). Each review object has the following structure:
+```
+{
+  "_id": {generatedId},
+  "rating": 3,
+  "content": "Seems like a good house, the location suits me right.",
+  "_ownerId": {id reffering to the user},
+  "createdAt": {time of creation},
+  "updatedAt": {time of last update},
+}
+```
+The "_ownerId" inside the review object is also populated (deep population). 
 
 ### Create property
 Creation of new property is done by sending an [authorized](#authorized-request) `POST` request to `/data/catalog`. Beside the authorization, the following header must be provided:
