@@ -57,6 +57,10 @@ export const StyledBidForm = styled.form`
     border-color: rgba(53, 125, 200, 0.8);
     box-shadow: 0px 0px 3px rgba(55, 125, 200, 0.8);
   }
+
+  @media (max-width: 768px){
+        width: 80%;
+    } 
 `;
 
 export const BidButton = styled.button`

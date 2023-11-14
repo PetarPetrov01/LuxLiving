@@ -96,12 +96,12 @@ export const CardHeaders = styled.div`
     align-items: center;
     
     h1{
-        font-size: max(2.1vw,24px);
+        font-size: max(2.1vw,20px);
         margin: 10px 0 5px 0;
     }
     
     h2{
-        font-size: max(1.7vw,20px);
+        font-size: max(1.7vw,17px);
         margin: 5px 0 5px 0;
     }
 
@@ -137,6 +137,9 @@ export const TextContainer = styled.div`
 
     @media (max-width: 768px){
         margin-top: 10px;
+        span{
+            font-size: max(2.7vw,16px);
+        }
     }
 
     @media (min-width: 1800px){

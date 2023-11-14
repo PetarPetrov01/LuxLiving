@@ -82,7 +82,11 @@ export const DetailsCardHeaders = styled.div`
     }
 
     h2{
-        margin: 10px 0 10px 0;
+        margin: 10px 0 5px 0;
+    }
+
+    h3{
+        margin: 0;
     }
 `;
 
