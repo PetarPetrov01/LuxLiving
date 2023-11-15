@@ -62,8 +62,6 @@ export const UserProvider = ({ children }) => {
         setErrors
     };
 
-    console.log(errors);
-
     return (
         <UserContext.Provider value={context}>
             {children}

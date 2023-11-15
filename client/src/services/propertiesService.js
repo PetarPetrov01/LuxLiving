@@ -48,6 +48,10 @@ const bid = async (propId, userId, newPrice) => {
     return await api.post(`http://localhost:3030/data/catalog/${propId}/bid`, data);
 };
 
+const createReview = async (propId, data) => {
+    return await api.post(`${baseUrl}/${propId}/review`, data);
+};
+
 export const propertyService = {
     getAll,
     getLatest,
@@ -56,5 +60,6 @@ export const propertyService = {
     create,
     edit,
     delete: deleteById,
-    bid
+    bid,
+    createReview
 };
