@@ -1,4 +1,3 @@
-import { Modal, RatingContainer, ReviewForm, ReviewWrapper, StyledTextArea, SubmitReviewBtn, CloseModalButton } from "../../styles/Details/ReviewModal.styled";
 import { useCallback, useState } from "react";
 import { Modal, RatingContainer, ReviewForm, ReviewWrapper, StyledTextArea, SubmitReviewBtn, CloseModalButton, ReviewContainer } from "../../styles/Details/ReviewModal.styled";
 import { Rate } from "./Rate";
@@ -15,8 +14,6 @@ const rateScale = [
 ];
 
 export const ReviewModal = ({
-    onCloseModal
-}) => {
     onCloseModal,
     }) => {
     const { onCreateReview } = usePropertyContext();
@@ -37,12 +34,40 @@ export const ReviewModal = ({
     };
 
     const handleReviewSubmit = (e) => {
+        e.preventDefault();
+
+        try {
+            if (!rating || !review) {
+                throw new Error('You must provide rating and review content!');
+            }
+            onCreateReview(id, { rating, content: review, userId });
+            onCloseModal();
+        } catch (error) {
+            alert(error);
+        }
     };
 
     return (
         <Modal>
             <ReviewWrapper>
-                <ReviewForm>
+                <ReviewForm onSubmit={handleReviewSubmit}>
+
+                    <CloseModalButton onClick={onCloseClick}>
+                        &#x2715;
+                    </CloseModalButton>
+
+                    <h1>Add a review</h1>
+                    <RatingContainer>
+                        <h3>Rating:</h3>
+                        <Rate
+                            rating={rating}
+                            setRating={onRatingHandler}
+                            hoverRating={hoverRating}
+                            setHoverRating={onRatingHover}
+                        />
+                        <span>{rateScale[hoverRating - 1] || rateScale[rating - 1] || 'Select rating'}</span>
+                    </RatingContainer>
+
                     <ReviewContainer>
                         <h3>Review:</h3>
                         <StyledTextArea
