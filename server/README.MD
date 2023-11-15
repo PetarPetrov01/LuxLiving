@@ -12,7 +12,7 @@
 | - [Edit](#edit-property)
 | - [Delete](#delete-property)
 
-This document provides details about the REST API endpoints exposed by the Property Service. The service allows users to create their own profile,manage properties, place bids, and retrieve property information.
+This document provides details about the REST API endpoints exposed by the Property Service. The service allows users to create their own profile,manage properties, place bids, create reviews and retrieve property information.
 
 ### Error Responses
 
@@ -159,17 +159,19 @@ To get all properties, sorted by time of creation send the following request:
 ```
 GET /data/catalog?sort=createdAt%20desc
 ```
-#### Limit 
-To get a particular count of properties, append `limit={count}` to the query parameters. The server provides the precise count of records in the database, only if there are that many records available. Note that if sort query is not passed, the default properties are sorted by time of creation and ascending order (Oldest first). The sort is always done before the limit, so the order of the query parameters does not matter.
+#### Page and limit
+To get a certain page of properties with a certain items per page append `page={number}` and `limit={count}` to the query paramaters. The server provides the precise count of records for the page in the database (taking into account the sorting), granted that the corresponding number of records exists. In the absence of the 'limit' query, the server will return a default of 5 properties per page. Note that if `sort` query is not passed, the default properties are sorted by time of creation and ascending order (Oldest first). The sort is always done before the limit, so the order of the query parameters does not matter.
 
-#### Example including all queries
-To retrieve the three most recently created properties which include "house" in their names, use the following request:
+#### Example including all query paramaters
+To get the first page with 3 items per page of the three most recently created properties which include "house" in their names, use the following request:
 
 ```
-GET /data/catalog?search=house&sort=createdAt%20desc&limit=3
+GET /data/catalog?page=1&limit=3&search=house&sort=createdAt%20desc
 ```
 ### Get single property
-To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the objects returned from the [Get all](#get-all-properties) request. The difference is that the "reviews" property is populated and sorted by date of creation (The newest reviews come first). Each review object has the following structure:
+To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the object returned from the [Get all](#get-all-properties) request. The difference is that the "reviews" property is populated and sorted by date of creation (The newest reviews come first). 
+#### Review structure
+Each review object has the following structure:
 ```json
 {
   "_id": "{generatedId}",
