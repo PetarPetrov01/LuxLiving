@@ -7,7 +7,6 @@ import { formatDate } from "../../utils/dateFormatter";
 import { Controlls } from "./Controlls";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { Spinner } from "../Spinner/Spinner";
-import { mockDelay } from "../../utils/mockDelay";
 import { ReviewCardWrapper, ReviewHeading, Reviews } from "../../styles/Details/Reviews.styled";
 import { ReviewModal } from "./ReviewModal";
 import { ReviewCard } from "./ReviewCard";
@@ -25,11 +24,6 @@ export const Details = () => {
         setIsLoading(true);
         propertyService.getById(id)
             .then(res => {
-                //Mock delay
-                mockDelay(2000,
-                    () => setProperty(res),
-                    () => setIsLoading(false)
-                );
                 setProperty(res);
                 setIsLoading(false);
             }).catch(err => {
@@ -48,6 +42,7 @@ export const Details = () => {
     };
 
     const isOwner = user._id === property._ownerId;
+    const hasReviewed = property.reviews?.some(r => r._ownerId._id === user._id);
     const created = formatDate(property.createdAt, 'details');
 
     if (showModal) {
@@ -58,6 +53,7 @@ export const Details = () => {
 
     return (
         <StyledDetails>
+
             {isLoading ? <Spinner /> :
                 <DetailsCard>
                     <DetailsImageWrapper>
@@ -67,6 +63,13 @@ export const Details = () => {
                         <DetailsCardHeaders>
                             <h1>{property.name}</h1>
                             <h2>{property.location}</h2>
+                            <h3>Rating: {property.rating
+                                ?
+                                <>
+                                    {property.rating}
+                                    <span style={{ fontWeight: 'normal', fontSize: '0.8em' }}> ({property.reviews?.length})</span>
+                                </>
+                                : 'Not rated'} </h3>
                         </DetailsCardHeaders>
                         <DetailsInfo>
                             <h4>Total area: {property.area} m<sup>2</sup></h4>
