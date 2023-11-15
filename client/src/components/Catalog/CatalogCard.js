@@ -10,6 +10,7 @@ export const CatalogCard = ({
     imageUrl,
     _id,
     createdAt,
+    rating,
     flexdir
 }) => {
 
@@ -31,6 +32,7 @@ export const CatalogCard = ({
                     <span style={{fontSize: '0.75em'}}>Posted on: {posted}</span>
                 </CardHeaders>
                 <TextContainer>
+                    <span>Rating: {rating || 'Not rated'}</span>
                     <span>Starting price: ${Number(price).toLocaleString()}</span>
                     <span>Total area: {area} m<sup>2</sup></span>
                 </TextContainer>

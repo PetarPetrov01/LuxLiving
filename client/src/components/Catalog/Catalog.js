@@ -11,7 +11,6 @@ import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Catalog = () => {
 
-    const { properties, pages, onParamsChange, isLoading } = usePropertyContext();
     const { properties, pages, onParamsChange, isLoading, errors } = usePropertyContext();
 
     const [queryParams, setQueryParams] = useSearchParams({
@@ -86,6 +85,8 @@ export const Catalog = () => {
                         name="sortOrder">
                         <option value={'createdAt desc'}>Newest</option>
                         <option value={'createdAt asc'}>Oldest</option>
+                        <option value={'rating desc'}>Highest Rating</option>
+                        <option value={'rating asc'}>Lowest Rating</option>
                         <option value={'name asc'}>Name A-Z</option>
                         <option value={'name desc'}>Name Z-A</option>
                         <option value={'price asc'}>Price asc.</option>
