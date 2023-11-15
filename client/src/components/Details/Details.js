@@ -8,6 +8,9 @@ import { Controlls } from "./Controlls";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { Spinner } from "../Spinner/Spinner";
 import { mockDelay } from "../../utils/mockDelay";
+import { ReviewCardWrapper, ReviewHeading, Reviews } from "../../styles/Details/Reviews.styled";
+import { ReviewModal } from "./ReviewModal";
+import { ReviewCard } from "./ReviewCard";
 
 export const Details = () => {
 
@@ -16,6 +19,7 @@ export const Details = () => {
     const [property, setProperty] = useState({});
     const { user } = useUserContext();
     const [isLoading, setIsLoading] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -26,14 +30,31 @@ export const Details = () => {
                     () => setProperty(res),
                     () => setIsLoading(false)
                 );
+                setProperty(res);
+                setIsLoading(false);
             }).catch(err => {
                 alert(err);
                 setIsLoading(false);
             });
     }, [id, properties]);
 
+    const onShowModal = (e) => {
+        e.preventDefault();
+        setShowModal(true);
+    };
+
+    const onCloseModal = () => {
+        setShowModal(false);
+    };
+
     const isOwner = user._id === property._ownerId;
     const created = formatDate(property.createdAt, 'details');
+
+    if (showModal) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 
     return (
         <StyledDetails>
@@ -63,6 +84,28 @@ export const Details = () => {
                     </DetailsInfoWrapper>
                 </DetailsCard >
             }
+
+            {showModal && <ReviewModal
+                onCloseModal={onCloseModal}
+            />}
+
+            <Reviews>
+                <ReviewHeading>
+                    <h1>Reviews</h1>
+                    {!isOwner && !hasReviewed &&
+                        <button onClick={onShowModal}>Add Review</button>
+                    }
+                </ReviewHeading>
+
+                {property.reviews?.length > 0
+                    ? <ReviewCardWrapper>
+                        {property.reviews.map((r, i) => <ReviewCard review={r} key={i} />)}
+                    </ReviewCardWrapper>
+                    : <h2>
+                        There aren't any reviews for this post yet
+                    </h2>
+                }
+            </Reviews>
         </StyledDetails >
     );
 
