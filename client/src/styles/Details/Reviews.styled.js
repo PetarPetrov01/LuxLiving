@@ -36,3 +36,32 @@ export const ReviewCardWrapper = styled.div`
     background-color: rgb(255,255,255,0.5);
     `;
 
+export const ReviewStyledCard = styled.div`
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 100%;
+    min-height: 80px;
+    padding: 15px;
+    border-bottom: 1px solid rgb(55, 82, 135);
+
+    h4{
+        margin-bottom: 0;
+        margin-top: 10px;
+    }
+    
+    h3, p{
+        margin-bottom: 2px;
+        margin-top: 10px;
+    }
+    `;
+
+export const ReviewCreatorInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    padding: 0px 10px;
+    border-bottom: 2px solid rgb(55, 82, 135);
+`;
