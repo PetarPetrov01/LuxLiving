@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useDelayedSearch = (value, delay = 700) => {
+export const useDelayedSearch = (value, delay = 600) => {
     const [delayedSearch, setDelaydSearch] = useState(value);
 
     useEffect(() => {

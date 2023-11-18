@@ -89,6 +89,7 @@ export const PropertyProvider = ({ children }) => {
     };
 
     const onCreateReview = async (id, data) => {
+        setIsLoading(true);
         try {
             const { newRating, review } = await propertyService.createReview(id, data);
 
@@ -103,8 +104,10 @@ export const PropertyProvider = ({ children }) => {
                     } : prop;
             }));
             redirect(`/catalog/${id}/details`);
+            setIsLoading(false);
         } catch (error) {
             setErrors(error);
+            setIsLoading(false);
         }
     };
 

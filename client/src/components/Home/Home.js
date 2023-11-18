@@ -4,7 +4,6 @@ import { propertyService } from "../../services/propertiesService";
 import { HomeCard } from "./HomeCard";
 import { useUserContext } from "../../contexts/UserContext";
 import { Spinner } from "../Spinner/Spinner";
-import { mockDelay } from "../../utils/mockDelay";
 
 export const Home = () => {
     const { user } = useUserContext();
@@ -15,11 +14,8 @@ export const Home = () => {
         setIsLoading(true);
         propertyService.getLatest()
             .then(result => {
-                //Mock delay
-                mockDelay(1000,
-                    () => setLatestProperties(result.data),
-                    () => setIsLoading(false)
-                );
+                setLatestProperties(result.data);
+                setIsLoading(false);
             }).catch(err => {
                 alert(err);
                 setIsLoading(false);
