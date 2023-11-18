@@ -4,9 +4,10 @@ import { StyledForm, StyledInput, InputWrapper, StyledTextArea } from "../../sty
 import { useParams } from "react-router-dom";
 import { propertyService } from "../../services/propertiesService";
 import { usePropertyValidator } from "../../hooks/usePropertyValidator";
+import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Edit = () => {
-    const { onEditHandler } = usePropertyContext();
+    const { onEditHandler, errors: serverErrors } = usePropertyContext();
 
     const { id } = useParams();
     const { errors, validateForm } = usePropertyValidator({});
@@ -53,6 +54,8 @@ export const Edit = () => {
 
     return (
         <StyledForm onSubmit={handleSubmit}>
+            {serverErrors ? <ErrorBox errors={errors} /> : null}
+
             <h1>Edit property</h1>
             <InputWrapper>
                 <StyledInput

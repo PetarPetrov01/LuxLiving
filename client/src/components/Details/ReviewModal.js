@@ -4,6 +4,7 @@ import { Rate } from "./Rate";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { useParams } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
+import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 const rateScale = [
     'Poor',
@@ -15,13 +16,14 @@ const rateScale = [
 
 export const ReviewModal = ({
     onCloseModal,
-    }) => {
+}) => {
     const { onCreateReview } = usePropertyContext();
     const { user: { _id: userId } } = useUserContext();
 
     const [rating, setRating] = useState(null);
     const [hoverRating, setHoverRating] = useState(null);
     const [review, setReview] = useState('');
+    const [error, setError] = useState(null);
 
     const { id } = useParams();
 
@@ -43,12 +45,13 @@ export const ReviewModal = ({
             onCreateReview(id, { rating, content: review, userId });
             onCloseModal();
         } catch (error) {
-            alert(error);
+            setError(error.message);
         }
     };
 
     return (
         <Modal>
+            {error ? <ErrorBox errors={error} /> : null}
             <ReviewWrapper>
                 <ReviewForm onSubmit={handleReviewSubmit}>
 

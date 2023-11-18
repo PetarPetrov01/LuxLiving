@@ -8,18 +8,16 @@ export const ErrorBox = ({ errors }) => {
 
     useEffect(() => {
         setVisible(true);
-        console.log('IN useffect??');
         const timeout = setTimeout(() => {
-            console.log('Deleting..');
             setVisible(false);
         }, 4000);
 
         return () => clearTimeout(timeout);
     }, [errors]);
 
-    return (visible
-        ? <ErrorContainer>
-            {errors.split('\n').map(err => <p>{err}</p>)}
+    return (visible ?
+        <ErrorContainer>
+            {errors.split('\n').map((err, i) => <p key={i}>{err}</p>)}
         </ErrorContainer>
         : null
     );
