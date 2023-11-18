@@ -119,5 +119,5 @@ export const SubmitReviewBtn = styled.button`
     
     &:hover{
         background-color: rgba(53, 125, 200, 0.8);
-    }
+        }
 `;

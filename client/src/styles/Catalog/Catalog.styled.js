@@ -64,7 +64,8 @@ export const ImageWrapper = styled.div`
     a:hover img{
         opacity: 0.8;
         border: 4px solid rgba(217, 191, 113,0.8);
-        box-shadow: 0 0 20px rgba(203, 179, 106,0.8);
+        box-shadow: 0 0 12px rgba(217, 191, 113,0.8);
+        /* box-shadow: 0 0 8px rgba(203, 179, 106,0.8); */
     }
 
     @media (max-width: 768px){

@@ -20,11 +20,24 @@ export const ReviewHeading = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    border-bottom: 2px solid rgb(55, 82, 135);
-    button{
-        height: 25px;
-    }
+    border-bottom: 1px solid rgb(55, 82, 135);
+    `;
+
+export const AddReviewBtn = styled.button`
+    background: rgba(55, 82, 135,0.7);
+    border: 1px solid rgba(53, 125, 200, 0.8);
+    border-radius: 20px;
+    padding: 4px 10px;
+    text-decoration:none;
+    font-size: 1.2em;
+    transition: all 0.3s;
+    color: white;
+    cursor: pointer;
+
+    &:hover{
+        background-color: rgba(53, 125, 200, 0.8);
+        box-shadow: 0 0 3px rgb(53, 125, 200);
+    }   
 `;
 
 export const ReviewCardWrapper = styled.div`
