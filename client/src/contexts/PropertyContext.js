@@ -45,6 +45,7 @@ export const PropertyProvider = ({ children }) => {
             setProperties(state => ([property, ...state]));
             navigate('/catalog');
         } catch (error) {
+            setErrors(error);
         }
     };
 
@@ -81,10 +82,29 @@ export const PropertyProvider = ({ children }) => {
                         price: Number(newProperty.price)
                     } : prop;
             }));
-
             redirect(`/catalog/${id}/details`);
         } catch (error) {
-            alert(error);
+            setErrors(error);
+        }
+    };
+
+    const onCreateReview = async (id, data) => {
+        try {
+            const { newRating, review } = await propertyService.createReview(id, data);
+
+            setProperties(prevProps => prevProps.map(prop => {
+                return prop._id === id
+                    ? {
+                        ...prop,
+                        rating: Number(newRating),
+                        reviews: prop.reviews.length > 0
+                            ? [...prop.reviews, review]
+                            : [review]
+                    } : prop;
+            }));
+            redirect(`/catalog/${id}/details`);
+        } catch (error) {
+            setErrors(error);
         }
     };
 
@@ -96,8 +116,11 @@ export const PropertyProvider = ({ children }) => {
         onEditHandler,
         onDeleteHandler,
         onBidHandler,
+        onCreateReview,
         onParamsChange,
-        isLoading
+        isLoading,
+        setErrors,
+        errors
     };
     return (
 
