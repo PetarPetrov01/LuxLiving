@@ -29,15 +29,18 @@ export const ProfileCard = ({
                     <p><span>Property description:</span> {description}</p>
                 </ProfileDetails>
 
-                {_ownerId === userId
-                    ? <ProfileControlls>
-                        <ProfileLink to={`/catalog/${_id}/edit`}> Edit</ProfileLink>
-                        <ProfileLink onClick={(e) => onDeleteHandler(e, _id)}>Delete</ProfileLink>
-                    </ProfileControlls>
-                    : null}
+                <ProfileControlls>
+                    < ProfileLink to={`/catalog/${_id}/details`}>Details</ProfileLink>
+                    {_ownerId === userId
+                        ? <>
+                            <ProfileLink to={`/catalog/${_id}/edit`}> Edit</ProfileLink>
+                            <ProfileLink onClick={(e) => onDeleteHandler(e, _id)}>Delete</ProfileLink>
+                        </>
+                        : null}
+                </ProfileControlls>
 
 
-            </ProfileInfoWrapper>
-        </ProfileStyledCard>
+            </ProfileInfoWrapper >
+        </ProfileStyledCard >
     );
 };
