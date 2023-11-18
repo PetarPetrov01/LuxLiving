@@ -34,6 +34,11 @@ export const Catalog = () => {
         setQueryParams(prevQ => {
             prevQ.set('search', e.target.value);
             prevQ.set('page', 1);
+            // const timeout = setTimeout(() => {
+            //     console.log('timeoutRun');
+            //     onParamsChange({ search: delayedSearch, sort, page, limit });
+            // }, 700);
+
             return prevQ;
         });
     };

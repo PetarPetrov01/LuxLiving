@@ -2,9 +2,10 @@ import { InputWrapper, StyledForm, StyledInput, StyledTextArea } from "../../sty
 import { useForm } from "../../hooks/useForm";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { usePropertyValidator } from "../../hooks/usePropertyValidator";
+import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Create = () => {
-    const { onCreateHandler } = usePropertyContext();
+    const { onCreateHandler, errors: serverErrors } = usePropertyContext();
 
     const { errors, validateForm } = usePropertyValidator({});
     const { formValues, onChangeHandler } = useForm({
@@ -31,6 +32,7 @@ export const Create = () => {
     return (
         <StyledForm onSubmit={handleSubmit}>
             <h1>Lend property</h1>
+            {serverErrors ? <ErrorBox errors={errors} /> : null}
 
             <InputWrapper>
                 <StyledInput

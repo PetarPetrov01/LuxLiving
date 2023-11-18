@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyledBidForm, BidInput, BidButton } from "../../styles/Details/Controlls.styled";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { useUserContext } from "../../contexts/UserContext";
+import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const BidForm = ({
     previousPrice,
@@ -10,6 +11,7 @@ export const BidForm = ({
     const { user: { _id: userId } } = useUserContext();
     const { onBidHandler } = usePropertyContext();
     const [amount, setAmount] = useState(0);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         if (previousPrice !== undefined) {
@@ -25,7 +27,7 @@ export const BidForm = ({
         e.preventDefault();
 
         if (amount <= previousPrice) {
-            alert('You can\'t bid less than the current amount!');
+            setError('You can\'t bid less than the current amount!');
             setAmount(previousPrice);
         } else {
             onBidHandler(_id, userId, amount);
@@ -35,6 +37,7 @@ export const BidForm = ({
     return (
         <>
             <StyledBidForm onSubmit={onSubmitHandler} >
+                {error ? <ErrorBox errors={error} /> : null}
                 <BidInput
                     className="bid-input"
                     type="number"
