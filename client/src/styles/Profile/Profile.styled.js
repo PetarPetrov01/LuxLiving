@@ -21,6 +21,21 @@ export const ProfileContainer = styled.div`
     }
 `;
 
+export const ProfileSelectWrapper = styled.div`
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+
+    select{
+        border-radius: 20px;
+        height: 30px;
+        font-size: 1.4em;
+        padding: 2px 10px;
+    }
+`;
+
 export const PropertiesWrapper = styled.div`
     display: flex;
     flex-direction: column;
