@@ -40,3 +40,72 @@ export const ReviewStyledCard = styled.div`
     }
 `;
 
+export const ReviewLinkWrapper = styled.div`
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    bottom: calc(100% + 5px);
+    width: 100%;
+    height:100%;
+    opacity: 0;
+    box-sizing: border-box;
+    border: 2px solid rgba(55, 82, 135,0.3);
+    border-radius:10px;
+    color: rgb(40, 60, 99);
+
+    //background-color: rgba(203, 179, 106,0.7);
+    background-color: rgba(190,210,230,0.8); 
+    transition: opacity 0.5s;
+    &:hover{
+        opacity: 1;  
+    }
+`;
+
+export const OwnReviewPropertyInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    h2,h3{
+        margin: 0;
+    }
+`;
+
+
+export const ReviewImageWrapper = styled.div`
+    box-sizing: border-box;
+    width: 90%;
+    height: 190px;
+    border-radius: 10px;
+    
+    img{
+        box-sizing: border-box;
+        border: 2px solid rgba(55, 82, 135,0.8); 
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+`;
+
+export const OwnReviewCreatorInfo = styled(ReviewCreatorInfo)`
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    h4{
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+`;
+
+export const PostLink = styled(StyledAnchor)`
+    font-size: 1em;
+    padding: 0 10px;
+`;
+
