@@ -5,7 +5,7 @@ export const Spinner = () => {
 
     return (
         <StyledSpinnerWrapper>
-            <SpinnerLogo src="/images/spinner-logo.png"/>
+            <SpinnerLogo src="/images/spinner-logo.png" loading="eager"/>
             <StyledSpinner />
         </StyledSpinnerWrapper>
     );
