@@ -96,7 +96,7 @@ export const Details = () => {
                     <Reviews>
                         <ReviewHeading>
                             <h1>Reviews</h1>
-                            {!isOwner && !hasReviewed &&
+                            {user._id && !isOwner && !hasReviewed &&
                                 <AddReviewBtn onClick={onShowModal}>Add Review</AddReviewBtn>
                             }
                         </ReviewHeading>

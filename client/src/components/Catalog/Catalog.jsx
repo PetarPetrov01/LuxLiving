@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { ControlsWrapper, SearchForm, StyledCatalog, StyledSelect, SortWrapper } from "../../styles/Catalog/Catalog.styled";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { useDelayedSearch } from "../../hooks/useDelayedSearch";
+
 import { CatalogCard } from "./CatalogCard";
 import { Spinner } from "../Spinner/Spinner";
 import { Pagination } from "./Pagination";
+
+import { ControlsWrapper, SearchForm, StyledCatalog, StyledSelect, SortWrapper } from "../../styles/Catalog/Catalog.styled";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Catalog = () => {

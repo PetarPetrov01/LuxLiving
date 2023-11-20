@@ -8,7 +8,7 @@ export const Header = () => {
     return (
         <StyledHeader>
             <LogoLink style={{}} to={'/'}>
-                <Logo src="/images/logo4.png" alt="Logo" />
+                <Logo src="/images/logo.png" alt="Logo" />
             </LogoLink>
             <Nav>
                 <div>
