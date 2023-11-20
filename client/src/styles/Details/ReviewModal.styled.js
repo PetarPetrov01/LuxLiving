@@ -34,7 +34,7 @@ export const ReviewWrapper = styled.div`
     height: 70%;
     border-radius: 20px;
     padding: 10px;
-    background-color: rgba(255,255,255,0.8);
+    background-color: ${props=>props.theme.white(0.8)};
 
     @media (max-width: 768px){
         width: 90%;
@@ -51,7 +51,7 @@ export const ReviewForm = styled.form`
     width: 95%;
     gap: 20px;
     font-size: 1.2em;
-    color:rgb(40, 60, 99);
+    color: ${props=>props.theme.mainBlue()};
 
     h1{
         margin-top: 0;
@@ -75,7 +75,7 @@ export const RatingContainer = styled.div`
 
     span{
         margin-right: 10px;
-        color: rgb(40, 60, 99);
+        color: ${props=>props.theme.mainBlue()};
     }
 
     select{
@@ -99,7 +99,7 @@ export const StyledTextArea = styled.textarea`
     min-height: 80px;
     max-height: 200px;
     width: 100%;
-    border: 1px solid rgb(40, 60, 99);
+    border: 1px solid ${props=>props.theme.mainBlue()};
     border-radius: 10px;
     outline: none;
     padding: 4px;

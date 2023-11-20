@@ -10,9 +10,9 @@ export const Reviews = styled.div`
     width: 85%;
     max-width: 800px;
     border-radius: 15px;
-    background: rgba(255,255,255,0.7);
-    box-shadow: 0 0 10px rgba(255,255,255,0.7);
-    color: rgb(40, 60, 99);
+    background: ${props=>props.theme.white(0.7)};
+    box-shadow: 0 0 10px ${props=>props.theme.white(0.7)};
+    color: ${props=>props.theme.mainBlue()};
 `;
 
 export const ReviewHeading = styled.div`
@@ -46,7 +46,7 @@ export const ReviewCardWrapper = styled.div`
     align-items: center;
     width: 90%;
     border: 1px solid rgb(55, 82, 135);
-    background-color: rgb(255,255,255,0.5);
+    background-color: ${props=>props.theme.white(0.5)};
     `;
 
 export const ReviewStyledCard = styled.div`

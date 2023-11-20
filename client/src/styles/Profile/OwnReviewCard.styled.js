@@ -22,10 +22,10 @@ export const ReviewWrapper = styled.div`
 export const ReviewStyledCard = styled.div`
     width: 40%;
     min-height: 350px;
-    background-color: rgba(255,255,255,0.8);
+    background-color: ${props => props.theme.white(0.8)};
     padding: 5px 10px;
     border-radius: 10px;
-    color: rgb(40, 60, 99);
+    color: ${props => props.theme.mainBlue()};
     font-size: 1.1em;
 
     h3{
@@ -53,9 +53,8 @@ export const ReviewLinkWrapper = styled.div`
     box-sizing: border-box;
     border: 2px solid rgba(55, 82, 135,0.3);
     border-radius:10px;
-    color: rgb(40, 60, 99);
+    color: ${props => props.theme.mainBlue()};
 
-    //background-color: rgba(203, 179, 106,0.7);
     background-color: rgba(190,210,230,0.8); 
     transition: opacity 0.5s;
     &:hover{
@@ -96,6 +95,7 @@ export const OwnReviewCreatorInfo = styled(ReviewCreatorInfo)`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: none;
 
 
     h4{
@@ -107,5 +107,6 @@ export const OwnReviewCreatorInfo = styled(ReviewCreatorInfo)`
 export const PostLink = styled(StyledAnchor)`
     font-size: 1em;
     padding: 0 10px;
+    min-width: 95px;
 `;
 

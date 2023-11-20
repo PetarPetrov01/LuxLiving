@@ -43,20 +43,21 @@ export const PagesWrapper = styled.div`
     justify-content: space-around;
     gap: 5px;
     align-items:center;
-    background-color: rgba(255,255,255,0.6);
+    background-color: ${props=>props.theme.white(0.6)};
     border-radius: 20px;
-    color: rgb(40, 60, 99);   
+    /* color: rgb(40, 60, 99);    */
+    color: ${props=>props.theme.mainBlue()};  
 `;
 
 export const PageButton = styled.button`
     font-size: 1em;
     background: none;
     border: none;
-    color: rgb(40, 60, 99);
+    color: ${props=>props.theme.mainBlue()};
 
     &:hover{
         cursor: pointer;
-        color: rgb(203, 179, 106)
+        color: ${props=>props.theme.mainYellow()};
     }
 
     &:disabled {

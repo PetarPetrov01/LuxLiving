@@ -9,9 +9,8 @@ export const Styled404 = styled.div`
     padding: 20px 10px;
     width: max(60%,650px);
     min-height: 200px;
-     border-radius: 15px;
-    /*background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%);  */
-    background: rgba(255,255,255,0.3);
+    border-radius: 15px;
+    background: ${props=>props.theme.white(0.3)};
 
     @media(max-width: 768px){
         //height: 90vh;
@@ -32,7 +31,6 @@ export const NotFoundCard = styled.div`
 export const ImageWrapper404 = styled.div`
     width: 100%;
     border-radius:20px;
-    /* box-shadow: 0 0 30px rgba(255,255,255,0.7); */
     
     img{
         border-radius:20px;

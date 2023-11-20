@@ -1,4 +1,21 @@
-# Getting Started with Create React App
+# LuxLiving
+
+To get started, you need to clone the project repository to your local machine. Open your terminal and run the following command:
+
+```bash
+git clone https://github.com/PetarPetrov/LuxLiving.git
+```
+
+Navigate to the project directory. Once you are inside the project directory, install the dependencies by running:
+
+```bash
+npm install
+```
+
+After the installation is complete, you can start the client using:
+```bash
+npm start
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

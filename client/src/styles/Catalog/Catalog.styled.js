@@ -9,7 +9,7 @@ export const StyledCatalog = styled.div`
     width: max(75%,700px);
     min-height: 200px;
     border-radius: 20px;
-    background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%);
+    background: linear-gradient(45deg, ${props=>props.theme.mainBlue(0.6)} 0%, rgba(55, 82, 135,0.6)50%);
 
     @media (max-width:768px){
         width: 90%;
@@ -27,8 +27,8 @@ export const StyledCard = styled.div`
     height: max(18vw,200px);
     max-height: 270px;
     border-radius: 15px;
-    background: rgba(255,255,255,0.7);
-    box-shadow: 0px 0px 4px rgb(255,255,255);
+    background: ${props=>props.theme.white(0.7)};
+    box-shadow: 0px 0px 4px ${props=>props.theme.white()};
 
     @media (max-width: 768px) {
         max-height: none;
@@ -49,7 +49,7 @@ export const ImageWrapper = styled.div`
         padding: none;
         border: 4px solid rgba(55, 82, 135,0.8);
         object-fit: cover;
-        box-shadow: 0 0 5px rgb(40, 60, 99);
+        box-shadow: 0 0 5px ${props=>props.theme.mainBlue()};
         border-radius: 4px;
         width: calc(100% - 8px);
         height: calc(100% - 8px);
@@ -65,7 +65,6 @@ export const ImageWrapper = styled.div`
         opacity: 0.8;
         border: 4px solid rgba(217, 191, 113,0.8);
         box-shadow: 0 0 12px rgba(217, 191, 113,0.8);
-        /* box-shadow: 0 0 8px rgba(203, 179, 106,0.8); */
     }
 
     @media (max-width: 768px){
@@ -80,7 +79,7 @@ export const InfoContainer = styled.div`
     align-items: center;
     height: 100%;
     min-height: 100%;
-    color: rgb(40, 60, 99);
+    color: ${props => props.theme.mainBlue()};
     flex: 1;
     font-size: 1.1em;
 
