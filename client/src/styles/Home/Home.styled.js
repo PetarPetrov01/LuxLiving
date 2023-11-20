@@ -11,7 +11,7 @@ export const HomeWrapper = styled.div`
     width: 70%;
     min-height: 400px;
     border-radius: 15px;
-    background: rgba(40, 60, 99,0.8); 
+    background: ${props=>props.theme.mainBlue(0.8)}; 
     box-shadow: 0px 0px 16px rgb(206, 226, 248);
 
     & > p{
@@ -29,7 +29,7 @@ export const HeaderWrapper = styled.div`
     display:flex;
     justify-content: center;
     width: 80%;
-    border-top: 2px solid rgb(203, 179, 106);
+    border-top: 2px solid ${props=>props.theme.mainYellow()};
 
     & > h1 {
         font-size: 2em;
@@ -84,9 +84,8 @@ export const InfoWrapper = styled.div`
     height:100%;
     opacity: 0;
     border-radius:10px;
-    color: rgb(40, 60, 99);
+    color: ${props=>props.theme.mainBlue()};
 
-    //background-color: rgba(203, 179, 106,0.7);
      background-color: rgba(190,210,250,0.9); 
     transition: opacity 0.3s;
 
@@ -129,11 +128,11 @@ export const StyledAnchor = styled(Link)`
     border-radius: 10px;
     color: white;
     border-bottom: 2px solid white;
-    background: rgba(40, 60, 99,0.8); 
+    background: ${props=>props.theme.mainBlue(0.8)}; 
     transition: all 0.2s;
 
     &:hover{
-        background: rgba(40, 60, 99,0.6); 
+        background: ${props=>props.theme.mainBlue(0.6)}; 
     }
 `;
 
@@ -141,14 +140,14 @@ export const LinkWrapper = styled.div`
     display:flex;
     justify-content: center;
     width: 80%;
-    border-bottom: 2px solid rgb(203, 179, 106);
+    border-bottom: 2px solid ${props=>props.theme.mainYellow()};
 `;
 
 export const StyledLink = styled(Link)`
     display: inline-block;
     font-size: 1.7rem;
     font-weight: bold;
-    color: rgb(255,255,255);
+    color: ${props=>props.theme.white()};
     font-weight: 450;
     transition: all 450ms;
     padding: 0 10px;
@@ -156,7 +155,7 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
 
     &:hover{
-        color: rgb(203, 179, 106);
+        color: ${props=>props.theme.mainYellow()};
         transform: scale(1.1);
     }
 

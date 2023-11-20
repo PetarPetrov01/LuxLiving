@@ -12,7 +12,7 @@ export const ProfileContainer = styled.div`
     width: max(65%,650px);
     min-height: 200px;
     border-radius: 15px;
-    background: linear-gradient(45deg, rgba(40, 60, 99,0.6) 0%, rgba(55, 82, 135,0.6)50%); 
+    background: linear-gradient(45deg, ${props=>props.theme.mainBlue(0.6)} 0%, rgba(55, 82, 135,0.6)50%); 
 
     @media(max-width: 768px){
         
@@ -80,9 +80,8 @@ export const ProfileInfoWrapper = styled.div`
     height:100%;
     opacity: 0;
     border-radius:10px;
-    color: rgb(40, 60, 99);
+    color: ${props=>props.theme.mainBlue()};
 
-    //background-color: rgba(203, 179, 106,0.7);
     background-color: rgba(190,210,250,0.9); 
     transition: opacity 0.5s;
 

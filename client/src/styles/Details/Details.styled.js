@@ -25,8 +25,8 @@ export const DetailsCard = styled.div`
     width: 85%;
     max-width: 800px;
     border-radius: 15px;
-    background: rgba(255,255,255,0.7);
-    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+    background: ${props=>props.theme.white(0.7)};
+    box-shadow: 0 0 10px rgba${props=>props.theme.white(0.7)};
 
     @media (max-width: 768px) {
         max-height: none;
@@ -59,7 +59,7 @@ export const DetailsInfoWrapper = styled.div`
     align-items: center;
     width: 90%;
     min-height: 100%;
-    color: rgb(40, 60, 99);
+    color: ${props=>props.theme.mainBlue()};
     flex: 1;
     font-size: 1.1em;
     

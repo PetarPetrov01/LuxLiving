@@ -1,5 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
+export const theme = {
+    mainBlue: (alpha = 1) => `rgba(40, 60, 99,${alpha})`,
+    mainYellow: (alpha = 1) => `rgba(203, 179, 106,${alpha})`,
+    white: (alpha = 1) => `rgba(255,255,255,${alpha})`
+};
+
 export const GlobalStyle = createGlobalStyle`
     body{
         color: rgb(255, 255, 255);
@@ -31,12 +37,7 @@ export const GlobalStyle = createGlobalStyle`
         background: transparent;
     }
 
-    ::-webkit-scrollbar{
-        width: 10px;
-        background-color: black;
-    }
-
     * {
-        scrollbar-color: rgba(235,235,255,0.8) rgba(40, 60, 99,0.9);
+        scrollbar-color: rgba(235,235,255,0.8) ${props => props.theme.mainBlue(0.9)};
     }
 `;

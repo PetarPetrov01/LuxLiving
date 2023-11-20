@@ -19,10 +19,10 @@ export const Nav = styled.nav`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    border-bottom: 2px solid rgb(203, 179, 106);
+    border-bottom: 2px solid ${props=>props.theme.mainYellow()};
 
     .active{
-        color: rgb(203, 179, 106);
+        color: ${props=>props.theme.mainYellow()};
         transform: scale(1.1);
     }
 
@@ -41,7 +41,7 @@ export const StyledNavLink = styled(NavLink)`
     display: inline-block;
     font-size: 1.7rem;
     font-weight: bold;
-    color: rgb(255,255,255);
+    color: ${props=>props.theme.white()};
     font-weight: 450;
     transition: all 450ms;
     padding: 0 10px;
@@ -49,7 +49,7 @@ export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
 
     &:hover{
-        color: rgb(203, 179, 106);
+        color: ${props=>props.theme.mainYellow()};
         transform: scale(1.1);
     }
 
