@@ -5,6 +5,7 @@ async function getById(reviewId) {
     const review = Review.findById(reviewId);
     return review;
 }
+
 async function createReview(propId, userId, data) {
     const property = await Property.findById(propId).populate('reviews');
     if (userId == property._ownerId) {
@@ -17,6 +18,14 @@ async function createReview(propId, userId, data) {
     data._ownerId = userId;
     data._propertyId = propId;
     const review = await Review.create(data);
+
+    if (property.reviews.length > 0) {
+        const oldSum = property.reviews.reduce((acc, b) => acc + b.rating, 0);
+        const newRating = (oldSum + review.rating) / (property.reviews.length + 1);
+        property.rating = Number(newRating.toFixed(1));
+    } else {
+        property.rating = review.rating;
+    }
 
     property.reviews.push(review._id);
 
