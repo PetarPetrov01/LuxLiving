@@ -180,6 +180,36 @@ Each review object has the following structure:
   "_ownerId": "{id reffering to the user}",
   "createdAt": "{time of creation}",
   "updatedAt": "{time of last update}",
+    "_id": "some ID",
+    "name": "example name",
+    "location": "Town, Country",
+    "area": 120,
+    "imageUrl": "link to image",
+    "description": "Some description.",
+    "price": 600000,
+    "_ownerId": "owner ID",
+    "createdAt": "date of creation",
+    "updatedAt": "date of last update",
+    "rating": 4.5,
+    "currentBidder": {
+        "_id": "some ID",
+        "email": "example@email.com",
+    },
+    "reviews": [
+        {
+            "_id": "some ID",
+            "rating": 4,
+            "content": "Example review",
+            "_ownerId": {
+                "_id": "some ID",
+                "email": "exmaple@mail.com"
+            },
+            "_propertyId": "some ID",
+            "createdAt": "date of creation",
+            "updatedAt": "date of last update",
+            "__v": 0
+        }
+    ]
 }
 ```
 The "_ownerId" inside the review object is also populated (deep population). 
