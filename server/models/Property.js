@@ -38,6 +38,15 @@ const propertySchema = new Schema({
         type: Types.ObjectId,
         ref: 'User'
     },
+    rating: {
+        type : Number,
+        default: null
+    },
+    reviews: {
+        type: [Types.ObjectId],
+        ref: 'Review',
+        def: []
+    },
     _ownerId: {
         type: Types.ObjectId,
         ref: 'User'
