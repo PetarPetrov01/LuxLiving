@@ -1,4 +1,6 @@
 const { getById } = require('../services/propertyService');
+const reviewService = require('../services/reviewService');
+
 
 function preload() {
     return async (req, res, next) => {
@@ -11,4 +13,15 @@ function preload() {
     };
 }
 
-module.exports = preload;
+function reviewPreload() {
+    return async (req, res, next) => {
+        const reviewId = req.body.reviewId;
+
+        const review = await reviewService.getById(reviewId);
+        res.locals.review = review;
+
+        next();
+    };
+}
+
+module.exports = { preload, reviewPreload };
