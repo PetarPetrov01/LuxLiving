@@ -74,6 +74,25 @@ propertyController.post('/:id/bid', isUser(), async (req, res) => {
     } catch (error) {
         const message = errorParser(error);
         res.json({ message });
+        res.status(400).json({ message });
+    }
+});
+
+propertyController.post('/:id/review', isUser(), async (req, res) => {
+    try {
+        const data = {
+            content: req.body.content,
+            rating: req.body.rating
+        };
+
+        const review = await reviewService.createReview(req.params.id, req.body.userId, data);
+        res.json(review);
+    } catch (error) {
+        const message = errorParser(error);
+        res.status(400).json({ message });
+    }
+});
+
     }
 });
 
