@@ -5,6 +5,7 @@ import { usePropertyContext } from "../../contexts/PropertyContext";
 import { useParams } from "react-router-dom";
 import { useUserContext } from "../../contexts/UserContext";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
+import { Spinner } from "../Spinner/Spinner";
 
 const rateScale = [
     'Poor',
@@ -17,7 +18,7 @@ const rateScale = [
 export const ReviewModal = ({
     onCloseModal,
 }) => {
-    const { onCreateReview } = usePropertyContext();
+    const { onCreateReview, isLoading } = usePropertyContext();
     const { user: { _id: userId } } = useUserContext();
 
     const [rating, setRating] = useState(null);
@@ -42,6 +43,10 @@ export const ReviewModal = ({
             if (!rating || !review) {
                 throw new Error('You must provide rating and review content!');
             }
+            if(review.length <20 || review.length > 200){
+                throw new Error('The review content must be between 20 and 200 characters long')
+            }
+            
             onCreateReview(id, { rating, content: review, userId });
             onCloseModal();
         } catch (error) {
@@ -85,9 +90,11 @@ export const ReviewModal = ({
                         </StyledTextArea>
                     </ReviewContainer>
 
-                    <SubmitReviewBtn>
-                        Submit your Review
-                    </SubmitReviewBtn>
+                    {isLoading ? <Spinner></Spinner> :
+                        <SubmitReviewBtn>
+                            Submit your Review
+                        </SubmitReviewBtn>
+                    }
                 </ReviewForm>
             </ReviewWrapper>
         </Modal>
