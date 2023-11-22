@@ -11,8 +11,20 @@
 | - [Create](#create-property)
 | - [Edit](#edit-property)
 | - [Delete](#delete-property)
+| [Reviews](#rev)
 
 This document provides details about the REST API endpoints exposed by the Property Service. The service allows users to create their own profile,manage properties, place bids, create reviews and retrieve property information.
+
+## Getting started
+
+To get started, you need to change directory to /server and run:
+```bash
+npm start
+```
+
+When the server starts successfully, it outputs the following message to the console:
+'Connected to database
+Server started on 3030'
 
 ### Error Responses
 
@@ -170,16 +182,13 @@ GET /data/catalog?page=1&limit=3&search=house&sort=createdAt%20desc
 ```
 ### Get single property
 To get a single property send a `GET` request to `/data/catalog/{id}`, where _id_ is the server generated ID of the property. The server responds with an object representing the requested property. The object is in the same form as the object returned from the [Get all](#get-all-properties) request. The difference is that the "reviews" property is populated and sorted by date of creation (The newest reviews come first). 
-#### Review structure
-Each review object has the following structure:
+
+The "_ownerId" inside the review object is also populated (deep population). 
+Check the [review structure](#review-structure) for detailed information on the reviews.
+
+The whole object with all its populations looks like this:
 ```json
 {
-  "_id": "{generatedId}",
-  "rating": 3,
-  "content": "Seems like a good house, the location suits me right.",
-  "_ownerId": "{id reffering to the user}",
-  "createdAt": "{time of creation}",
-  "updatedAt": "{time of last update}",
     "_id": "some ID",
     "name": "example name",
     "location": "Town, Country",
@@ -212,7 +221,6 @@ Each review object has the following structure:
     ]
 }
 ```
-The "_ownerId" inside the review object is also populated (deep population). 
 
 ### Create property
 Creation of new property is done by sending an [authorized](#authorized-request) `POST` request to `/data/catalog`. Beside the authorization, the following header must be provided:
@@ -247,3 +255,21 @@ userId - The ID of the User
 price - The price of the placed bid
 ```
 Note that if the passed price is less than the current property price, the server will return an error. Otherwise, if everything is correct, the server returns a status code 204 - No Content.
+
+### Reviews 
+
+Every user can post a review on the properties (Except on his own posts).
+
+#### Review structure
+Each review object has the following structure:
+```json
+{
+  "_id": "{generatedId}",
+  "rating": "{Number between 1 and 5}",
+  "content": "{Review content}",
+  "_ownerId": "{id reffering to the user}",
+  "createdAt": "{time of creation}",
+  "updatedAt": "{time of last update}",
+}
+```
+If `_ownerId` is populated (Details and Profile page), it represents the values of the email and the id of the user who created the review.
