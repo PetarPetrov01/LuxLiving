@@ -1,4 +1,5 @@
 const Property = require('../models/Property');
+const Review = require('../models/Review');
 
 async function getAll(query) {
     let search = {};
@@ -21,10 +22,10 @@ async function getAll(query) {
     const page = parseInt(query.page) || 1;
     const limit = parseInt(query.limit) || 5;
     const propertiesCount = await Property.countDocuments(search);
-    const pageCount = Math.ceil(propertiesCount / limit);
+    const pageCount = Math.ceil(propertiesCount / limit) || 1;
 
-    if (page > pageCount || page < 1) {
-        throw new Error('This page does not exist!');
+    if (pageCount != 0 && page > pageCount || page < 1) {
+        throw new Error('This page does not exist');
     }
 
     properties = properties
@@ -44,7 +45,20 @@ async function getAll(query) {
 }
 
 async function getById(id) {
-    const prop = await Property.findById(id).populate('currentBidder');
+    const prop = await Property.findById(id)
+        .select('-__v')
+        .populate({
+            path: 'currentBidder',
+            select: '_id email'
+        })
+        .populate({
+            path: 'reviews',
+            populate: {
+                path: '_ownerId',
+                select: '_id email'
+            },
+            options: { sort: { createdAt: -1 } }
+        });
     return prop;
 }
 
@@ -97,7 +111,11 @@ async function deleteProperty(id) {
 async function getOwn(userId) {
     const ownPosts = await Property.find({ _ownerId: userId });
     const ownBids = await Property.find({ currentBidder: userId });
-    return { ownPosts, ownBids };
+    const ownReviews = await Review.find({ _ownerId: userId }).populate({
+        path: '_propertyId',
+        select: 'name location _id imageUrl'
+    });
+    return { ownPosts, ownBids, ownReviews };
 }
 
 module.exports = { getAll, getById, getByUserId, createProperty, updateProperty, bid, deleteProperty, getOwn };
