@@ -1,6 +1,7 @@
-const { isUser, isOwner } = require('../middlewares/guards');
-const preload = require('../middlewares/preload');
+const { isUser, isOwner, isReviewOwner } = require('../middlewares/guards');
+const { preload, reviewPreload } = require('../middlewares/preload');
 const propertyService = require('../services/propertyService');
+const reviewService = require('../services/reviewService');
 const { errorParser } = require('../util/parseError');
 
 const propertyController = require('express').Router();
@@ -63,7 +64,7 @@ propertyController.delete('/:id', isUser(), async (req, res) => {
         res.status(204).end();
     } catch (error) {
         const message = errorParser(error);
-        res.json({ message });
+        res.status(400).json({ message });
     }
 });
 
@@ -73,7 +74,6 @@ propertyController.post('/:id/bid', isUser(), async (req, res) => {
         res.status(204).end();
     } catch (error) {
         const message = errorParser(error);
-        res.json({ message });
         res.status(400).json({ message });
     }
 });
@@ -93,6 +93,13 @@ propertyController.post('/:id/review', isUser(), async (req, res) => {
     }
 });
 
+propertyController.delete('/:id/review', reviewPreload(), isReviewOwner(), async (req, res) => {
+    try {
+        const updatedProp = await reviewService.deleteReview(req.params.id, req.body.reviewId);
+        res.json(updatedProp);
+    } catch (error) {
+        const message = errorParser(error);
+        res.status(400).json({ message });
     }
 });
 
