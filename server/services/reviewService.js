@@ -37,7 +37,29 @@ async function createReview(propId, userId, data) {
 }
 
 async function deleteReview(propId, reviewId) {
+    const updatedProp = await Property.findByIdAndUpdate(propId,
+        {
+            $pull: { reviews: reviewId }
+        },
+        { new: true })
+        .populate('reviews');
+
+    const reviews = updatedProp.reviews;
+
+    if (reviews.length == 0) {
+        updatedProp.rating = null;
+    } else {
+        const ratingSum = reviews.reduce((acc, b) => acc + b.rating, 0);
+        const newRating = (ratingSum / reviews.length).toFixed(1);
+        updatedProp.rating = Number(newRating);
+    }
+
+    await Review.findByIdAndDelete(reviewId);
+    await updatedProp.save();
+
+    return updatedProp;
 }
+
 module.exports = {
     getById,
     createReview,
