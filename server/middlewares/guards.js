@@ -25,10 +25,22 @@ function isOwner() {
         if (res.locals.property._ownerId == userId) {
             next();
         } else {
-            res.status(401).json({message: 'You are not the owner of this post'});
+            res.status(401).json({ message: 'You are not the owner of this post' });
+        }
+    };
+}
+
+function isReviewOwner() {
+    return (req, res, next) => {
+        const userId = req.user?._id;
+
+        if (res.locals.review._ownerId == userId) {
+            next();
+        } else {
+            res.status(401).json({ message: 'You are not the owner of this review' });
         }
     };
 }
 
 
-module.exports = { isUser, isGuest, isOwner };
+module.exports = { isUser, isGuest, isOwner, isReviewOwner };
