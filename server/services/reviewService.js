@@ -57,11 +57,32 @@ async function deleteReview(propId, reviewId) {
     await Review.findByIdAndDelete(reviewId);
     await updatedProp.save();
 
-    return updatedProp;
+    return {
+        newRating: updatedProp.rating,
+        reviewId
+    };
+}
+
+async function editReview(propId, reviewId, data) {
+    const review = await Review.findById(reviewId);
+    const property = await Property.findById(propId).populate('reviews');
+
+    review.rating = data.rating;
+    review.content = data.content;
+
+
+    await property.save();
+    await review.save();
+
+    return {
+        newRating,
+        review
+    };
 }
 
 module.exports = {
     getById,
     createReview,
-    deleteReview
+    deleteReview,
+    editReview
 };
