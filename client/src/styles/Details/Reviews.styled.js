@@ -20,11 +20,11 @@ export const ReviewHeading = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(55, 82, 135);
+    border-bottom: 1px solid ${props=>props.theme.darkerBlue()};
     `;
 
 export const AddReviewBtn = styled.button`
-    background: rgba(55, 82, 135,0.7);
+    background: ${props=>props.theme.darkerBlue(0.7)};
     border: 1px solid rgba(53, 125, 200, 0.8);
     border-radius: 20px;
     padding: 4px 10px;
@@ -45,7 +45,7 @@ export const ReviewCardWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 90%;
-    border: 1px solid rgb(55, 82, 135);
+    border: 1px solid ${props=>props.theme.darkerBlue()};
     background-color: ${props=>props.theme.white(0.5)};
     `;
 
@@ -57,7 +57,7 @@ export const ReviewStyledCard = styled.div`
     width: 100%;
     min-height: 80px;
     padding: 15px;
-    border-bottom: 1px solid rgb(55, 82, 135);
+    border-bottom: 1px solid ${props=>props.theme.darkerBlue()};
 
     h4{
         margin-bottom: 0;
@@ -76,5 +76,5 @@ export const ReviewCreatorInfo = styled.div`
     align-items: center;
     width: fit-content;
     padding: 0px 10px;
-    border-bottom: 2px solid rgb(55, 82, 135);
+    border-bottom: 2px solid ${props=>props.theme.darkerBlue()};
 `;

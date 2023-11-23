@@ -12,7 +12,7 @@ export const ProfileContainer = styled.div`
     width: max(65%,650px);
     min-height: 200px;
     border-radius: 15px;
-    background: linear-gradient(45deg, ${props=>props.theme.mainBlue(0.6)} 0%, rgba(55, 82, 135,0.6)50%); 
+    background: linear-gradient(45deg, ${props=>props.theme.mainBlue(0.6)} 0%, ${props=>props.theme.darkerBlue(0.6)} 50%); 
 
     @media(max-width: 768px){
         

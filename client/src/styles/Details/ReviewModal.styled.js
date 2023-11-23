@@ -12,7 +12,7 @@ export const Modal = styled.div`
     height: 100vh;
     z-index: 1000;
     overflow: hidden;
-    background-color: rgba(55, 82, 135,0.7);
+    background-color: ${props => props.theme.darkerBlue(0.7)};
     `;
 
 export const CloseModalButton = styled.button`
@@ -34,7 +34,7 @@ export const ReviewWrapper = styled.div`
     height: 70%;
     border-radius: 20px;
     padding: 10px;
-    background-color: ${props=>props.theme.white(0.8)};
+    background-color: ${props => props.theme.white(0.8)};
 
     @media (max-width: 768px){
         width: 90%;
@@ -51,7 +51,7 @@ export const ReviewForm = styled.form`
     width: 95%;
     gap: 20px;
     font-size: 1.2em;
-    color: ${props=>props.theme.mainBlue()};
+    color: ${props => props.theme.mainBlue()};
 
     h1{
         margin-top: 0;
@@ -75,7 +75,7 @@ export const RatingContainer = styled.div`
 
     span{
         margin-right: 10px;
-        color: ${props=>props.theme.mainBlue()};
+        color: ${props => props.theme.mainBlue()};
     }
 
     select{
@@ -99,16 +99,23 @@ export const StyledTextArea = styled.textarea`
     min-height: 80px;
     max-height: 200px;
     width: 100%;
-    border: 1px solid ${props=>props.theme.mainBlue()};
+    border: 1px solid ${props => props.theme.mainBlue()};
     border-radius: 10px;
     outline: none;
     padding: 4px;
     `;
 
+export const ReviewControls = styled.div`
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+    `;
+
 export const SubmitReviewBtn = styled.button`
     height: 30px;
     padding: 0 10px;
-    background: rgba(55, 82, 135,0.7);
+    background: ${props => props.theme.darkerBlue(0.7)};
     border: none;
     border-radius:20px;
     text-decoration:none;
@@ -120,4 +127,10 @@ export const SubmitReviewBtn = styled.button`
     &:hover{
         background-color: rgba(53, 125, 200, 0.8);
         }
+`;
+
+export const DeleteReviewBtn = styled(SubmitReviewBtn)`
+    &:hover{
+        background-color: rgba(255, 80, 60, 0.8); 
+    }
 `;

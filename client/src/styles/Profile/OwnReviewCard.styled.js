@@ -51,7 +51,7 @@ export const ReviewLinkWrapper = styled.div`
     height:100%;
     opacity: 0;
     box-sizing: border-box;
-    border: 2px solid rgba(55, 82, 135,0.3);
+    border: 2px solid ${props=>props.theme.darkerBlue(0.3)};
     border-radius:10px;
     color: ${props => props.theme.mainBlue()};
 
@@ -81,7 +81,7 @@ export const ReviewImageWrapper = styled.div`
     
     img{
         box-sizing: border-box;
-        border: 2px solid rgba(55, 82, 135,0.8); 
+        border: 2px solid ${props=>props.theme.darkerBlue(0.8)}; 
         width: 100%;
         height: 100%;
         object-fit: cover;
