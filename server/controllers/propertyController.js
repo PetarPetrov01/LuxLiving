@@ -103,4 +103,20 @@ propertyController.delete('/:id/review', reviewPreload(), isReviewOwner(), async
     }
 });
 
+propertyController.put('/:id/review', reviewPreload(), isReviewOwner(), async (req, res) => {
+    try {
+
+        const data = {
+            content: req.body.content,
+            rating: req.body.rating
+        };
+
+        const review = await reviewService.editReview(req.params.id, req.body.reviewId, data);
+        res.json(review);
+    } catch (error) {
+        const message = errorParser(error);
+        res.status(400).json({ message });
+    }
+});
+
 module.exports = propertyController;
