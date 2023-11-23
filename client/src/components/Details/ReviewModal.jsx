@@ -54,6 +54,8 @@ export const ReviewModal = ({
         }
     };
 
+    const handleDeleteReview = (e) => {
+    };
     return (
         <Modal>
             {error ? <ErrorBox errors={error} /> : null}
@@ -94,6 +96,20 @@ export const ReviewModal = ({
                         <SubmitReviewBtn>
                             Submit your Review
                         </SubmitReviewBtn>
+                        <ReviewControls>
+                            <SubmitReviewBtn>
+                                {ownReview
+                                    ? 'Update Review'
+                                    : 'Submit your Review'
+                                }
+                            </SubmitReviewBtn>
+                            {ownReview &&
+                                <DeleteReviewBtn onClick={handleDeleteReview}>
+                                    Delete review
+                                </DeleteReviewBtn>
+                            }
+
+                        </ReviewControls>
                     }
                 </ReviewForm>
             </ReviewWrapper>
