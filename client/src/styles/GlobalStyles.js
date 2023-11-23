@@ -3,7 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 export const theme = {
     mainBlue: (alpha = 1) => `rgba(40, 60, 99,${alpha})`,
     mainYellow: (alpha = 1) => `rgba(203, 179, 106,${alpha})`,
-    white: (alpha = 1) => `rgba(255,255,255,${alpha})`
+    white: (alpha = 1) => `rgba(255,255,255,${alpha})`,
+    darkerBlue: (alpha = 1) => `rgba(55, 82, 135,${alpha})`
 };
 
 export const GlobalStyle = createGlobalStyle`

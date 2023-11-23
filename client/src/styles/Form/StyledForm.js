@@ -10,8 +10,8 @@ export const StyledForm = styled.form`
     padding: 40px 20px;
     margin: 20px auto 80px auto;
     border-radius: 15px;
-    background: rgba(55, 82, 135,0.8);
-    box-shadow: 0px 0px 16px rgb(55, 82, 135);
+    background: ${props=>props.theme.darkerBlue(0.8)};
+    box-shadow: 0px 0px 16px ${props=>props.theme.darkerBlue()};
 
     & > button{
         width: 40%;

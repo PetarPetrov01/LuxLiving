@@ -5,7 +5,7 @@ export const StyledHeader = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(90deg, rgba(40, 60, 99,0.9) 0%, rgba(55, 82, 135,0.9)50%);
+    background: linear-gradient(90deg, rgba(40, 60, 99,0.9) 0%, ${props=>props.theme.darkerBlue(0.9)} 50%);
     padding: 0;
     width: 100%;
     box-shadow: 0px 0px 10px rgb(138, 191, 234);

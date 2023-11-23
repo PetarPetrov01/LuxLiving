@@ -7,7 +7,7 @@ export const StyledFooter = styled.footer`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(90deg, ${props=>props.theme.mainBlue(0.9)} 0%, rgba(55, 82, 135,0.9)50%);
+    background: linear-gradient(90deg, ${props=>props.theme.mainBlue(0.9)} 0%, ${props=>props.theme.darkerBlue(0.9)} 50%);
     padding: 0;
     width: 100%;
     height: 40px;
