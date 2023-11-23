@@ -70,6 +70,16 @@ async function editReview(propId, reviewId, data) {
     review.rating = data.rating;
     review.content = data.content;
 
+    const ratingSum = property.reviews
+        .map(r => {
+            return r._id == reviewId
+                ? data.rating
+                : r.rating;
+        })
+        .reduce((acc, b) => acc + b, 0);
+
+    const newRating = (ratingSum / property.reviews.length).toFixed(1);
+    property.rating = Number(newRating);
 
     await property.save();
     await review.save();
