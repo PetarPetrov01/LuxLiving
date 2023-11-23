@@ -8,7 +8,7 @@ export const StyledDetails = styled.div`
     margin: 20px auto 60px auto;
     width: 70%;
     min-height: 200px;
-    background: rgba(55, 82, 135,0.8);
+    background: ${props=>props.theme.darkerBlue(0.8)};
     border-radius: 20px;
 
     @media  (max-width: 768px){
@@ -76,7 +76,7 @@ export const DetailsCardHeaders = styled.div`
     height: 30%;
     width: 90%;
 
-    border-bottom: 4px solid rgba(55, 82, 135,0.8);
+    border-bottom: 4px solid ${props=>props.theme.darkerBlue(0.8)};
     h1{
         margin: 5px 0 0 0;
     }

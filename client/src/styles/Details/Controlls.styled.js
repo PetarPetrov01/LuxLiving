@@ -26,7 +26,7 @@ export const OwnerControlls = styled.div`
 export const StyledAnchor = styled(Link)`
     width: 30%;
     height: 40px;
-    background: rgba(55, 82, 135,0.7);
+    background: ${props=>props.theme.darkerBlue(0.7)};
     border: none;
     border-radius: 20px;
     color: white;
@@ -68,7 +68,7 @@ export const BidButton = styled.button`
     height: 100%;
     width: 38%; 
     padding: 0;
-    background: rgba(55, 82, 135,0.7);
+    background: ${props=>props.theme.darkerBlue(0.7)};
     border: none;
     border-radius: 0 20px 20px 0;
     text-decoration:none;
