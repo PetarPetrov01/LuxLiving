@@ -52,8 +52,12 @@ const createReview = async (propId, data) => {
     return await api.post(`${baseUrl}/${propId}/review`, data);
 };
 
+const editReview = async (propId, data) => {
+    return await api.put(`${baseUrl}/${propId}/review`, data);
+};
+
 const deleteReview = async (propId, reviewId) => {
-    return await api.del(`${baseUrl}/${propId}/review`, {reviewId});
+    return await api.del(`${baseUrl}/${propId}/review`, { reviewId });
 }
 
 export const propertyService = {
@@ -66,5 +70,6 @@ export const propertyService = {
     delete: deleteById,
     bid,
     createReview,
+    editReview,
     deleteReview
 };
