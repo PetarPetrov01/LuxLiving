@@ -24,7 +24,7 @@ export const ReviewModal = ({
     onCloseModal,
     ownReview
 }) => {
-    const { onCreateReview, onDeleteReview, isLoading } = usePropertyContext();
+    const { onCreateReview, onDeleteReview, onEditReview, isLoading } = usePropertyContext();
     const { user: { _id: userId } } = useUserContext();
 
     const [rating, setRating] = useState(ownReview?.rating || null);
@@ -54,7 +54,7 @@ export const ReviewModal = ({
             }
 
             if (ownReview) {
-                //Handle edit Review
+                onEditReview(id, { rating, content: review, reviewId: ownReview._id });
                 console.log('editing review')
             } else {
                 onCreateReview(id, { rating, content: review, userId });

@@ -2,7 +2,6 @@ import { createContext, useCallback, useContext, useEffect, useState } from "rea
 import { redirect, useNavigate } from "react-router-dom";
 
 import { propertyService } from "../services/propertiesService";
-// import { mockDelay } from "../utils/mockDelay";
 
 export const PropertyContext = createContext();
 
@@ -91,7 +90,7 @@ export const PropertyProvider = ({ children }) => {
     const onCreateReview = async (id, data) => {
         setIsLoading(true);
         try {
-            const { newRating, review } = await propertyService.createReview(id, data);
+            const { newRating, review: { _id: reviewId } } = await propertyService.createReview(id, data);
 
             setProperties(prevProps => prevProps.map(prop => {
                 return prop._id === id
@@ -99,8 +98,8 @@ export const PropertyProvider = ({ children }) => {
                         ...prop,
                         rating: Number(newRating),
                         reviews: prop.reviews.length > 0
-                            ? [...prop.reviews, review]
-                            : [review]
+                            ? [...prop.reviews, reviewId]
+                            : [reviewId]
                     } : prop;
             }));
             redirect(`/catalog/${id}/details`);
@@ -111,13 +110,29 @@ export const PropertyProvider = ({ children }) => {
         }
     };
 
+    const onEditReview = async (propId, data) => {
+        setIsLoading();
+        try {
+            const { newRating, review: { _id: reviewId } } = await propertyService.editReview(propId, data);
+
+            setProperties(prevProps => prevProps.map(prop => {
+                return prop._id === propId
+                ? {
+                    ...prop,
+                    rating: Number(newRating)
+                } : prop;
+
+            }));
+        } catch (error) {
+            setErrors(error);
+            setIsLoading(false);
+        }
+    }
+
     const onDeleteReview = async (propId, reviewId) => {
         setIsLoading(true);
         try {
             const { newRating } = propertyService.deleteReview(propId, reviewId);
-
-            console.log(newRating)
-            console.log(reviewId)
 
             setProperties(prevProps => prevProps.map(prop => {
                 return prop._id === propId ?
@@ -143,6 +158,7 @@ export const PropertyProvider = ({ children }) => {
         onBidHandler,
         onParamsChange,
         onCreateReview,
+        onEditReview,
         onDeleteReview,
         isLoading,
         setErrors,
