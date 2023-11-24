@@ -55,7 +55,16 @@ export const ReviewModal = ({
     };
 
     const handleDeleteReview = (e) => {
+        e.preventDefault();
+
+        try {
+            onDeleteReview(id, ownReview._id)
+            onCloseModal()
+        } catch (error) {
+            setError(error.message)
+        }
     };
+
     return (
         <Modal>
             {error ? <ErrorBox errors={error} /> : null}
