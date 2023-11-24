@@ -14,7 +14,6 @@ import { ErrorBox } from "../ErrorBox/ErrorBox";
 export const Catalog = () => {
 
     const { properties, pages, onParamsChange, isLoading, errors } = usePropertyContext();
-
     const [queryParams, setQueryParams] = useSearchParams({
         page: '1',
         limit: '3',
@@ -22,12 +21,11 @@ export const Catalog = () => {
         sort: 'createdAt desc',
     }, { replace: true });
 
-    const page = parseInt(queryParams.get('page'));
-    const limit = queryParams.get('limit');
-    const search = queryParams.get('search');
-    const sort = queryParams.get('sort');
+    const page = parseInt(queryParams.get('page') || 1);
+    const limit = queryParams.get('limit') || 3;
+    const search = queryParams.get('search') || '';
+    const sort = queryParams.get('sort') || '';
     const delayedSearch = useDelayedSearch(search);
-
     useEffect(() => {
         onParamsChange({ search: delayedSearch, sort, page, limit });
     }, [delayedSearch, sort, onParamsChange, page, limit]);

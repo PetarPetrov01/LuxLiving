@@ -1,16 +1,18 @@
-import { useParams } from "react-router-dom";
-import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, DetailsInfoWrapper, StyledDetails } from "../../styles/Details/Details.styled";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import { propertyService } from "../../services/propertiesService";
 import { useUserContext } from "../../contexts/UserContext";
 import { formatDate } from "../../utils/dateFormatter";
 import { Controlls } from "./Controlls";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { Spinner } from "../Spinner/Spinner";
-import { AddReviewBtn, ReviewCardWrapper, ReviewHeading, Reviews } from "../../styles/Details/Reviews.styled";
 import { ReviewModal } from "./ReviewModal";
 import { ReviewCard } from "./ReviewCard";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
+
+import { AddReviewBtn, ReviewCardWrapper, ReviewHeading, Reviews } from "../../styles/Details/Reviews.styled";
+import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, DetailsInfoWrapper, StyledDetails } from "../../styles/Details/Details.styled";
 
 export const Details = () => {
 
@@ -44,6 +46,9 @@ export const Details = () => {
 
     const isOwner = user._id === property._ownerId;
     const hasReviewed = property.reviews?.some(r => r._ownerId._id === user._id);
+    const ownReview = hasReviewed
+        ? property.reviews.find(r => r._ownerId._id === user._id)
+        : null
     const created = formatDate(property.createdAt, 'details');
 
     if (showModal) {
@@ -91,13 +96,14 @@ export const Details = () => {
 
                     {showModal && <ReviewModal
                         onCloseModal={onCloseModal}
+                        ownReview={ownReview}
                     />}
 
                     <Reviews>
                         <ReviewHeading>
                             <h1>Reviews</h1>
-                            {user._id && !isOwner && !hasReviewed &&
-                                <AddReviewBtn onClick={onShowModal}>Add Review</AddReviewBtn>
+                            {user._id && !isOwner &&
+                                <AddReviewBtn onClick={onShowModal}>{hasReviewed ? 'Edit your review' : 'Add review'}</AddReviewBtn>
                             }
                         </ReviewHeading>
 
