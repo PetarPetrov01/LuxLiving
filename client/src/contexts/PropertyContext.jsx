@@ -111,6 +111,28 @@ export const PropertyProvider = ({ children }) => {
         }
     };
 
+    const onDeleteReview = async (propId, reviewId) => {
+        setIsLoading(true);
+        try {
+            const { newRating } = propertyService.deleteReview(propId, reviewId);
+
+            console.log(newRating)
+            console.log(reviewId)
+
+            setProperties(prevProps => prevProps.map(prop => {
+                return prop._id === propId ?
+                    {
+                        ...prop,
+                        rating: Number(newRating),
+                        reviews: prop.reviews.filter(r => r !== reviewId)
+                    } : prop;
+            }))
+        } catch (error) {
+            setErrors(error);
+            setIsLoading(false);
+        }
+    }
+
     const context = {
         properties,
         pages,
@@ -119,8 +141,9 @@ export const PropertyProvider = ({ children }) => {
         onEditHandler,
         onDeleteHandler,
         onBidHandler,
-        onCreateReview,
         onParamsChange,
+        onCreateReview,
+        onDeleteReview,
         isLoading,
         setErrors,
         errors
