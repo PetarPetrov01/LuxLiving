@@ -1,11 +1,16 @@
 import { useCallback, useState } from "react";
-import { Modal, RatingContainer, ReviewForm, ReviewWrapper, StyledTextArea, SubmitReviewBtn, CloseModalButton, ReviewContainer } from "../../styles/Details/ReviewModal.styled";
-import { Rate } from "./Rate";
-import { usePropertyContext } from "../../contexts/PropertyContext";
 import { useParams } from "react-router-dom";
+
 import { useUserContext } from "../../contexts/UserContext";
+import { usePropertyContext } from "../../contexts/PropertyContext";
+import { Rate } from "./Rate";
+
 import { ErrorBox } from "../ErrorBox/ErrorBox";
 import { Spinner } from "../Spinner/Spinner";
+import {
+    Modal, RatingContainer, ReviewForm, ReviewWrapper, StyledTextArea,
+    SubmitReviewBtn, CloseModalButton, ReviewContainer, ReviewControls, DeleteReviewBtn
+} from "../../styles/Details/ReviewModal.styled";
 
 const rateScale = [
     'Poor',
@@ -17,13 +22,14 @@ const rateScale = [
 
 export const ReviewModal = ({
     onCloseModal,
+    ownReview
 }) => {
-    const { onCreateReview, isLoading } = usePropertyContext();
+    const { onCreateReview, onDeleteReview, isLoading } = usePropertyContext();
     const { user: { _id: userId } } = useUserContext();
 
-    const [rating, setRating] = useState(null);
+    const [rating, setRating] = useState(ownReview?.rating || null);
     const [hoverRating, setHoverRating] = useState(null);
-    const [review, setReview] = useState('');
+    const [review, setReview] = useState(ownReview?.content || '');
     const [error, setError] = useState(null);
 
     const { id } = useParams();
@@ -43,11 +49,17 @@ export const ReviewModal = ({
             if (!rating || !review) {
                 throw new Error('You must provide rating and review content!');
             }
-            if(review.length <20 || review.length > 200){
+            if (review.length < 20 || review.length > 200) {
                 throw new Error('The review content must be between 20 and 200 characters long')
             }
-            
-            onCreateReview(id, { rating, content: review, userId });
+
+            if (ownReview) {
+                //Handle edit Review
+                console.log('editing review')
+            } else {
+                onCreateReview(id, { rating, content: review, userId });
+            }
+
             onCloseModal();
         } catch (error) {
             setError(error.message);
@@ -75,7 +87,7 @@ export const ReviewModal = ({
                         &#x2715;
                     </CloseModalButton>
 
-                    <h1>Add a review</h1>
+                    <h1>{ownReview ? 'Edit review' : 'Add a review'}</h1>
                     <RatingContainer>
                         <h3>Rating:</h3>
                         <Rate
@@ -91,9 +103,9 @@ export const ReviewModal = ({
                         <h3>Review:</h3>
                         <StyledTextArea
                             placeholder="Write your opinion on the property
-                        • What you liked/disliked about it?
-                        • What would you like to know before buying it?
-                        • Would you recommend it?"
+                • What you liked/disliked about it?
+                • What would you like to know before buying it?
+                • Would you recommend it?"
                             onChange={(e) => setReview(e.target.value)}
                             value={review}
                         >
@@ -102,9 +114,6 @@ export const ReviewModal = ({
                     </ReviewContainer>
 
                     {isLoading ? <Spinner></Spinner> :
-                        <SubmitReviewBtn>
-                            Submit your Review
-                        </SubmitReviewBtn>
                         <ReviewControls>
                             <SubmitReviewBtn>
                                 {ownReview
