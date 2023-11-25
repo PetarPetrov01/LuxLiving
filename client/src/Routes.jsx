@@ -3,6 +3,13 @@ import { Catalog } from './components/Catalog/Catalog';
 import { Details } from './components/Details/Details';
 import { Login } from './components/Login/Login';
 import { Register } from './components/Register/Register';
+
+import { Create } from './components/Create/Create';
+import { Profile } from './components/Profile/Profile';
+import { OwnerGuard } from './components/RouteGuards/OwnerGuard';
+import { Edit } from './components/Edit/Edit';
+
+
 export const publicRoutes = [
     {
         path: '/',
@@ -25,3 +32,31 @@ export const publicRoutes = [
         element: () => < Register />
     }
 ];
+
+export const userRoutes = [
+    {
+        path: '/create',
+        element: () => <Create />
+    },
+    {
+        path: '/profile',
+        element: () => <Profile />
+    },
+    {
+        path: '/logout',
+        element: () => <Home />
+    },
+    {
+        path: '/catalog/:id/edit',
+        element: () => <OwnerGuard>
+            <Edit />
+        </OwnerGuard>
+    }
+]
+
+
+
+
+
+
+
