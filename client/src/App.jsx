@@ -5,11 +5,6 @@ import { PropertyProvider } from './contexts/PropertyContext';
 import { UserProvider } from './contexts/UserContext';
 
 import { Header } from './components/Header/Header';
-import { Home } from './components/Home/Home';
-import { Catalog } from './components/Catalog/Catalog';
-import { Details } from './components/Details/Details';
-import { Login } from './components/Login/Login';
-import { Register } from './components/Register/Register';
 import { Create } from './components/Create/Create';
 import { Edit } from './components/Edit/Edit';
 import { Profile } from './components/Profile/Profile';
@@ -35,6 +30,10 @@ function App() {
                                 <Route path='/' element={<Home />} />
                                 <Route path='/catalog' element={<Catalog />} />
                                 <Route path='/catalog/:id/details' element={<Details />} />
+                                {publicRoutes.map((r) => <Route
+                                    element={r.element()}
+                                    path={r.path}
+                                    key={r.path} />)}
 
                                 <Route element={<UserGuard />}>
                                     <Route path='/create' element={<Create />} />
