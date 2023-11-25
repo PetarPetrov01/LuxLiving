@@ -1,4 +1,7 @@
 # LuxLiving
+# LuxLiving Client 
+
+
 
 ## Getting started
 Navigate to the project directory. Once you are inside the project directory, install the dependencies by running:
@@ -14,6 +17,40 @@ npm start
 Note that the server should also be started for the application to work. To become familiar with the server, you can read its documentation [here](https://github.com/PetarPetrov01/LuxLiving/tree/main/server#readme).
 
 ## Dynamic pages
+
+### Header
+The header section serves as a central navigation hub for users, providing quick access to key features and pages. Here's a breakdown of the header's functionality based on the user's authentication status:
+
+The header features a logo on the left side. Clicking on this logo acts as a shortcut to navigate users directly to the home page.
+For users who are not currently logged in (guests), the header displays the following navigation links:
+
+    Catalog:
+        Clicking on the "Catalog" link allows guests to explore the complete catalog of property posts available on the platform.
+
+    Login:
+        The "Login" link directs guests to the login page, where they can enter their credentials to access their accounts.
+
+    Register:
+        Guests can click on the "Register" link to create a new account and gain access to additional features.
+
+![Header-guest](readme-screenshots/header-guest.PNG)
+
+For users who are already registered and logged in, the header presents an extended set of navigation links:
+
+    Catalog:
+        Similar to guests, registered users can navigate to the complete catalog of posts by clicking on the "Catalog" link.
+
+    Profile:
+        The "Profile" link directs registered users to their personal profile page, where they can view and manage their account information.
+
+    Create:
+        Registered users can create new posts by clicking on the "Create" link, providing them with a streamlined way to contribute content to the platform.
+
+    Logout:
+        The "Logout" link allows registered users to securely log out of their accounts, ensuring the protection of their account information.
+        
+![Header-guest](readme-screenshots/header-user.PNG)
+
 
 ### Home page
 The home page of the application serves as the main landing page for users. It provides an interface to browse and access the latest posts. 
