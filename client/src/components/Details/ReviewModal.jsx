@@ -50,17 +50,17 @@ export const ReviewModal = ({
                 throw new Error('You must provide rating and review content!');
             }
             if (review.length < 20 || review.length > 200) {
-                throw new Error('The review content must be between 20 and 200 characters long')
+                throw new Error('The review content must be between 20 and 200 characters long');
             }
 
             if (ownReview) {
                 onEditReview(id, { rating, content: review, reviewId: ownReview._id });
-                console.log('editing review')
             } else {
                 onCreateReview(id, { rating, content: review, userId });
             }
 
             onCloseModal();
+
         } catch (error) {
             setError(error.message);
         }
@@ -70,10 +70,10 @@ export const ReviewModal = ({
         e.preventDefault();
 
         try {
-            onDeleteReview(id, ownReview._id)
-            onCloseModal()
+            onDeleteReview(id, ownReview._id);
+            onCloseModal();
         } catch (error) {
-            setError(error.message)
+            setError(error.message);
         }
     };
 
@@ -112,8 +112,7 @@ export const ReviewModal = ({
 
                         </StyledTextArea>
                     </ReviewContainer>
-
-                    {isLoading ? <Spinner></Spinner> :
+                    {isLoading ? <Spinner style={{ alignSelf: 'center' }} /> :
                         <ReviewControls>
                             <SubmitReviewBtn>
                                 {ownReview

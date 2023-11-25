@@ -18,12 +18,14 @@ export const UserProvider = ({ children }) => {
             setIsLoading(true);
             const user = await userService.login(data);
             setUser(user);
-            setIsLoading(false);
             navigate('/');
+            
+            setIsLoading(false);
         } catch (error) {
             setErrors(error);
             setIsLoading(false);
         }
+
     };
 
     const onRegisterSubmit = async (data) => {

@@ -18,7 +18,6 @@ export const PropertyProvider = ({ children }) => {
         setIsLoading(true);
         propertyService.getAll(query)
             .then(result => {
-                //MOCK delay
                 setProperties(result.data);
                 setPages(result.pages);
                 setIsLoading(false);
@@ -111,23 +110,23 @@ export const PropertyProvider = ({ children }) => {
     };
 
     const onEditReview = async (propId, data) => {
-        setIsLoading();
+        setIsLoading(true);
         try {
-            const { newRating, review: { _id: reviewId } } = await propertyService.editReview(propId, data);
+            const { newRating /*, review: { _id: reviewId }*/ } = await propertyService.editReview(propId, data);
 
             setProperties(prevProps => prevProps.map(prop => {
                 return prop._id === propId
-                ? {
-                    ...prop,
-                    rating: Number(newRating)
-                } : prop;
+                    ? {
+                        ...prop,
+                        rating: Number(newRating)
+                    } : prop;
 
             }));
         } catch (error) {
             setErrors(error);
-            setIsLoading(false);
         }
-    }
+        setIsLoading(false);
+    };
 
     const onDeleteReview = async (propId, reviewId) => {
         setIsLoading(true);
@@ -141,12 +140,12 @@ export const PropertyProvider = ({ children }) => {
                         rating: Number(newRating),
                         reviews: prop.reviews.filter(r => r !== reviewId)
                     } : prop;
-            }))
+            }));
         } catch (error) {
             setErrors(error);
             setIsLoading(false);
         }
-    }
+    };
 
     const context = {
         properties,

@@ -52,7 +52,7 @@ export const userRoutes = [
             <Edit />
         </OwnerGuard>
     }
-]
+];
 
 
 

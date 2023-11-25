@@ -58,7 +58,7 @@ const editReview = async (propId, data) => {
 
 const deleteReview = async (propId, reviewId) => {
     return await api.del(`${baseUrl}/${propId}/review`, { reviewId });
-}
+};
 
 export const propertyService = {
     getAll,

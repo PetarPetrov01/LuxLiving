@@ -48,7 +48,7 @@ export const Details = () => {
     const hasReviewed = property.reviews?.some(r => r._ownerId._id === user._id);
     const ownReview = hasReviewed
         ? property.reviews.find(r => r._ownerId._id === user._id)
-        : null
+        : null;
     const created = formatDate(property.createdAt, 'details');
 
     if (showModal) {
