@@ -66,6 +66,23 @@ A `Catalog` link is provided on the home page. Users can click on this link to a
 
 A navigation option to the `Register` page is available If the user is not currently logged in (guest). Otherwise, if the user is already logged in, the home page provides a direct link to navigate to the user's profile page.
 
+A view of the home page: 
+---
+![Home page](readme-screenshots/home-page.PNG)
+
+### Catalog page
+
+The catalog section of the application serves as a comprehensive display of all real estate properties available on the platform. It provides users with powerful sorting, pagination, and search features for an enhanced browsing experience. Each property listing in the catalog includes a brief display of essential information. Clicking on the image opens a dedicated details page that presents the property.
+
+#### Sort Functionality
+Users can sort the properties based on various criteria to tailor their browsing experience:
+
+- Time of Creation  
+- Rating
+- Alphabetically by Name
+- By Price
+- By Total Area
+
 
 #### Visualization of Home page:
 
