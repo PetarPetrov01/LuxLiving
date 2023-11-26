@@ -83,6 +83,19 @@ Users can sort the properties based on various criteria to tailor their browsing
 - By Price
 - By Total Area
 
+#### Search Functionality
+The catalog includes search feature that enables users to find specific real estate properties efficiently by Name and Location. As users type, the search function dynamically responds to the input. The search result is shown after a brief pause, allowing users to refine their search queries without the need to click a search button.
+
+#### Pagination
+Pagination controls allow users to move between pages, making it convenient to explore properties beyond the initial display. Users can customize the number of properties displayed on a single page, providing flexibility based on their preferences and screen size.
+<br>
+
+Here's a comprehensive view of the catalog page: 
+---
+
+![Catalog Page](./readme-screenshots/catalog.PNG)
+
+
 
 #### Visualization of Home page:
 
