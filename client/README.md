@@ -96,6 +96,32 @@ Here's a comprehensive view of the catalog page:
 ![Catalog Page](./readme-screenshots/catalog.PNG)
 
 
+### Details page
+
+The Details page provides a comprehensive view of a specific real estate property, offering users a wealth of information and interaction possibilities.
+
+#### Property Information Section
+
+The primary section of the Details page displays key information about the real estate property:
+
+- The name of the property.
+- The geographical location of the property.
+- The rating assigned to the property based on user reviews. Including the number of reviews
+- The timestamp indicating when the post for this property was created.
+- The current listed price of the property.
+- The total area of the property.
+- If there are ongoing bids, this section displays the email of the current highest bidder.
+
+To maintain fair and secure interactions, the Details page enforces specific restrictions based on user authentication and ownership:
+If a user is not logged in, they are unable to place bids on the property. The same goes for the owner of the listed property, he is restricted from placing bids.
+
+To submit a bid, the user needs to enter the desired bid price and then click on the "Bid" button.
+
+A view of the Information Section:
+---
+
+![Details information](./readme-screenshots/details-info-section.png)
+---
 
 #### Visualization of Home page:
 
