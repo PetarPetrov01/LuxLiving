@@ -124,5 +124,23 @@ A view of the Information Section:
 ---
 
 #### Visualization of Home page:
+#### Reviews section
+
+A secondary section on the Details page is dedicated to user reviews, with each review showing the following information:
+
+- The email address of the user who created the review.
+- The timestamp indicating when the review was created.
+- The rating given by the user for the property.
+- A short review providing insights into what the user liked or did not like about the property.
+
+To write a review the user has to click on the "Add review" Button which opens a [modal](#review-modal).
+- If the user is a guest, the "Add Review" button is not visible. This also applies to the owner of the Property.
+- If the user has already written a review for the current property, the "Add Review" button is replaced with "Edit Review," allowing the user to edit their existing review.
+
+A view of the Reviews Section:
+---
+
+![Details Reviews](./readme-screenshots/details-reveiws-section.png)
+---
 
 ![Home page](readme-screenshots/Home%20page.PNG)
