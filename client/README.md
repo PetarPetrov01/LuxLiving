@@ -142,5 +142,21 @@ A view of the Reviews Section:
 
 ![Details Reviews](./readme-screenshots/details-reveiws-section.png)
 ---
+#### Review modal
+When a user clicks on the "Add Review" or "Edit Review" button, a modal window appears, providing an intuitive interface for users to rate and review the real estate property. The modal consists of the following elements:
+
+- <b>Star Rating Input</b> - A star-like input allows users to choose a rating from 1 to 5 stars. Initially, all stars appear grey. When a user clicks on a specific star, the selected star and all preceding stars light up in a yellow-gold color, indicating the chosen rating. Hovering over a star also produces the same yellow-gold color effect, providing visual feedback to users before making a selection.
+- <b>Text Input: </b> - A text area where users can write a review about the property.
+- <b>Submit (Edit) button</b> - A button to Submit or Update the review.
+- <b>Close "X" button</b> - A button to cancel or close the modal without submitting the review.
+- <b>Delete</b> - This button is available only if the user is editing his review.
+
+A view of the modal:
+---
+
+| When adding a new Review | When editing a review   |
+| ------------------------ | ----------------------- |
+| ![Add review](./readme-screenshots/review-modal-add.PNG) | ![Edit review](./readme-screenshots/review-modal-edit.PNG)|
+---
 
 ![Home page](readme-screenshots/Home%20page.PNG)
