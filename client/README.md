@@ -1,6 +1,7 @@
 # LuxLiving
 # LuxLiving Client 
 
+Welcome to the LuxLiving client side application!
 
 
 ## Getting started
@@ -160,3 +161,28 @@ A view of the modal:
 ---
 
 ![Home page](readme-screenshots/Home%20page.PNG)
+### Create page
+
+The Create Page is accessible exclusively for logged-in users, providing a streamlined process for users to create and post details about a real estate property. Upon accessing the Create Page, users are presented with a user-friendly form to input information about the property they intend to list.
+The form on the Create Page consists of the following input fields:
+- Name - A text input where users can specify the name of the real estate property.
+
+- Location - A text input allowing users to input the geographical location of the property.
+
+- Image - An input field that allows users to upload an image representing the property.
+
+- Price - A numerical input field where users can enter the current listed price of the property.
+
+- Area - A numerical input field for users to input the total area of the property.
+
+- Description - A text area where users can provide a detailed description of the property, including features, amenities, and any additional information they wish to share.
+
+After filling out the form with the necessary details, users can proceed by clicking the "Submit" button which processes the form, creating a new post.
+
+A view of the Create Page:
+---
+
+![Create Page](./readme-screenshots/create-page.png)
+---
+
+
