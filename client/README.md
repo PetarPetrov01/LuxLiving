@@ -1,4 +1,3 @@
-# LuxLiving
 # LuxLiving Client 
 
 Welcome to the LuxLiving client side application!
@@ -124,7 +123,6 @@ A view of the Information Section:
 ![Details information](./readme-screenshots/details-info-section.png)
 ---
 
-#### Visualization of Home page:
 #### Reviews section
 
 A secondary section on the Details page is dedicated to user reviews, with each review showing the following information:
@@ -160,7 +158,6 @@ A view of the modal:
 | ![Add review](./readme-screenshots/review-modal-add.PNG) | ![Edit review](./readme-screenshots/review-modal-edit.PNG)|
 ---
 
-![Home page](readme-screenshots/Home%20page.PNG)
 ### Create page
 
 The Create Page is accessible exclusively for logged-in users, providing a streamlined process for users to create and post details about a real estate property. Upon accessing the Create Page, users are presented with a user-friendly form to input information about the property they intend to list.
@@ -184,5 +181,18 @@ A view of the Create Page:
 
 ![Create Page](./readme-screenshots/create-page.png)
 ---
+
+
+### Edit page
+The edit page can be accessed by the owner of the post. Upon accessing the edit page, users are presented with the same form in the [Create Page](#create-page), but all inputs are filled with the property data they intend to edit. There is a condition that should be noted: If a bid has been placed on the current post, the price can't be edited and input is disabled. 
+After the changes have been made in the input, users proceed with the sumbition by clicking the "Submit" button.
+
+A view of the Edit Page:
+---
+
+![Edit Page](./readme-screenshots/edit-page.png)
+---
+
+### Register page
 
 
