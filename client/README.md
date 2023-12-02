@@ -211,6 +211,26 @@ A view of the Profile page (posts):
 ---
 
 
+
+#### User bids
+When the "bids" option is chosen, the page displays posts on which the user has placed a bid in a form similar to [own posts](#own-posts). They only difference is that the "Edit" and "Delete" buttons are not available, as the user is not the owner of the post.
+
+A view of the Profile page (bids):
+---
+
+![Profile page(bids)](./readme-screenshots/profile-bids.png)
+---
+
+
+#### User reviews
+When the "reviews" option is chosen on the profile page, the page showcases all reviews given by the user, along with the respective posts to which the reviews apply. Hovering over the image reveals a button that redirects to the post page.
+
+A view of the Profile page (reviews):
+---
+
+![Profile page(reviews)](./readme-screenshots/profile-reviews.png)
+---
+
 ### Register page
 
 
