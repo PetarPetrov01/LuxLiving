@@ -31,8 +31,11 @@ The header section serves as a central navigation hub for users, providing quick
 The header features a logo on the left side. Clicking on this logo acts as a shortcut to navigate users directly to the home page.
 For users who are not currently logged in (guests), the header displays the following navigation links:
 
+- Catalog - Clicking on the "Catalog" link allows guests to explore the complete catalog of property posts available on the platform.
 
+- Login - The "Login" link directs guests to the login page, where they can enter their credentials to access their accounts.
 
+- Register - Guests can click on the "Register" link to create a new account and gain access to additional features.
 
 ![Header-guest](readme-screenshots/header-guest.PNG)
 
@@ -190,6 +193,23 @@ A view of the Edit Page:
 
 ![Edit Page](./readme-screenshots/edit-page.png)
 ---
+
+### Profile page
+The personalized profile page designed to give the users a comprehensive overview of their activity on the platform. Here, users can find information about their posts, placed bids, and reviews. Upon landing on the page, users are presented with a section containing a dropdown menu and their posts (by default). The filtration of the results is simply done by clicking on the dropdown and selecting some of the options (posts, bids and reviews).
+
+#### Own posts
+When "posts" is selected, the user is presented with a page displaying their own posts in the form of images. When hovering over an image, comprehensive information about the corresponding post, along with additional buttons, is visualized. The user can use these buttons to do the following actions: 
+
+- Details - Access the details page of the post
+- Edit - Edit the post
+- Delete - Completely delete the post
+
+A view of the Profile page (posts):
+---
+
+![Profile page(posts)](./readme-screenshots/profile-posts.png)
+---
+
 
 ### Register page
 
