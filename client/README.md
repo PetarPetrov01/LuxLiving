@@ -2,6 +2,14 @@
 
 Welcome to the LuxLiving client side application!
 
+## Table of contents
+
+| Table  of contents                                                                                                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Getting started](#getting-started)                                                                                                                                                                                                              |
+| [App overview](#application-overview)                                                                                                                                                                                                            |
+| <ul> <li>[Header](#header)</li><li>[Home page](#home-page)</li><li>[Catalog](#catalog-page)</li><li>[Details](#details-page)</li><li>[Create page](#create-page)</li><li>[Edit page](#edit-page)</li><li>[Profile page](#profile-page)</li></ul> |
+
 
 ## Getting started
 Navigate to the project directory. Once you are inside the project directory, install the dependencies by running:
