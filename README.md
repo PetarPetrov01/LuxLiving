@@ -231,6 +231,27 @@ A view of the Profile page (reviews):
 ![Profile page(reviews)](./readme-screenshots/profile-reviews.png)
 ---
 
+## Authentication
+
+To ensure the security and privacy of the data, the app uses authentication to control access to certain functionalities. The authentication flow involves two main processes: login and registration. To gain access to these functionalities users need to navigate to the the [Register](#register-page) or [Login](#login-page) pages.
+
 ### Register page
+Upon landing on the register page a form with inputs is presented. If the client doesn't currently have an account and wishes to access additional functionalities, they must fill these inputs by providing their email, creating a password and repeating the typed password. To submit the data the user has to click on the button.
+
+A view of the Register page:
+---
+
+![Profile page(reviews)](./readme-screenshots/register-page.png)
+---
+ 
+### Login page
+Upon arriving on this page, a form featuring two input fields is displayed. One for the email and one for the password. To login the users must fill the inputs with the right email and password and submit the form.
+
+A view of the Login page:
+---
+
+![Profile page(reviews)](./readme-screenshots/login-page.png)
+---
+ 
 
 
