@@ -1,6 +1,7 @@
 import * as api from './api';
 
-const baseUrl = `${process.env.URI || 'http://localhost:3030'}/data/catalog`;
+const URI = import.meta.env.VITE_URI;
+const baseUrl = `${URI || 'http://localhost:3030'}/data/catalog`;
 
 const getAll = async (queries) => {
     const queryArr = [];
