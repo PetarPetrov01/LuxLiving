@@ -57,7 +57,7 @@ export const Edit = () => {
             {serverErrors ? <ErrorBox errors={errors} /> : null}
 
             <h1>Edit property</h1>
-            <InputWrapper>
+            <InputWrapper errors={true}> 
                 <StyledInput
                     name="name"
                     placeholder="Name"
@@ -70,7 +70,7 @@ export const Edit = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     name="location"
                     placeholder="Location"
@@ -84,7 +84,7 @@ export const Edit = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     name="imageUrl"
                     placeholder="Image"
@@ -97,7 +97,7 @@ export const Edit = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     type="number"
                     name="price"
@@ -113,7 +113,7 @@ export const Edit = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     type="number"
                     name="area"
@@ -126,7 +126,7 @@ export const Edit = () => {
                     <p>{errors.area}</p>
                 }
             </InputWrapper>
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledTextArea
                     name="description"
                     placeholder="Description"

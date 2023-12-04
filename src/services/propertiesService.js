@@ -1,6 +1,7 @@
 import * as api from './api';
 
-const baseUrl = 'http://localhost:3030/data/catalog';
+const baseUrl = `${process.env.URI || 'http://localhost:3030'}/data/catalog`;
+
 const getAll = async (queries) => {
     const queryArr = [];
 

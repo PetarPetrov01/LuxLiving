@@ -3,6 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import { useUserContext } from "../../contexts/UserContext";
 import { Spinner } from "../Spinner/Spinner";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
+import { useState } from "react";
 
 export const Register = () => {
 
@@ -12,6 +13,7 @@ export const Register = () => {
         password: '',
         repass: ''
     }, setErrors);
+    const [hidePass, setHidePass] = useState(true);
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -29,6 +31,11 @@ export const Register = () => {
         onRegisterSubmit(formValues);
     };
 
+    const handleShowPass = (e) => {
+        setHidePass(state => !state);
+    };
+    const iconSrc = `/images/${hidePass ? 'show' : 'hide'}-password.png`;
+
     return (
         <StyledForm onSubmit={handleRegister}>
             <h1>Sign up</h1>
@@ -44,16 +51,22 @@ export const Register = () => {
 
             <InputWrapper>
                 <StyledInput
-                    type="password"
+                    type={hidePass ? "password" : "text"}
                     placeholder="Password"
                     name="password"
                     value={formValues.password}
                     onChange={onChangeHandler} />
+
+                <img
+                    src={iconSrc}
+                    alt="Show pass"
+                    style={{ objectFit: "cover", height: "30px" }}
+                    onClick={handleShowPass} />
             </InputWrapper>
 
             <InputWrapper>
                 <StyledInput
-                    type="password"
+                    type={hidePass ? "password" : "text"}
                     placeholder="Repeat password"
                     name="repass"
                     value={formValues.repass}
@@ -64,7 +77,7 @@ export const Register = () => {
                 : <>
                     <button>Register</button>
                     <p>
-                        Already registerd? <FormAnchor to={'/login'} onClick={()=>setErrors(null)}>Sign in</FormAnchor>
+                        Already registerd? <FormAnchor to={'/login'} onClick={() => setErrors(null)}>Sign in</FormAnchor>
                     </p>
                 </>}
         </StyledForm>

@@ -3,6 +3,7 @@ import { useForm } from "../../hooks/useForm";
 import { useUserContext } from "../../contexts/UserContext";
 import { Spinner } from "../Spinner/Spinner";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
+import { useState } from "react";
 
 export const Login = (props) => {
     const { onLoginSubmit, isLoading, errors, setErrors } = useUserContext();
@@ -10,6 +11,7 @@ export const Login = (props) => {
         email: '',
         password: ''
     }, setErrors);
+    const [hidePass, setHidePass] = useState(true);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,6 +20,11 @@ export const Login = (props) => {
         }
         onLoginSubmit(formValues);
     };
+
+    const handleShowPass = (e) => {
+        setHidePass(state => !state);
+    };
+    const iconSrc = `/images/${hidePass ? 'show' : 'hide'}-password.png`;
 
     return (
         <StyledForm onSubmit={handleSubmit}>
@@ -33,18 +40,24 @@ export const Login = (props) => {
 
             <InputWrapper>
                 <StyledInput
-                    type="password"
+                    type={hidePass ? 'password':'text'}
                     placeholder="Password"
                     name="password"
                     onChange={onChangeHandler}
                     value={formValues.password} />
+
+                <img
+                    src={iconSrc}
+                    alt="Show pass"
+                    style={{ objectFit: "cover", height: "30px",cursor:'pointer' }}
+                    onClick={handleShowPass} />
             </InputWrapper>
             {isLoading
                 ? <Spinner />
                 : <>
                     <button>Login</button>
                     <p>
-                        Not registerd? <FormAnchor to={'/register'} onClick={()=>setErrors(null)}>Sign up</FormAnchor>
+                        Not registerd? <FormAnchor to={'/register'} onClick={() => setErrors(null)}>Sign up</FormAnchor>
                     </p>
                 </>
             }

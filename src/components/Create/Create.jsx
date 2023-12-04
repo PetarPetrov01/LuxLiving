@@ -1,8 +1,8 @@
-import { InputWrapper, StyledForm, StyledInput, StyledTextArea } from "../../styles/Form/StyledForm";
 import { useForm } from "../../hooks/useForm";
 import { usePropertyContext } from "../../contexts/PropertyContext";
 import { usePropertyValidator } from "../../hooks/usePropertyValidator";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
+import { InputWrapper, StyledForm, StyledInput, StyledTextArea } from "../../styles/Form/StyledForm";
 
 export const Create = () => {
     const { onCreateHandler, errors: serverErrors } = usePropertyContext();
@@ -34,7 +34,7 @@ export const Create = () => {
             <h1>Lend property</h1>
             {serverErrors ? <ErrorBox errors={errors} /> : null}
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     name="name"
                     placeholder="Name"
@@ -47,7 +47,7 @@ export const Create = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}> 
                 <StyledInput
                     name="location"
                     placeholder="Location"
@@ -61,7 +61,7 @@ export const Create = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     name="imageUrl"
                     placeholder="Image"
@@ -74,7 +74,7 @@ export const Create = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     type="number"
                     name="price"
@@ -88,7 +88,7 @@ export const Create = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledInput
                     type="number"
                     name="area"
@@ -101,7 +101,7 @@ export const Create = () => {
                     <p>{errors.area}</p>
                 }
             </InputWrapper>
-            <InputWrapper>
+            <InputWrapper errors={true}>
                 <StyledTextArea
                     name="description"
                     placeholder="Description"

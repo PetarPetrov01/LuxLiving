@@ -10,8 +10,8 @@ export const StyledForm = styled.form`
     padding: 40px 20px;
     margin: 20px auto 80px auto;
     border-radius: 15px;
-    background: ${props=>props.theme.darkerBlue(0.8)};
-    box-shadow: 0px 0px 16px ${props=>props.theme.darkerBlue()};
+    background: ${props => props.theme.darkerBlue(0.8)};
+    box-shadow: 0px 0px 16px ${props => props.theme.darkerBlue()};
 
     & > button{
         width: 40%;
@@ -37,8 +37,12 @@ export const StyledForm = styled.form`
 `;
 
 export const InputWrapper = styled.div`
+    display: ${props => props.errors ? 'block' : 'flex'};  
+    align-items: center;
     margin-top: 30px;
     width: 60%;
+    background-color: rgb(220,230,250);
+    border-radius: 10px;
 
     & > p{
         position: absolute;
@@ -52,13 +56,22 @@ export const InputWrapper = styled.div`
     }
 `;
 
+export const CreateInputWrapper = styled(InputWrapper)`
+    display: block;
+`;
+
 export const StyledInput = styled.input`
     width: 100%;
     height: 40px;
     font-size: 1.3em;
-    background-color: rgb(220,230,250);
+    border: none;
     border-radius: 10px;
     padding-left: 4px;
+    background-color: rgb(220,230,250);
+
+    &:focus{
+        outline: none;
+    }
 
     &::placeholder{
         color: #999;
@@ -71,8 +84,12 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledTextArea = styled.textarea`
+box-sizing: border-box;
     width:100%;
+    resize: vertical;
     height: 80px;
+    min-height: 60px;
+    max-height: 200px;
     font-size: 1.3em;
     background-color: rgb(220,230,250);
     border-radius: 10px;

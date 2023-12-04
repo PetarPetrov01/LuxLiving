@@ -1,7 +1,7 @@
 import * as api from './api';
 import { userStorage } from './userStorage';
 
-const baseUrl = 'http://localhost:3030/users';
+const baseUrl = `${process.env.URI || 'http://localhost:3030'}/users`;
 
 const login = async (data) => {
     const result = await api.post(`${baseUrl}/login`, data);
