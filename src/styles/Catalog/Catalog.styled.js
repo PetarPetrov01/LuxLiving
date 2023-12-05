@@ -70,6 +70,10 @@ export const ImageWrapper = styled.div`
     @media (max-width: 768px){
         justify-content: center;
         width:100%;
+
+        img{
+            height: max(35vw,150px);
+        }
     }
 `;
 
@@ -191,7 +195,7 @@ export const SearchForm = styled.form`
     @media (max-width: 768px){
         font-size: 1.1em;
         height: 50%;
-        width: 50%;
+        width: 80%;
     }
 `;
 
