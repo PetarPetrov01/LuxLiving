@@ -5,6 +5,7 @@ import { propertyService } from "../../services/propertiesService";
 import { ProfileCard } from "./ProfileCard";
 import { ReviewCard } from "./ReviewCard";
 import { ReviewWrapper } from "../../styles/Profile/OwnReviewCard.styled";
+import { Spinner } from "../Spinner/Spinner";
 
 export const Profile = () => {
 
@@ -13,17 +14,23 @@ export const Profile = () => {
     const [ownProperties, setOwnProperties] = useState([]);
     const [ownReviews, setOwnReviews] = useState([]);
     const [selection, setSelection] = useState('posts');
+    const [isLoading, setIsLoading] = useState(false);
 
     const userId = user._id;
 
     useEffect(() => {
+        setIsLoading(true);
         propertyService.getOwn(userId)
             .then(res => {
                 setOwnProperties(res.ownPosts);
                 setOwnBids(res.ownBids);
                 setOwnReviews(res.ownReviews);
-            }).catch(err =>
-                alert(err));
+
+                setIsLoading(false);
+            }).catch(err => {
+                setIsLoading(false);
+                return alert(err);
+            });
     }, [userId]);
 
     const selectChange = (e) => {
@@ -44,13 +51,14 @@ export const Profile = () => {
                     <option value={'reviews'}>Reviews</option>
                 </select>
             </ProfileSelectWrapper>
-            {selection === 'posts'
-                ? <PropertiesWrapper>
-                    {ownProperties.length > 0
-                        ? ownProperties.map(prop => <ProfileCard key={prop._id} {...prop} userId={userId} />)
-                        : <h2>No posts yet!</h2>}
-                </PropertiesWrapper>
-                : null
+            {isLoading ? <Spinner /> :
+                selection === 'posts'
+                    ? <PropertiesWrapper>
+                        {ownProperties.length > 0
+                            ? ownProperties.map(prop => <ProfileCard key={prop._id} {...prop} userId={userId} />)
+                            : <h2>No posts yet!</h2>}
+                    </PropertiesWrapper>
+                    : null
             }
             {selection === 'bids' ?
                 <PropertiesWrapper>
@@ -60,8 +68,8 @@ export const Profile = () => {
                 </PropertiesWrapper>
                 : null
             }
-            <ReviewWrapper>
 
+            <ReviewWrapper>
                 {selection === 'reviews' ?
                     ownReviews.length > 0
                         ? ownReviews.map(rev => <ReviewCard key={rev._id} {...rev} email={user.email} />)

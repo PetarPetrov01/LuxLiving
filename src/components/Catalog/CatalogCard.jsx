@@ -33,7 +33,7 @@ export const CatalogCard = ({
                 </CardHeaders>
                 <TextContainer>
                     <span>Rating: {rating || 'Not rated'}</span>
-                    <span>Starting price: ${Number(price).toLocaleString()}</span>
+                    <span>Current price: ${Number(price).toLocaleString()}</span>
                     <span>Total area: {area} m<sup>2</sup></span>
                 </TextContainer>
             </InfoContainer>

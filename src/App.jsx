@@ -39,7 +39,7 @@ function App() {
                                 <Route path='/*' element={<NotFound />} />
                             </Routes>
                         </main>
-
+                        <br></br>
                         <Footer />
                     </PropertyProvider>
                 </UserProvider>
