@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { ReviewCreatorInfo } from "../Details/Reviews.styled";
-import { Link } from "react-router-dom";
 import { StyledAnchor } from "../Details/Controlls.styled";
 
 export const ReviewWrapper = styled.div`
@@ -20,6 +19,9 @@ export const ReviewWrapper = styled.div`
     }`;
 
 export const ReviewStyledCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items:center;
     width: 40%;
     min-height: 350px;
     background-color: ${props => props.theme.white(0.8)};
@@ -66,6 +68,7 @@ export const OwnReviewPropertyInfo = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 90%;
     
     h2,h3{
         margin: 0;

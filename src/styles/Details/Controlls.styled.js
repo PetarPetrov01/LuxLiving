@@ -13,6 +13,10 @@ export const StyledControlls = styled.div`
     h4{
         margin: 5px 0;
     }
+
+    @media (max-width: 768px){
+        width: 80%;
+    }
 `;
 
 export const OwnerControlls = styled.div`
@@ -21,6 +25,10 @@ export const OwnerControlls = styled.div`
     width: 90%;
     gap: 20px;
     margin: 10px 0 20px 0;
+
+    @media (max-width: 768px){
+        width: 90%;
+    }
 `;
 
 export const StyledAnchor = styled(Link)`
@@ -43,7 +51,9 @@ export const StyledAnchor = styled(Link)`
     }
 
     @media (max-width: 768px){
-        width: 40%;
+        width: 60%;
+        line-height: 35px;
+        height:35px;
     }
 `;
 

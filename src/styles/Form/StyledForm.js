@@ -52,7 +52,7 @@ export const InputWrapper = styled.div`
     }
 
     @media (max-width: 768px) {
-            width: 70%;
+            width: 80%;
     }
 `;
 

@@ -14,6 +14,10 @@ export const StyledDetails = styled.div`
     @media  (max-width: 768px){
         width: 80%;
     }
+
+    @media (max-width: 380px){
+        width: 95%;
+    }
 `;
 
 export const DetailsCard = styled.div`
@@ -51,6 +55,16 @@ export const DetailsImageWrapper = styled.div`
         height: 28vw;
         transition: all 0.3s;
     }
+
+    @media (max-width: 768px){
+        height: 40px;
+
+        img{
+        
+        height: 45vw;
+        
+    }
+    }
 `;
 
 export const DetailsInfoWrapper = styled.div`
@@ -66,6 +80,7 @@ export const DetailsInfoWrapper = styled.div`
     @media (max-width: 768px){
         width: 90%;
         height: 80%;
+        font-size: 0.8em;
     }
 `;
 
