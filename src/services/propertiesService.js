@@ -1,7 +1,11 @@
 import * as api from './api';
 
-const URI = import.meta.env.VITE_URI;
-const baseUrl = `${URI || 'http://localhost:3030'}/data/catalog`;
+const PRODUCTION_URI = import.meta.env.VITE_URI;
+let baseUrl = 'http://localhost:3030/data/catalog';
+
+if (import.meta.env.MODE === 'production') {
+    baseUrl = `${PRODUCTION_URI}/data/catalog`;
+}
 
 const getAll = async (queries) => {
     const queryArr = [];
@@ -21,7 +25,7 @@ const getLatest = async () => {
 };
 
 const getOwn = async (userId) => {
-    return await api.get(`http://localhost:3030/profile/${userId}`);
+    return await api.get(`${PRODUCTION_URI}/profile/${userId}`);
 };
 
 const getById = async (id) => {
@@ -47,7 +51,7 @@ const bid = async (propId, userId, newPrice) => {
         price: newPrice
     };
 
-    return await api.post(`http://localhost:3030/data/catalog/${propId}/bid`, data);
+    return await api.post(`${baseUrl}/${propId}/bid`, data);
 };
 
 const createReview = async (propId, data) => {

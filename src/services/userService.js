@@ -1,9 +1,11 @@
 import * as api from './api';
 import { userStorage } from './userStorage';
 
-const URI = import.meta.env.VITE_URI;
-const baseUrl = `${URI || 'http://localhost:3030'}/users`;
-// const baseUrl = `https://express-api-jxp5.onrender.com/users`;
+let baseUrl = 'http://localhost:3030/users';
+
+if (import.meta.env.MODE === 'production') {
+    baseUrl = `${import.meta.env.VITE_URI}/users`;
+}
 
 const login = async (data) => {
     const result = await api.post(`${baseUrl}/login`, data);
