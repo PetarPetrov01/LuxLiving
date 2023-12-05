@@ -11,7 +11,7 @@ export const HomeWrapper = styled.div`
     width: 70%;
     min-height: 400px;
     border-radius: 15px;
-    background: ${props=>props.theme.mainBlue(0.8)}; 
+    background: ${props => props.theme.mainBlue(0.8)}; 
     box-shadow: 0px 0px 16px rgb(206, 226, 248);
 
     & > p{
@@ -22,14 +22,21 @@ export const HomeWrapper = styled.div`
 
     @media(max-width: 920px){
         width: 80%;
+        margin-bottom: 20px !important;
+
+        & > p{
+        margin: 10px;
+        text-align: justify;
+        font-size: max(3.6vw,16px);
     }
+}
 `;
 
 export const HeaderWrapper = styled.div`
     display:flex;
     justify-content: center;
     width: 80%;
-    border-top: 2px solid ${props=>props.theme.mainYellow()};
+    border-top: 2px solid ${props => props.theme.mainYellow()};
 
     & > h1 {
         font-size: 2em;
@@ -47,7 +54,7 @@ export const LatestWrapper = styled.div`
         flex-direction: column;
         align-items: center;
         height: min(90vh,900px);
-        width: 85%;
+        width: 95%;
     }
 `;
 
@@ -71,6 +78,10 @@ export const StyledHomeCard = styled.div.attrs((props) => ({
             height:${({ height }) => `${height + 5}%`};
         };
     };
+
+    @media (max-width: 380px){
+        width: 90%;
+    }
 `;
 
 export const InfoWrapper = styled.div`
@@ -84,7 +95,7 @@ export const InfoWrapper = styled.div`
     height:100%;
     opacity: 0;
     border-radius:10px;
-    color: ${props=>props.theme.mainBlue()};
+    color: ${props => props.theme.mainBlue()};
 
      background-color: rgba(190,210,250,0.9); 
     transition: opacity 0.3s;
@@ -128,11 +139,11 @@ export const StyledAnchor = styled(Link)`
     border-radius: 10px;
     color: white;
     border-bottom: 2px solid white;
-    background: ${props=>props.theme.mainBlue(0.8)}; 
+    background: ${props => props.theme.mainBlue(0.8)}; 
     transition: all 0.2s;
 
     &:hover{
-        background: ${props=>props.theme.mainBlue(0.6)}; 
+        background: ${props => props.theme.mainBlue(0.6)}; 
     }
 `;
 
@@ -140,14 +151,19 @@ export const LinkWrapper = styled.div`
     display:flex;
     justify-content: center;
     width: 80%;
-    border-bottom: 2px solid ${props=>props.theme.mainYellow()};
+    border-bottom: 2px solid ${props => props.theme.mainYellow()};
+
+    @media (max-width: 920px){
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const StyledLink = styled(Link)`
     display: inline-block;
     font-size: 1.7rem;
     font-weight: bold;
-    color: ${props=>props.theme.white()};
+    color: ${props => props.theme.white()};
     font-weight: 450;
     transition: all 450ms;
     padding: 0 10px;
@@ -155,11 +171,12 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
 
     &:hover{
-        color: ${props=>props.theme.mainYellow()};
+        color: ${props => props.theme.mainYellow()};
         transform: scale(1.1);
     }
 
     @media (max-width: 920px){
+        font-size: max(4.2vw, 15px);
         margin-bottom: 10px;
     }
 `;

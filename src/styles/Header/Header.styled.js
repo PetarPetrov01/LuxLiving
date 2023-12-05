@@ -54,6 +54,7 @@ export const StyledNavLink = styled(NavLink)`
     }
 
     @media (max-width: 768px){
+        font-size: max(3.8vw,18px);
         margin-bottom: 10px;
     }
 `;
