@@ -8,5 +8,9 @@ export default defineConfig(() => {
       outDir: 'build',
     },
     plugins: [react(), eslint()],
+    test:{
+      environment: 'jsdom',
+      setupFiles:['./src/test/setup.js']
+    }
   };
 });
