@@ -5,7 +5,7 @@ import { ErrorContainer } from "../../styles/Error/Error.styled";
 export const ErrorBox = ({ errors }) => {
 
     const [visible, setVisible] = useState(true);
-
+    debugger;
     useEffect(() => {
         setVisible(true);
         const timeout = setTimeout(() => {
@@ -17,7 +17,7 @@ export const ErrorBox = ({ errors }) => {
 
     return (visible ?
         <ErrorContainer>
-            {errors.split('\n').map((err, i) => <p key={i}>{err}</p>)}
+            {errors?.split('\n').map((err, i) => <p key={i}>{err}</p>)}
         </ErrorContainer>
         : null
     );

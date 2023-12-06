@@ -32,7 +32,7 @@ export const Create = () => {
     return (
         <StyledForm onSubmit={handleSubmit}>
             <h1>Lend property</h1>
-            {serverErrors ? <ErrorBox errors={errors} /> : null}
+            {serverErrors ? <ErrorBox errors={serverErrors} /> : null}
 
             <InputWrapper errors={true}>
                 <StyledInput
