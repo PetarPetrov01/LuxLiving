@@ -17,3 +17,51 @@ describe('Header', () => {
         expect(headerElement).toBeVisible();
     });
 
+
+    it('Logo redirects to the home', async () => {
+        render(<BrowserRouter>
+            <App />
+        </BrowserRouter>);
+
+        const logo = screen.getByAltText('Logo');
+        userEvent.click(logo);
+
+        await waitFor(() => {
+            const heading = screen.getByText('Latest properties');
+            expect(heading).toBeVisible();
+        });
+    });
+
+    it('Catalog redirects to the catalog page', async () => {
+        render(
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        );
+
+        const catalogLink = screen.getByRole('link', { name: 'Catalog' });
+        await userEvent.click(catalogLink);
+
+        const searchInput = await screen.findByPlaceholderText('Name or location');
+        const selectElements = await screen.findAllByRole('combobox');
+        expect(searchInput).toBeVisible();
+
+        selectElements.forEach(el => expect(el).toBeVisible());
+    });
+
+    it('Login redirects to the login page', async () => {
+        render(
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        );
+
+        const loginLink = screen.getByRole('link', { name: 'Login' });
+        await userEvent.click(loginLink);
+
+        ['Email', 'Password']
+            .map((el) => screen.getByPlaceholderText(el))
+            .forEach(el => expect(el).toBeVisible());
+
+    });
+});
