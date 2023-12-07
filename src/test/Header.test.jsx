@@ -116,5 +116,27 @@ describe('Header', () => {
             links.map(a => screen.getByRole('link', { name: a }))
                 .forEach(el => expect(el).toBeVisible());
         });
+
+        it('Create redirects to "/create"', async () => {
+            const mockContext = {
+                user: {
+                    _id: '111111'
+                }
+            };
+
+            render(
+                <BrowserRouter>
+                        <ThemeProvider theme={theme}>
+                            <UserContext.Provider value={mockContext}>
+                                <Header />
+                            </UserContext.Provider>
+                        </ThemeProvider>
+                </BrowserRouter >
+            );
+
+            const createLink = screen.getByRole('link', { name: 'Create' });
+            const urlString = new URL(createLink.href);
+            expect(urlString.pathname).toEqual('/create');
+        });
     });
 });
