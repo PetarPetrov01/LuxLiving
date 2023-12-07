@@ -17,6 +17,17 @@ describe('Header', () => {
         expect(headerElement).toBeVisible();
     });
 
+    it('Logo and navigation are visualized', () => {
+        render(<BrowserRouter>
+            <App />
+        </BrowserRouter>);
+
+        const logo = screen.getByAltText('Logo');
+        const catalogLink = screen.getByRole('link', { name: 'Catalog' });
+
+        expect(logo).toBeVisible();
+        expect(catalogLink).toBeVisible();
+    });
 
     it('Logo redirects to the home', async () => {
         render(<BrowserRouter>
