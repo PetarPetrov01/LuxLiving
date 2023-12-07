@@ -1,12 +1,16 @@
-
-import { render, screen, waitFor } from '@testing-library/react';
+import {  render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it, vi } from 'vitest';
 import { BrowserRouter } from 'react-router-dom';
-import { describe, expect, it, vitest } from 'vitest';
+import { UserContext } from '../contexts/UserContext';
+
 import App from '../App';
+import { Header } from '../components/Header/Header';
+import { theme } from '../styles/GlobalStyles';
+import { ThemeProvider } from 'styled-components';
 
 describe('Header', () => {
-    window.alert = vitest.fn();
+    window.alert = vi.fn();
 
     it('Header is visualized', () => {
         render(<BrowserRouter basename='/'>
@@ -73,6 +77,22 @@ describe('Header', () => {
         ['Email', 'Password']
             .map((el) => screen.getByPlaceholderText(el))
             .forEach(el => expect(el).toBeVisible());
+    });
+
+    it('Register redirects to the register page', async () => {
+        render(
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        );
+
+        const loginLink = screen.getByRole('link', { name: 'Register' });
+        await userEvent.click(loginLink);
+
+        ['Email', 'Password', 'Repeat password']
+            .map((el) => screen.getByPlaceholderText(el))
+            .forEach(el => expect(el).toBeVisible());
+    });
 
     });
 });

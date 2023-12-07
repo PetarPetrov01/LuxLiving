@@ -1,3 +1,15 @@
+import { render, screen, within } from "@testing-library/react";
+import { BrowserRouter } from "react-router-dom";
+import { describe } from "vitest";
+import { Catalog } from "../components/Catalog/Catalog";
+import { PropertyContext } from "../contexts/PropertyContext";
+
+import { mockCatalogContext } from './mockData';
+import { ThemeProvider } from "styled-components";
+import { theme } from "../styles/GlobalStyles";
+import { expect } from "chai";
+
+
 describe('Catalog page', () => {
 
     it('Search, Sort and Pagination are visible', async () => {
