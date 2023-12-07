@@ -94,5 +94,27 @@ describe('Header', () => {
             .forEach(el => expect(el).toBeVisible());
     });
 
+    describe('Logged user', () => {
+
+        it('Logged in user links', async () => {
+            const mockContext = {
+                user: {
+                    _id: '111111'
+                }
+            };
+
+            render(<BrowserRouter>
+                <ThemeProvider theme={theme}>
+                    <UserContext.Provider value={mockContext}>
+                        <Header />
+                    </UserContext.Provider>
+                </ThemeProvider>
+            </BrowserRouter >);
+
+            const links = ['Catalog', 'Profile', 'Create', 'Logout'];
+
+            links.map(a => screen.getByRole('link', { name: a }))
+                .forEach(el => expect(el).toBeVisible());
+        });
     });
 });
