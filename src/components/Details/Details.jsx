@@ -12,7 +12,14 @@ import { ReviewCard } from "./ReviewCard";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 import { AddReviewBtn, ReviewCardWrapper, ReviewHeading, Reviews } from "../../styles/Details/Reviews.styled";
-import { DetailsCard, DetailsCardHeaders, DetailsImageWrapper, DetailsInfo, DetailsInfoWrapper, StyledDetails } from "../../styles/Details/Details.styled";
+import {
+    DetailsCard,
+    DetailsCardHeaders,
+    DetailsImageWrapper,
+    DetailsInfo,
+    DetailsInfoWrapper,
+    StyledDetails
+} from "../../styles/Details/Details.styled";
 
 export const Details = () => {
 

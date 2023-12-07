@@ -8,8 +8,16 @@ import { Rate } from "./Rate";
 import { ErrorBox } from "../ErrorBox/ErrorBox";
 import { Spinner } from "../Spinner/Spinner";
 import {
-    Modal, RatingContainer, ReviewForm, ReviewWrapper, StyledTextArea,
-    SubmitReviewBtn, CloseModalButton, ReviewContainer, ReviewControls, DeleteReviewBtn
+    Modal,
+    RatingContainer,
+    ReviewForm,
+    ReviewWrapper,
+    StyledTextArea,
+    SubmitReviewBtn,
+    CloseModalButton,
+    ReviewContainer,
+    ReviewControls,
+    DeleteReviewBtn
 } from "../../styles/Details/ReviewModal.styled";
 
 const rateScale = [
