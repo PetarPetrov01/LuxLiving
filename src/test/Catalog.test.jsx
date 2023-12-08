@@ -45,3 +45,20 @@ describe('Catalog page', () => {
         properties.forEach(p => expect(p).toBeVisible());
     });
 
+    it('Brief information is visualized for properties', async () => {
+        render(<BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <PropertyContext.Provider value={mockCatalogContext}>
+                    <Catalog />
+                </PropertyContext.Provider>
+            </ThemeProvider>
+        </BrowserRouter>);
+
+        mockCatalogContext.properties.forEach(p => {
+            expect(screen.getByText(p.name)).toBeVisible();
+            expect(screen.getByText(`Location: ${p.location}`)).toBeVisible();
+            expect(screen.getByText(`Rating: ${p.rating}`)).toBeVisible();
+            expect(screen.getByText(`Current price: $${Number(p.price).toLocaleString()}`)).toBeVisible();
+            expect(screen.getByText(new RegExp(p.area))).toBeVisible();
+        });
+    });
