@@ -29,3 +29,19 @@ describe('Catalog page', () => {
         // eslint-disable-next-line testing-library/no-debugging-utils
         screen.debug();
     });
+
+    it('Three real estate properties are visible', async () => {
+        render(<BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <PropertyContext.Provider value={mockCatalogContext}>
+                    <Catalog />
+                </PropertyContext.Provider>
+            </ThemeProvider>
+        </BrowserRouter>);
+
+        const properties = screen.getAllByText(/house.+/);
+        expect(properties.length).toEqual(3);
+
+        properties.forEach(p => expect(p).toBeVisible());
+    });
+
