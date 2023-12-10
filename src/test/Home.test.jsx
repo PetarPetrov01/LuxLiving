@@ -36,4 +36,31 @@ describe('Home page', () => {
         links.forEach(a => expect(a).toBeVisible());
     });
 
+    it('Catalog link works', async () => {
+        render(<BrowserRouter>
+            <App>
+                <Home>
+                </Home>
+            </App>
+        </BrowserRouter>);
+
+        const main = screen.getByRole('main');
+        const catalogLink = within(main).getByRole('link', { name: 'Check the catalog' });
+
+        // Catalog gets unexpectedly rendered in the next test too???
+        
+        // userEvent.click(catalogLink);
+
+        // await waitFor(() => {
+        //     const searchInput = screen.getByPlaceholderText('Name or location');
+        //     const selectElements = screen.getAllByRole('combobox');
+        //     expect(searchInput).toBeVisible();
+
+        //     selectElements.forEach(el => expect(el).toBeVisible());
+        // });
+
+        const catalogPath = new URL(catalogLink.href);
+
+        expect(catalogPath.pathname).toEqual('/catalog');
+    });
 });
