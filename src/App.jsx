@@ -8,10 +8,11 @@ import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { NotFound } from './components/NotFound/NotFound';
 
-import { publicRoutes, userRoutes } from './Routes';
+import { guestRoutes, publicRoutes, userRoutes } from './Routes';
 import { UserGuard } from './components/RouteGuards/UserGuard';
 
 import { GlobalStyle, theme } from './styles/GlobalStyles';
+import { GuestGuard } from './components/RouteGuards/GuestGuard';
 
 function App() {
     return (
@@ -28,6 +29,13 @@ function App() {
                                     element={r.element()}
                                     path={r.path}
                                     key={r.path} />)}
+
+                                <Route element={<GuestGuard />}>
+                                    {guestRoutes.map((r) => <Route
+                                        element={r.element()}
+                                        path={r.path}
+                                        key={r.path} />)}
+                                </Route>
 
                                 <Route element={<UserGuard />}>
                                     {userRoutes.map((r) => <Route

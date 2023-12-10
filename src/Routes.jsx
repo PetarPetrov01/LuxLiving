@@ -9,27 +9,29 @@ import { Profile } from './components/Profile/Profile';
 import { OwnerGuard } from './components/RouteGuards/OwnerGuard';
 import { Edit } from './components/Edit/Edit';
 
-
 export const publicRoutes = [
     {
         path: '/',
-        element: () => < Home />
+        element: () => <Home />
     },
     {
         path: '/catalog',
-        element: () => < Catalog />
+        element: () => <Catalog />
     },
     {
         path: '/catalog/:id/details',
-        element: () => < Details />
-    },
+        element: () => <Details />
+    }
+];
+
+export const guestRoutes = [
     {
         path: '/login',
-        element: () => < Login />
+        element: () => <Login />
     },
     {
         path: '/register',
-        element: () => < Register />
+        element: () => <Register />
     }
 ];
 
