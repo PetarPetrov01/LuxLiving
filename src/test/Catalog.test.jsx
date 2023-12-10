@@ -62,3 +62,20 @@ describe('Catalog page', () => {
             expect(screen.getByText(new RegExp(p.area))).toBeVisible();
         });
     });
+
+    it('All select options are visible', async () => {
+        render(<BrowserRouter>
+            <ThemeProvider theme={theme}>
+                <PropertyContext.Provider value={mockCatalogContext}>
+                    <Catalog />
+                </PropertyContext.Provider>
+            </ThemeProvider>
+        </BrowserRouter>);
+
+        const sortElements = screen.getAllByRole('combobox');
+        const sortElement = sortElements.find(sEl => sEl.name === 'sortOrder');
+
+        const selectOptions = within(sortElement).getAllByRole('option');
+        expect(selectOptions.length).toBeGreaterThanOrEqual(10);
+    });
+});
