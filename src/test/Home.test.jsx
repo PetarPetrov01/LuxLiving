@@ -20,4 +20,20 @@ describe('Home page', () => {
         headings.forEach(el => expect(el).toBeVisible());
         expect(headings.length).toEqual(2);
     });
+
+    it('Catalog and register link', () => {
+        render(<BrowserRouter>
+            <App>
+                <Home>
+                </Home>
+            </App>
+        </BrowserRouter>);
+
+        const main = screen.getByRole('main');
+        const links = within(main).getAllByRole('link');
+
+        expect(links.length).toEqual(2);
+        links.forEach(a => expect(a).toBeVisible());
+    });
+
 });
