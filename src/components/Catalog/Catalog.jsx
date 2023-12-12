@@ -13,7 +13,7 @@ import { ErrorBox } from "../ErrorBox/ErrorBox";
 
 export const Catalog = () => {
 
-    const { properties, pages, onParamsChange, isLoading, errors } = usePropertyContext();
+    const { properties, pages, onParamsChange, isLoading, errors, setErrors } = usePropertyContext();
     const [queryParams, setQueryParams] = useSearchParams({
         page: '1',
         limit: '3',
@@ -21,6 +21,7 @@ export const Catalog = () => {
         sort: 'createdAt desc',
     }, { replace: true });
 
+    setErrors(false);
     const page = parseInt(queryParams.get('page') || 1);
     const limit = queryParams.get('limit') || 3;
     const search = queryParams.get('search') || '';

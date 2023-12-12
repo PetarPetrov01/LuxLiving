@@ -5,7 +5,7 @@ import { ErrorBox } from "../ErrorBox/ErrorBox";
 import { InputWrapper, StyledForm, StyledInput, StyledTextArea } from "../../styles/Form/StyledForm";
 
 export const Create = () => {
-    const { onCreateHandler, errors: serverErrors } = usePropertyContext();
+    const { onCreateHandler, errors: serverErrors, setErrors } = usePropertyContext();
 
     const { errors, validateForm } = usePropertyValidator({});
     const { formValues, onChangeHandler } = useForm({
@@ -20,12 +20,13 @@ export const Create = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (
-            Object.values(errors).some(v => v) ||
+            // Object.values(errors).some(v => v) ||
             Object.values(formValues).some(v => v === '')
         ) {
-            alert('Incorrect form');
+            return setErrors('Incorrect form');
         } else {
             onCreateHandler(formValues);
+            setErrors(false);
         }
     };
 
@@ -47,7 +48,7 @@ export const Create = () => {
                 }
             </InputWrapper>
 
-            <InputWrapper errors={true}> 
+            <InputWrapper errors={true}>
                 <StyledInput
                     name="location"
                     placeholder="Location"
