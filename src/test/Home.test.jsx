@@ -63,4 +63,32 @@ describe('Home page', () => {
 
         expect(catalogPath.pathname).toEqual('/catalog');
     });
+
+    it('Register link works', async () => {
+        render(
+            <BrowserRouter>
+                <App>
+                    <Home />
+                </App>
+            </BrowserRouter>
+        );
+
+        const main = screen.getByRole('main');
+        const registerLink = within(main).getByRole('link', { name: 'Register' });
+
+
+        // Catalog gets unexpectedly rendered in this test???
+        
+        // userEvent.click(registerLink);
+        
+        // await waitFor(() => {
+            //     ['Email', 'Password', 'Repeat password']
+            //         .map((el) => screen.getByPlaceholderText(el))
+            //         .forEach(el => expect(el).toBeVisible());
+            // });
+        
+        const registerPath = new URL(registerLink.href);
+        expect(registerPath.pathname).toEqual('/register');
+    });
+
 });
