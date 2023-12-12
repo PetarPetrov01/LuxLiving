@@ -14,10 +14,18 @@ export const ReviewCard = ({
     content,
     rating,
     createdAt,
-    _propertyId: { name, location, _id: propId, imageUrl },
-    email
-
+    _propertyId
 }) => {
+
+    let name, location, propId, imageUrl;
+    console.log(_propertyId);
+
+    if (_propertyId) {
+        name = _propertyId.name;
+        location = _propertyId.location;
+        propId = _propertyId._id;
+        imageUrl = _propertyId.imageUrl;
+    }
 
     const starColor = (index) => {
         if (rating >= index) {
@@ -30,8 +38,8 @@ export const ReviewCard = ({
     return (
         <ReviewStyledCard>
             <OwnReviewPropertyInfo>
-                <h2>{name}</h2>
-                <h3>{location}</h3>
+                <h2>{name || 'House'}</h2>
+                <h3>{location || 'Location'}</h3>
                 <ReviewImageWrapper>
                     <img src={imageUrl} alt="name"></img>
                     <ReviewLinkWrapper>

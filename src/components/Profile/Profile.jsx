@@ -8,7 +8,6 @@ import { ReviewWrapper } from "../../styles/Profile/OwnReviewCard.styled";
 import { Spinner } from "../Spinner/Spinner";
 
 export const Profile = () => {
-
     const { user } = useUserContext();
     const [ownBids, setOwnBids] = useState([]);
     const [ownProperties, setOwnProperties] = useState([]);
@@ -37,6 +36,7 @@ export const Profile = () => {
         setSelection(e.target.value);
     };
 
+    console.log(ownReviews);
     return (
         <ProfileContainer>
             <h1>{user.email}</h1>

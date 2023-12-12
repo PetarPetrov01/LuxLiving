@@ -5,7 +5,6 @@ import { ErrorContainer } from "../../styles/Error/Error.styled";
 export const ErrorBox = ({ errors }) => {
 
     const [visible, setVisible] = useState(true);
-    debugger;
     useEffect(() => {
         setVisible(true);
         const timeout = setTimeout(() => {
