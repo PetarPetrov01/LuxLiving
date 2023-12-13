@@ -1,6 +1,7 @@
 # LuxLiving Client 
 
 Welcome to the LuxLiving client side application!
+This application is currently deployed at: https://luxliving-be250.web.app/
 
 ## Table of contents
 
@@ -9,9 +10,13 @@ Welcome to the LuxLiving client side application!
 | [Getting started](#getting-started)                                                                                                                                                                                                              |
 | [App overview](#application-overview)                                                                                                                                                                                                            |
 | <ul> <li>[Header](#header)</li><li>[Home page](#home-page)</li><li>[Catalog](#catalog-page)</li><li>[Details](#details-page)</li><li>[Create page](#create-page)</li><li>[Edit page](#edit-page)</li><li>[Profile page](#profile-page)</li></ul> |
-
+| [Routes](#routes)                                                                                                                                                                                                                                           |  |
 
 ## Getting started
+To start the project on your local machine you must first clone the repository:
+```bash
+git clone https://github.com/PetarPetrov01/LuxLiving
+```
 Navigate to the project directory. Once you are inside the project directory, install the dependencies by running:
 
 ```bash
@@ -241,7 +246,7 @@ Upon landing on the register page a form with inputs is presented. If the client
 A view of the Register page:
 ---
 
-![Profile page(reviews)](./readme-screenshots/register-page.png)
+![Register page](./readme-screenshots/register-page.png)
 ---
  
 ### Login page
@@ -250,8 +255,24 @@ Upon arriving on this page, a form featuring two input fields is displayed. One 
 A view of the Login page:
 ---
 
-![Profile page(reviews)](./readme-screenshots/login-page.png)
+![Login page](./readme-screenshots/login-page.png)
 ---
+
+### Routes
+
+Both authenticated users and guests can access the following pages:
+- Home page
+- Catalog page
+- Detailed property page
+
+The following pages can be only accessed by guests:
+- Login
+- Register
+  
+If the user has logged in he has access the following aditional pages:
+- Create
+- Profile
+  
  
 
 
