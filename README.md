@@ -27,7 +27,8 @@ After the installation is complete, you can start the client using:
 ```bash
 npm start
 ```
-Note that the server should also be started for the application to work. To become familiar with the server, you can read its documentation [here](https://github.com/PetarPetrov01/LuxLiving/tree/main/server#readme).
+Note that to run the whole appication, you'll need to run the server and have MongoDB installed on your local machine. To become familiar with the server, you can read its documentation [here](https://github.com/PetarPetrov01/REST-API).
+
 
 ## Application overview
 ### Header
